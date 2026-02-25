@@ -1,0 +1,732 @@
+{
+  "global_markets": [
+    {
+      "source": "Bloomberg Markets",
+      "category": "global_markets",
+      "title": "Stocks Climb Before Nvidia’s High-Stakes Earnings: Markets Wrap",
+      "summary": "Wall Street traders bracing for Nvidia Corp.’s results drove stocks higher, hoping for evidence that the outlook for artificial intelligence remains intact at a time when anxiety about the technology is running rampant.",
+      "link": "https://www.bloomberg.com/news/articles/2026-02-24/stock-market-today-dow-s-p-live-updates-"
+    },
+    {
+      "source": "Bloomberg Markets",
+      "category": "global_markets",
+      "title": "Circle’s Shares Surge After Profit, Revenue Top Estimates",
+      "summary": "Shares of Circle Internet Group Inc. jumped more than 20% after the company said strong demand for its stablecoin bolstered profit and revenue during the fourth-quarter downturn in digital assets.",
+      "link": "https://www.bloomberg.com/news/articles/2026-02-25/circle-s-shares-surge-after-profit-revenue-top-estimates"
+    },
+    {
+      "source": "Bloomberg Markets",
+      "category": "global_markets",
+      "title": "Romania Selling Euro and Dollar Bonds After Budget Reforms",
+      "summary": "Romania is tapping international debt markets for the first time this year to capitalize on improved sentiment after the government pushed through reforms needed to reduce the budget deficit.",
+      "link": "https://www.bloomberg.com/news/articles/2026-02-25/romania-taps-foreign-debt-market-after-approving-budget-reforms"
+    },
+    {
+      "source": "Bloomberg Markets",
+      "category": "global_markets",
+      "title": "Turkey’s Vestel in Talks Over $500 Million of Bank Debt",
+      "summary": "Vestel Elektronik, a Turkish home-appliance and electronics manufacturer that has reported losses every quarter for the past two years, is in talks with banks to restructure more than $500 million of debt.",
+      "link": "https://www.bloomberg.com/news/articles/2026-02-25/turkey-s-vestel-in-talks-to-restructure-500-million-of-debt"
+    },
+    {
+      "source": "Bloomberg Markets",
+      "category": "global_markets",
+      "title": "Gold Rises as Traders Weigh Tariff Risks and Middle East Tension",
+      "summary": "Gold rose and silver surged as traders weighed uncertainty around US import tariffs and friction in the Middle East.",
+      "link": "https://www.bloomberg.com/news/articles/2026-02-24/gold-dips-for-second-day-on-prospects-of-prolonged-rate-hold"
+    },
+    {
+      "source": "Bloomberg Markets",
+      "category": "global_markets",
+      "title": "US Trade Representative Greer on 15% Tariff, USMCA, EU Trade Deal",
+      "summary": "US Trade Representative Jamieson Greer says President Donald Trump will sign a supplemental proclamation to increase the tariff level to 15% “where appropriate,” as the US seeks “continuity” on tariffs. Greer also discusses expectations for the UK an",
+      "link": "https://www.bloomberg.com/news/videos/2026-02-25/us-trade-rep-greer-on-15-tariff-usmca-eu-trade-deal-video"
+    },
+    {
+      "source": "Financial Times",
+      "category": "global_markets",
+      "title": "Trump condemns Iran’s ‘sinister’ nuclear ambitions in State of the Union",
+      "summary": "President warns Islamic republic is rebuilding nuclear weapons programme amid huge US military build-up",
+      "link": "https://www.ft.com/content/9194e1f5-d191-414a-ab9f-e271a32b8b78"
+    },
+    {
+      "source": "Financial Times",
+      "category": "global_markets",
+      "title": "How Deutsche Bank rolled out the red carpet for Jeffrey Epstein",
+      "summary": "German lender waved through convicted sex offender’s millions despite compliance concerns",
+      "link": "https://www.ft.com/content/b1d9e8c4-1874-4c82-941d-9a2e1512bc4c"
+    },
+    {
+      "source": "Financial Times",
+      "category": "global_markets",
+      "title": "How war stopped working",
+      "summary": "Ukraine, Iraq, Afghanistan — the story of the century so far is the ineffectiveness of force",
+      "link": "https://www.ft.com/content/8c91a61a-ba02-4394-b441-a9f60a29f4e8"
+    },
+    {
+      "source": "Financial Times",
+      "category": "global_markets",
+      "title": "Streetwise — Lloyd Blankfein’s memoir of his turbulent time at Goldman Sachs",
+      "summary": "The former chief delivers a sharp insider’s guide to the boom and bust era of financial services that took the shine off the investment bank",
+      "link": "https://www.ft.com/content/2324be9f-e753-4168-b1cc-93781b62e530"
+    },
+    {
+      "source": "Financial Times",
+      "category": "global_markets",
+      "title": "Merz steps up scrutiny of arms procurement amid spending angst",
+      "summary": "German chancellor enters debate over funding conventional weapons made by Rheinmetall vs defence start-ups",
+      "link": "https://www.ft.com/content/420c906f-33fe-4c98-acd2-1152f21c1443"
+    },
+    {
+      "source": "Financial Times",
+      "category": "global_markets",
+      "title": "Hegseth threatens to cut Anthropic from Pentagon supply chain in showdown with CEO",
+      "summary": "AI start-up’s Dario Amodei summoned to Washington after trying to limit military use of its technology",
+      "link": "https://www.ft.com/content/0c6b63b6-2524-4ba7-9f7a-e7183b29386f"
+    },
+    {
+      "source": "WSJ Markets",
+      "category": "global_markets",
+      "title": "Stocks Sink in Broad AI Rout Sparked by China's DeepSeek",
+      "summary": "U.S. stocks were mostly lower, with the Nasdaq leading declines as makers of AI infrastructure suffered steep falls, many in the double digits. Nvidia was down 16%.",
+      "link": "https://www.wsj.com/articles/nikkei-may-rise-as-weak-yen-raises-earnings-hopes-776a8056?mod=rss_markets_main"
+    },
+    {
+      "source": "WSJ Markets",
+      "category": "global_markets",
+      "title": "Comex Gold, Silver Settle Lower",
+      "summary": "Gold settled 1.4% lower, down two of the past three sessions, and silver fell 2.5%, down three of the past four sessions.",
+      "link": "https://www.wsj.com/articles/gold-edges-lower-feds-rate-decision-in-focus-09dbfceb?mod=rss_markets_main"
+    },
+    {
+      "source": "WSJ Markets",
+      "category": "global_markets",
+      "title": "DeepSeek Won't Sink U.S. AI Titans",
+      "summary": "Panic fueling the selloff of Nvidia, Broadcom and other tech giants is overblown.",
+      "link": "https://www.wsj.com/articles/deepseek-us-ai-stocks-nvidia-broadcom-6cdfae81?mod=rss_markets_main"
+    },
+    {
+      "source": "WSJ Markets",
+      "category": "global_markets",
+      "title": "Financial Services Roundup: Market Talk",
+      "summary": "Gain insight on Experian, SoFi Technologies and more in the latest Market Talks covering Financial Services.",
+      "link": "https://www.wsj.com/articles/financial-services-roundup-market-talk-94f52cba?mod=rss_markets_main"
+    },
+    {
+      "source": "WSJ Markets",
+      "category": "global_markets",
+      "title": "Arabica Coffee Prices Hit Record on U.S., Colombia Tariff Spat",
+      "summary": "Arabica coffee prices hit a record level, as traders digested the withdrawal of President Trump’s threats to impose tariffs and economic sanctions on Colombia.",
+      "link": "https://www.wsj.com/articles/arabica-coffee-prices-hit-new-high-on-u-s-colombia-tariff-spat-582446fe?mod=rss_markets_main"
+    },
+    {
+      "source": "WSJ Markets",
+      "category": "global_markets",
+      "title": "Swiss franc, Japanese yen Rise as DeepSeek News Boosts Safe Havens",
+      "summary": "The Yen and Swiss Franc were stronger against the dollar as investors sought safe havens after Chinese start-up DeepSeek’s new AI model hit U.S. tech stocks.",
+      "link": "https://www.wsj.com/articles/safe-haven-currencies-strengthen-amid-fears-over-global-tariffs-9964e17a?mod=rss_markets_main"
+    },
+    {
+      "source": "CNBC Top News",
+      "category": "global_markets",
+      "title": "David Tepper sends scathing letter to Whirlpool for destroying shareholder value, pushes for changes",
+      "summary": "Tepper said he watched with \"a certain astonishment\" as the company issued equity in what he called a large and unnecessary dilution of shareholders.",
+      "link": "https://www.cnbc.com/2026/02/25/david-tepper-sends-scathing-letter-to-whirlpool.html"
+    },
+    {
+      "source": "CNBC Top News",
+      "category": "global_markets",
+      "title": "5 takeaways from Trump's State of Union address",
+      "summary": "Democrats are nipping at the heels of the incumbent Republicans for control of Congress in the 2026 midterms.",
+      "link": "https://www.cnbc.com/2026/02/25/takeaways-trump-state-of-the-union-2026.html"
+    },
+    {
+      "source": "CNBC Top News",
+      "category": "global_markets",
+      "title": "David Ellison has a rocky history at the box office. Buying Warner Bros. could fix that",
+      "summary": "Only five of Skydance's features to date — three of them starring Tom Cruise — have generated more than $200 million domestically.",
+      "link": "https://www.cnbc.com/2026/02/25/paramount-wbd-david-ellison-box-office-history.html"
+    },
+    {
+      "source": "CNBC Top News",
+      "category": "global_markets",
+      "title": "Nvidia’s new AI system Vera Rubin is 10 times more efficient than its predecessor — here’s a first look",
+      "summary": "CNBC got an exclusive first look at Vera Rubin, Nvidia's next AI system that's due to ship in the second half of the year",
+      "link": "https://www.cnbc.com/2026/02/25/first-look-at-nvidias-ai-system-vera-rubin-and-how-it-beats-blackwell.html"
+    },
+    {
+      "source": "CNBC Top News",
+      "category": "global_markets",
+      "title": "Mortgage rates hit lowest level in nearly 4 years, but homebuyers are still stuck on the sidelines",
+      "summary": "Mortgage rates dropped to the lowest level since 2022 last week, but demand from homebuyers declined as well, as they continue to struggle with affordability.",
+      "link": "https://www.cnbc.com/2026/02/25/mortgage-rates-hit-lowest-level-in-nearly-4-years.html"
+    },
+    {
+      "source": "CNBC Top News",
+      "category": "global_markets",
+      "title": "Lowe's earnings beat as sales jump more than 10% despite sluggish housing market",
+      "summary": "Lowe's posted more than 10% sales growth in the fourth quarter at a time when housing turnover and home improvement demand are slow.",
+      "link": "https://www.cnbc.com/2026/02/25/lowes-low-q4-2025-earnings.html"
+    },
+    {
+      "source": "MarketWatch",
+      "category": "global_markets",
+      "title": "TJ Maxx parent’s earnings show discount clothes and home goods are still in high demand",
+      "summary": "TJ Maxx parent company TJX reported a triple beat with its fourth-quarter results on Wednesday, but shares of the off-price apparel and home-fashions retailer slipped as the outlook disappointed.",
+      "link": "https://www.marketwatch.com/story/tj-maxx-parents-earnings-show-discount-clothes-and-home-goods-are-still-in-high-demand-90fb804d?mod=mw_rss_topstories"
+    },
+    {
+      "source": "MarketWatch",
+      "category": "global_markets",
+      "title": "‘I am fearful’: My ailing relative is being forced into assisted living. What can I do?",
+      "summary": "“My relative also has no idea what they are being charged for these services.”",
+      "link": "https://www.marketwatch.com/story/i-am-fearful-my-ailing-relative-is-being-forced-into-assisted-living-what-can-i-do-7ce8b42a?mod=mw_rss_topstories"
+    },
+    {
+      "source": "MarketWatch",
+      "category": "global_markets",
+      "title": "HSBC reports a beat and a raise as it leapfrogs Wells Fargo by market cap",
+      "summary": "HSBC’s guidance for 2026 is pushing analysts to raise their stock-price estimates by around 6%",
+      "link": "https://www.marketwatch.com/story/hsbc-reports-a-beat-and-a-raise-as-it-leapfrogs-wells-fargo-by-market-cap-0e9f15ee?mod=mw_rss_topstories"
+    },
+    {
+      "source": "MarketWatch",
+      "category": "global_markets",
+      "title": "‘I spend $7,500 a month’: I’m 47, earn $260K, and have $3 million. Can I retire at 50?",
+      "summary": "“I own a home worth $520,000 and do not have a mortgage on it.”",
+      "link": "https://www.marketwatch.com/story/i-spend-7-500-a-month-im-47-earn-260k-and-have-3-million-can-i-retire-at-50-05afc0b5?mod=mw_rss_topstories"
+    },
+    {
+      "source": "MarketWatch",
+      "category": "global_markets",
+      "title": "Why this investor says you can make good money off software stocks — if you trade them like telephone directories",
+      "summary": "Deep value investor Lee Roach is looking at beaten-down software stocks for the first time ever.",
+      "link": "https://www.marketwatch.com/story/why-this-investor-says-you-can-make-good-money-off-software-stocks-if-you-trade-them-like-telephone-directories-e4d15635?mod=mw_rss_topstories"
+    },
+    {
+      "source": "MarketWatch",
+      "category": "global_markets",
+      "title": "Why more CEOs are taking a page from Elon Musk and chatting directly with customers",
+      "summary": "Executives say it’s all about learning how to better run their businesses, but some corporate watchers question if this is just a PR move.",
+      "link": "https://www.marketwatch.com/story/why-more-ceos-are-chatting-directly-with-customers-e9c34f1d?mod=mw_rss_topstories"
+    },
+    {
+      "source": "Yahoo Finance",
+      "category": "global_markets",
+      "title": "Prediction: Rivian Stock Is a Buy Before 2027",
+      "summary": "",
+      "link": "https://finance.yahoo.com/news/prediction-rivian-stock-buy-2027-142000603.html"
+    },
+    {
+      "source": "Yahoo Finance",
+      "category": "global_markets",
+      "title": "TJX Cos forecasts muted annual sales and profit as consumers pull back spending",
+      "summary": "",
+      "link": "https://finance.yahoo.com/news/tjx-cos-forecasts-muted-annual-141116941.html"
+    },
+    {
+      "source": "Yahoo Finance",
+      "category": "global_markets",
+      "title": "Lessor ATSG quits Airbus A321 cargo conversion joint venture",
+      "summary": "",
+      "link": "https://finance.yahoo.com/news/lessor-atsg-quits-airbus-a321-140918336.html"
+    },
+    {
+      "source": "Yahoo Finance",
+      "category": "global_markets",
+      "title": "The Market Awaits Nvidia, But This Data Center Builder Already Soars On Earnings",
+      "summary": "",
+      "link": "https://www.investors.com/news/data-center-builder-everus-earnings-stock-market-awaits-nvidia/?src=A00220&yptr=yahoo"
+    },
+    {
+      "source": "Yahoo Finance",
+      "category": "global_markets",
+      "title": "Aristotle Growth Equity Fund: Snowflake (SNOW) Stands Out as a Leading Data Cloud Platform",
+      "summary": "",
+      "link": "https://finance.yahoo.com/news/aristotle-growth-equity-fund-snowflake-140652743.html"
+    },
+    {
+      "source": "Yahoo Finance",
+      "category": "global_markets",
+      "title": "Dole (DOLE) Q4 2025 Earnings Call Transcript",
+      "summary": "",
+      "link": "https://finance.yahoo.com/news/dole-dole-q4-2025-earnings-141850822.html"
+    },
+    {
+      "source": "Seeking Alpha",
+      "category": "global_markets",
+      "title": "Geron falls as Q4 results miss expectations",
+      "summary": "",
+      "link": "https://seekingalpha.com/news/4556718-geron-stock-falls-q4-results-miss-forecasts?utm_source=feed_news_all&utm_medium=referral&feed_item_type=news"
+    },
+    {
+      "source": "Seeking Alpha",
+      "category": "global_markets",
+      "title": "BofA cuts Fox rating on NFL rights renewal risk",
+      "summary": "",
+      "link": "https://seekingalpha.com/news/4556661-bofa-cuts-fox-rating-on-nfl-rights-renewal-risk?utm_source=feed_news_all&utm_medium=referral&feed_item_type=news"
+    },
+    {
+      "source": "Seeking Alpha",
+      "category": "global_markets",
+      "title": "Höegh Autoliners ASA GAAP EPS of $0.55, revenue of $358.35M beats by $0.65M",
+      "summary": "",
+      "link": "https://seekingalpha.com/news/4556719-hoegh-autoliners-asa-gaap-eps-of-0_55-revenue-of-358_35m-beats-by-0_65m?utm_source=feed_news_all&utm_medium=referral&feed_item_type=news"
+    },
+    {
+      "source": "Seeking Alpha",
+      "category": "global_markets",
+      "title": "Bank of Montreal CL B PFD 44 declares $0.426 dividend",
+      "summary": "",
+      "link": "https://seekingalpha.com/news/4556716-bank-of-montreal-cl-b-pfd-44-declares-0_426-dividend?utm_source=feed_news_all&utm_medium=referral&feed_item_type=news"
+    },
+    {
+      "source": "Seeking Alpha",
+      "category": "global_markets",
+      "title": "Hovnanian GAAP EPS of $2.62, revenue of $632M",
+      "summary": "",
+      "link": "https://seekingalpha.com/news/4556712-hovnanian-gaap-eps-of-2_62-revenue-of-632m?utm_source=feed_news_all&utm_medium=referral&feed_item_type=news"
+    },
+    {
+      "source": "Seeking Alpha",
+      "category": "global_markets",
+      "title": "Nordex Ag reports Q4 results",
+      "summary": "",
+      "link": "https://seekingalpha.com/news/4556715-nordex-ag-reports-q4-results?utm_source=feed_news_all&utm_medium=referral&feed_item_type=news"
+    },
+    {
+      "source": "Business Insider Markets",
+      "category": "global_markets",
+      "title": "EQS-DD: Heidelberg Materials AG: René Aldach, buy",
+      "summary": "<br/><br/><table border=\"0\"><tr><td>\n<br/>\nNotification and public disclosure of transactions by persons discharging managerial responsibilities and persons closely associated with them <br/><br/>\n25.02.2026 / 11:31 CET/CEST<br/>The issuer is solely ",
+      "link": "https://markets.businessinsider.com/news/stocks/eqs-dd-heidelberg-materials-ag-ren-aldach-buy-1035865250"
+    },
+    {
+      "source": "Business Insider Markets",
+      "category": "global_markets",
+      "title": "Famed investor Ruchir Sharma says gold looks disconnected from fundamentals and prices are being driven by 'random stories'",
+      "summary": "",
+      "link": "https://markets.businessinsider.com/news/stocks/gold-price-crash-70s-metals-rally-outlook-ruchir-sharma-2026-2"
+    },
+    {
+      "source": "Business Insider Markets",
+      "category": "global_markets",
+      "title": "Aston Martin to cut up to 20% of its workforce as tariff and China pain rocks automakers",
+      "summary": "",
+      "link": "https://www.businessinsider.com/aston-martin-job-cuts-employees-tariffs-china-2026-2"
+    },
+    {
+      "source": "Business Insider Markets",
+      "category": "global_markets",
+      "title": "West Red Lake Gold Reports 219.73 g/t Au over 4.8m, 148.36 g/t Au over 3m and 133.13 g/t Au over 2.5m in Austin 904 Complex – Madsen Mine",
+      "summary": "<link type=\"text/css\" rel=\"stylesheet\" href=\"https://www.globenewswire.com/styles/gnw_nitf.css\" /><p align=\"justify\">VANCOUVER, British Columbia, Feb.  25, 2026  (GLOBE NEWSWIRE) -- West Red Lake Gold Mines Ltd. (\"West Red Lake Gold\" or \"WRLG\" or the",
+      "link": "https://markets.businessinsider.com/news/stocks/west-red-lake-gold-reports-219-73-g-t-au-over-4-8m-148-36-g-t-au-over-3m-and-133-13-g-t-au-over-2-5m-in-austin-904-complex-madsen-mine-1035865242"
+    },
+    {
+      "source": "Business Insider Markets",
+      "category": "global_markets",
+      "title": "Cybercrime Victimization Climbs to Record High 44% Over Five-Year Period",
+      "summary": "<link type=\"text/css\" rel=\"stylesheet\" href=\"https://www.globenewswire.com/styles/gnw_nitf.css\" /><p align=\"left\">WASHINGTON, Feb.  25, 2026  (GLOBE NEWSWIRE) -- The <a href=\"https://www.globenewswire.com/Tracker?data=-94UHBiohDxHB3KnWr3_WnmsCUIUZdya",
+      "link": "https://markets.businessinsider.com/news/stocks/cybercrime-victimization-climbs-to-record-high-44-over-five-year-period-1035865240"
+    },
+    {
+      "source": "Business Insider Markets",
+      "category": "global_markets",
+      "title": "Michael Saylor defends bitcoin's plunge by comparing it to Apple's 'valley of despair,' which preceded a huge rebound",
+      "summary": "",
+      "link": "https://www.businessinsider.com/bitcoin-price-michael-saylor-apple-rebound-crypto-btc-aapl-2026-2"
+    }
+  ],
+  "macro": [
+    {
+      "source": "The Economist Finance",
+      "category": "macro",
+      "title": "The AI productivity boom is not here (yet)",
+      "summary": "Artificial intelligence is improving fast. Its effect on output, not so much",
+      "link": "https://www.economist.com/finance-and-economics/2026/02/22/the-ai-productivity-boom-is-not-here-yet"
+    },
+    {
+      "source": "The Economist Finance",
+      "category": "macro",
+      "title": "Markets are churning furiously beneath a calm surface",
+      "summary": "AI is prompting investors to reassess every business model under the sun",
+      "link": "https://www.economist.com/finance-and-economics/2026/02/22/markets-are-churning-furiously-beneath-a-calm-surface"
+    },
+    {
+      "source": "The Economist Finance",
+      "category": "macro",
+      "title": "Donald Trump answers a Supreme Court rebuke with new tariff threats",
+      "summary": "The immediate economic impact will be more uncertainty",
+      "link": "https://www.economist.com/finance-and-economics/2026/02/20/donald-trump-answers-a-supreme-court-rebuke-with-new-tariff-threats"
+    },
+    {
+      "source": "The Economist Finance",
+      "category": "macro",
+      "title": "The EU is thrashing out a more muscular set of economic policies",
+      "summary": "The bloc is done playing nicely",
+      "link": "https://www.economist.com/finance-and-economics/2026/02/19/the-eu-is-thrashing-out-a-more-muscular-set-of-economic-policies"
+    },
+    {
+      "source": "The Economist Finance",
+      "category": "macro",
+      "title": "Did America’s war on poverty fail?",
+      "summary": "Deprivation has fallen dramatically—but not necessarily because of the welfare state",
+      "link": "https://www.economist.com/finance-and-economics/2026/02/19/did-americas-war-on-poverty-fail"
+    },
+    {
+      "source": "The Economist Finance",
+      "category": "macro",
+      "title": "Prediction markets are rife with insider betting",
+      "summary": "That does not mean regulators should stamp it out",
+      "link": "https://www.economist.com/finance-and-economics/2026/02/19/prediction-markets-are-rife-with-insider-betting"
+    }
+  ],
+  "central_banks": [
+    {
+      "source": "Federal Reserve",
+      "category": "central_banks",
+      "title": "Minutes of the Board's discount rate meetings on January 20 and 28, 2026",
+      "summary": "Minutes of the Board's discount rate meetings on January 20 and 28, 2026",
+      "link": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260224a.htm"
+    },
+    {
+      "source": "Federal Reserve",
+      "category": "central_banks",
+      "title": "Federal Reserve Board issues enforcement action with former employee of First Financial Bank",
+      "summary": "Federal Reserve Board issues enforcement action with former employee of First Financial Bank",
+      "link": "https://www.federalreserve.gov/newsevents/pressreleases/enforcement20260224a.htm"
+    },
+    {
+      "source": "Federal Reserve",
+      "category": "central_banks",
+      "title": "Following earlier actions to remove reputation risk from its supervision of banks, Federal Reserve Board requests comment on proposal to codify that removal",
+      "summary": "Following earlier actions to remove reputation risk from its supervision of banks, Federal Reserve Board requests comment on proposal to codify that removal",
+      "link": "https://www.federalreserve.gov/newsevents/pressreleases/bcreg20260223a.htm"
+    },
+    {
+      "source": "Federal Reserve",
+      "category": "central_banks",
+      "title": "Federal Reserve Board announces approval of application by Fulton Financial Corporation",
+      "summary": "Federal Reserve Board announces approval of application by Fulton Financial Corporation",
+      "link": "https://www.federalreserve.gov/newsevents/pressreleases/orders20260219a.htm"
+    },
+    {
+      "source": "Federal Reserve",
+      "category": "central_banks",
+      "title": "Federal Reserve Board announces it will hold a hybrid public outreach meeting on Thursday, March 26, as part of its review of regulations under the Economic Growth and Regulatory Paperwork Reduction Act (EGRPRA)",
+      "summary": "Federal Reserve Board announces it will hold a hybrid public outreach meeting on Thursday, March 26, as part of its review of regulations under the Economic Growth and Regulatory Paperwork Reduction Act (EGRPRA)",
+      "link": "https://www.federalreserve.gov/newsevents/pressreleases/other20260219a.htm"
+    },
+    {
+      "source": "Federal Reserve",
+      "category": "central_banks",
+      "title": "Minutes of the Federal Open Market Committee, January 27–28, 2026",
+      "summary": "Minutes of the Federal Open Market Committee, January 27–28, 2026",
+      "link": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260218a.htm"
+    },
+    {
+      "source": "ECB Press Releases",
+      "category": "central_banks",
+      "title": "Christine Lagarde: Turning size into scale: Europe’s new growth model",
+      "summary": "",
+      "link": "https://www.ecb.europa.eu//press/key/date/2026/html/ecb.sp260223~4c2aa74452.en.html"
+    },
+    {
+      "source": "ECB Press Releases",
+      "category": "central_banks",
+      "title": "Christine Lagarde: Interview with Wall Street Journal",
+      "summary": "",
+      "link": "https://www.ecb.europa.eu//press/inter/date/2026/html/ecb.in260221~a2c547fb40.en.html"
+    },
+    {
+      "source": "ECB Press Releases",
+      "category": "central_banks",
+      "title": "Christine Lagarde: The order that took centuries to build",
+      "summary": "",
+      "link": "https://www.ecb.europa.eu//press/key/date/2026/html/ecb.sp260220~58ceaf28ff.en.html"
+    },
+    {
+      "source": "ECB Press Releases",
+      "category": "central_banks",
+      "title": "Frank Elderson: Interview with Bloomberg",
+      "summary": "",
+      "link": "https://www.ecb.europa.eu//press/inter/date/2026/html/ecb.in260219~297f9872eb.en.html"
+    },
+    {
+      "source": "ECB Press Releases",
+      "category": "central_banks",
+      "title": "Piero Cipollone: The digital euro: enhancing payments in the euro area",
+      "summary": "",
+      "link": "https://www.ecb.europa.eu//press/key/date/2026/html/ecb.sp260219~e9f59ca8c0.en.html"
+    },
+    {
+      "source": "ECB Press Releases",
+      "category": "central_banks",
+      "title": "Isabel Schnabel: Fiscal challenges amid geopolitical uncertainty and ageing societies",
+      "summary": "",
+      "link": "https://www.ecb.europa.eu//press/key/date/2026/html/ecb.sp260218_1~1e1ee9b9d2.en.pdf"
+    }
+  ],
+  "commodities": [
+    {
+      "source": "OilPrice.com",
+      "category": "commodities",
+      "title": "UK Energy Bills to Drop to Nearly Two-Year Low",
+      "summary": "The average UK energy bill is set to drop by about 7% from April, to the lowest in almost two years, as the government has shifted part of the costs for supporting renewables from the household bills to general taxation.   From?April 1 to June 30, 20",
+      "link": "https://oilprice.com/Latest-Energy-News/World-News/UK-Energy-Bills-to-Drop-to-Nearly-Two-Year-Low.html"
+    },
+    {
+      "source": "OilPrice.com",
+      "category": "commodities",
+      "title": "Russia and Iran Slash Oil Prices to Secure China Market Share",
+      "summary": "Discounts for Russian and Iranian crude have widened in recent weeks as China’s independent refiners have remained the only buyers not shunning sanctioned supply, which is amassing in floating storage at sea.  India’s pivot away from Russian crude oi",
+      "link": "https://oilprice.com/Latest-Energy-News/World-News/Russia-and-Iran-Slash-Oil-Prices-to-Secure-China-Market-Share.html"
+    },
+    {
+      "source": "OilPrice.com",
+      "category": "commodities",
+      "title": "Weak China Demand Pushes Australian Gas Exporters to Seek New Buyers",
+      "summary": "Asia’s weak LNG demand has prompted one of the biggest exporters, Australia, to ship a cargo of the fuel as far as East Canada on a 16,000-mile journey, vessel-tracking data compiled by Bloomberg showed.  LNG carrier the Maran Gas Hector is set to ar",
+      "link": "https://oilprice.com/Latest-Energy-News/World-News/Weak-China-Demand-Pushes-Australian-Gas-Exporters-to-Seek-New-Buyers.html"
+    },
+    {
+      "source": "OilPrice.com",
+      "category": "commodities",
+      "title": "Shell Signs LNG Deal to Boost Supply to Southern Europe",
+      "summary": "Shell and Greek energy and metals firm Metlen have signed a cooperation deal for LNG supply and trading, which would boost deliveries to Greek import terminals and supply to southern and central Europe. Metlen and the UK-based supermajor, which is th",
+      "link": "https://oilprice.com/Latest-Energy-News/World-News/Shell-Signs-LNG-Deal-to-Boost-Supply-to-Southern-Europe.html"
+    },
+    {
+      "source": "OilPrice.com",
+      "category": "commodities",
+      "title": "Trump Slaps 126% Tariff on Indian Solar Panels in Escalating Trade Fight",
+      "summary": "President Trump announced a massive new tariff hit on India, saying imports of solar panels to the United States would be subject to tariffs of 126%. The move was motivated by the discovery that India was subsidizing its solar panel industry at the s",
+      "link": "https://oilprice.com/Latest-Energy-News/World-News/Trump-Slaps-126-Tariff-on-Indian-Solar-Panels-in-Escalating-Trade-Fight.html"
+    },
+    {
+      "source": "OilPrice.com",
+      "category": "commodities",
+      "title": "Indian Refiners Pivot From Russian to Venezuelan Crude",
+      "summary": "Reliance Industries has bought its first cargo of Venezuelan crude since 2023 from Chevron, Reuters has reported, citing shipping data, amid growing appetite from Indian refiners for non-Russian oil supply. That appetite was prompted by U.S. pressure",
+      "link": "https://oilprice.com/Latest-Energy-News/World-News/Indian-Refiners-Pivot-From-Russian-to-Venezuelan-Crude.html"
+    }
+  ],
+  "tech": [
+    {
+      "source": "TechCrunch Fintech",
+      "category": "tech",
+      "title": "Stripe is reportedly eyeing deal to buy some or all of PayPal",
+      "summary": "Stripe might be looking to buy PayPal, or parts of it, per early reports.",
+      "link": "https://techcrunch.com/2026/02/24/stripe-is-reportedly-eyeing-deal-to-buy-some-or-all-of-paypal/"
+    },
+    {
+      "source": "TechCrunch Fintech",
+      "category": "tech",
+      "title": "More startups are hitting $10M ARR in 3 months than ever before",
+      "summary": "AI has brought the startup world the rise of companies that instantly hit multimillion-dollar ARR. Stripe revealed some data that shows how common this has become.",
+      "link": "https://techcrunch.com/2026/02/24/more-startups-are-hitting-10m-arr-in-3-months-than-ever-before/"
+    },
+    {
+      "source": "TechCrunch Fintech",
+      "category": "tech",
+      "title": "Stripe’s valuation soars 74% to $159 billion",
+      "summary": "Stripe has conducted another tender offer, where employees sell shares. Investors include Thrive Capital, Coatue, a16z, and Stripe itself.",
+      "link": "https://techcrunch.com/2026/02/24/stripes-valuation-soars-74-to-159-billion/"
+    },
+    {
+      "source": "TechCrunch Fintech",
+      "category": "tech",
+      "title": "Marquis sues firewall provider SonicWall, alleges security failings with its firewall backup led to ransomware attack",
+      "summary": "Fintech giant Marquis is suing its firewall provider SonicWall, claiming that an earlier breach with SonicWall allowed hackers to deploy ransomware on Marquis' network.",
+      "link": "https://techcrunch.com/2026/02/24/marquis-sonicwall-lawsuit-ransomware-firewall-breach/"
+    },
+    {
+      "source": "TechCrunch Fintech",
+      "category": "tech",
+      "title": "Final 4 days to save up to $680 on your TechCrunch Disrupt 2026 pass",
+      "summary": "Just 4 days left before savings of up to $680 on your TechCrunch Disrupt 2026 pass end on February 27 at 11:59 p.m. PT. Register to save at one of the most anticipated tech events of the year.",
+      "link": "https://techcrunch.com/2026/02/24/final-4-days-to-save-up-to-680-on-your-techcrunch-disrupt-2026-pass/"
+    },
+    {
+      "source": "TechCrunch Fintech",
+      "category": "tech",
+      "title": "Stripe, PayPal Ventures bet on India’s Xflow to fix cross-border B2B payments",
+      "summary": "Stripe and PayPal Ventures have participated in Xflow's $16.6 million round that gives it a post-money valuation of $85 million.",
+      "link": "https://techcrunch.com/2026/02/23/stripe-paypal-ventures-bet-on-indias-xflow-to-fix-cross-border-b2b-payments/"
+    },
+    {
+      "source": "MIT Tech Review",
+      "category": "tech",
+      "title": "The Download: introducing the Crime issue",
+      "summary": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. Introducing: the Crime issue Technology has long made crime and its prosecution a game of cat and mouse. But tho",
+      "link": "https://www.technologyreview.com/2026/02/25/1133653/the-download-introducing-the-crime-issue/"
+    },
+    {
+      "source": "MIT Tech Review",
+      "category": "tech",
+      "title": "Listen to Earth’s rumbling, secret soundtrack",
+      "summary": "The boom of a calving glacier. The crackling rumble of a wildfire. The roar of a surging storm front. They’re the noises of the living Earth, music of this one particular sphere and clues to the true nature of these dramatic events. But as loud as al",
+      "link": "https://www.technologyreview.com/2026/02/25/1132829/listen-earths-rumbling-secret-soundtrack/"
+    },
+    {
+      "source": "MIT Tech Review",
+      "category": "tech",
+      "title": "3 things Juliet Beauchamp is into right now",
+      "summary": "The only reality show that matters The Real Housewives of Salt Lake City is one of the best shows on television right now. Not one of the best reality TV shows, but one of the best TV shows, period. Chronicling a shifting group of wealthy women in an",
+      "link": "https://www.technologyreview.com/2026/02/25/1132836/3-things-juliet-beauchamp/"
+    },
+    {
+      "source": "MIT Tech Review",
+      "category": "tech",
+      "title": "Now is a good time for doing crime",
+      "summary": "Eons ago, in 2012, I had a weird experience. My iPhone suddenly shut down. When I restarted it, I found it was totally reset—clean, like a new device. This was the early days of iOS, so I wasn’t too concerned until I went to connect it to my computer",
+      "link": "https://www.technologyreview.com/2026/02/25/1132840/editors-letter-march-2026/"
+    },
+    {
+      "source": "MIT Tech Review",
+      "category": "tech",
+      "title": "Just pull a string to turn these tile patterns into useful 3D structures",
+      "summary": "MIT researchers have developed a new method for designing 3D structures that can spring up from a flat sheet of interconnected tiles with a single pull of a string. The technique could be used to make foldable bike helmets and medical devices, emerge",
+      "link": "https://www.technologyreview.com/2026/02/24/1132074/just-pull-a-string-to-turn-these-tile-patterns-into-useful-3d-structures/"
+    },
+    {
+      "source": "MIT Tech Review",
+      "category": "tech",
+      "title": "A retinal reboot for amblyopia",
+      "summary": "In the vision disorder amblyopia (or “lazy eye”), impaired vision in one eye early in life causes neural connections in the brain’s visual system to shift toward supporting the other eye, leaving the amblyopic eye less capable even if the original im",
+      "link": "https://www.technologyreview.com/2026/02/24/1132077/a-retinal-reboot-for-amblyopia/"
+    }
+  ],
+  "china": [
+    {
+      "source": "SCMP Business",
+      "category": "china",
+      "title": "Canada approves all Gulfstream jets, ‘backing down’ to Trump’s tariff threats",
+      "summary": "Canada’s aviation regulator certified the remaining Gulfstream private jet models that US President Donald Trump asked it to approve, a move which let the White House claim a win in its trade dispute with Canada.\nThe certifications of Gulfstream’s GV",
+      "link": "https://www.scmp.com/news/world/united-states-canada/article/3344643/canada-approves-all-gulfstream-jets-backing-down-trumps-tariff-threats?utm_source=rss_feed"
+    },
+    {
+      "source": "SCMP Business",
+      "category": "china",
+      "title": "Hong Kong bets big on innovation, AI and finance in line with national goals",
+      "summary": "Hong Kong is betting big on innovation, artificial intelligence and redoubling its focus on its international financial centre role as it aligns its economic future with the country’s development goals, the financial secretary has said while unveilin",
+      "link": "https://www.scmp.com/news/hong-kong/hong-kong-economy/article/3344642/hong-kong-bets-big-innovation-ai-and-finance-line-national-goals?utm_source=rss_feed"
+    },
+    {
+      "source": "SCMP Business",
+      "category": "china",
+      "title": "Is China flexing its intelligence muscle by tracking US military moves near Iran?",
+      "summary": "A Chinese private company has drawn the attention of security watchers after detailing US military deployments near Iran, a move experts say underlines Beijing’s intelligence abilities.\nMizarVision, a Chinese commercial intelligence analysis firm, ha",
+      "link": "https://www.scmp.com/news/china/military/article/3344638/china-flexing-its-intelligence-muscle-tracking-us-military-moves-near-iran?utm_source=rss_feed"
+    },
+    {
+      "source": "SCMP Business",
+      "category": "china",
+      "title": "Hong Kong boosts investment body’s role in property sector, tech investment drive",
+      "summary": "Hong Kong’s government investment agency will take on a bigger role in attracting commercial property investment while advancing the establishment of an alliance focused on Chinese-developed RISC-V chips, as the financial secretary pledged additional",
+      "link": "https://www.scmp.com/news/hong-kong/hong-kong-economy/article/3344641/hong-kong-boosts-investment-bodys-role-property-sector-tech-investment-drive?utm_source=rss_feed"
+    },
+    {
+      "source": "SCMP Business",
+      "category": "china",
+      "title": "Who is Ali Shamkhani, the face of Iran’s wartime resistance?",
+      "summary": "Ali Shamkhani, who taunted Israel after ⁠being pulled alive from the rubble of his Tehran home ⁠following a strike in June 2025, has survived at the centre of Iranian policymaking during ⁠its most testing military confrontations and diplomatic endeav",
+      "link": "https://www.scmp.com/news/world/middle-east/article/3344639/who-ali-shamkhani-face-irans-wartime-resistance?utm_source=rss_feed"
+    },
+    {
+      "source": "SCMP Business",
+      "category": "china",
+      "title": "Suicide lawsuit against China-born scientist Jane Wu’s US university to proceed",
+      "summary": "A US judge has refused to throw out a lawsuit accusing Northwestern University of mistreating Chinese-American neuroscientist Jane Wu before her suicide, allowing the case to move ahead.\nThe ruling on Tuesday rejected the university’s request for dis",
+      "link": "https://www.scmp.com/news/china/science/article/3344623/suicide-lawsuit-against-china-born-scientist-jane-wus-us-university-proceed?utm_source=rss_feed"
+    }
+  ],
+  "asia": [
+    {
+      "source": "Nikkei Asia",
+      "category": "asia",
+      "title": "Xi urges Germany's Merz to cooperate on AI in bid to strengthen ties",
+      "summary": "",
+      "link": "https://asia.nikkei.com/politics/international-relations/xi-urges-germany-s-merz-to-cooperate-on-ai-in-bid-to-strengthen-ties"
+    },
+    {
+      "source": "Nikkei Asia",
+      "category": "asia",
+      "title": "China's military purges are 'dangerous,' says former top Japanese general",
+      "summary": "",
+      "link": "https://asia.nikkei.com/politics/international-relations/japan-china-tensions/china-s-military-purges-are-dangerous-says-former-top-japanese-general"
+    },
+    {
+      "source": "Nikkei Asia",
+      "category": "asia",
+      "title": "HSBC beats profit estimate despite China investment, Hong Kong bad loans",
+      "summary": "",
+      "link": "https://asia.nikkei.com/business/finance/hsbc-beats-profit-estimate-despite-china-investment-hong-kong-bad-loans"
+    },
+    {
+      "source": "Nikkei Asia",
+      "category": "asia",
+      "title": "Japan antitrust watchdog raids Microsoft over cloud services concerns",
+      "summary": "",
+      "link": "https://asia.nikkei.com/business/technology/japan-antitrust-watchdog-raids-microsoft-over-cloud-services-concerns"
+    },
+    {
+      "source": "Nikkei Asia",
+      "category": "asia",
+      "title": "Hong Kong stock listing boom helps city escape string of deficits",
+      "summary": "",
+      "link": "https://asia.nikkei.com/economy/hong-kong-stock-listing-boom-helps-city-escape-string-of-deficits"
+    },
+    {
+      "source": "Nikkei Asia",
+      "category": "asia",
+      "title": "Thai central bank makes surprise rate cut in first meeting after election",
+      "summary": "",
+      "link": "https://asia.nikkei.com/business/markets/thai-central-bank-makes-surprise-rate-cut-in-first-meeting-after-election"
+    }
+  ],
+  "crypto": [
+    {
+      "source": "CoinDesk",
+      "category": "crypto",
+      "title": "CoinDesk 20 performance update: Polkadot (DOT) surges 17.2% as all assets rise",
+      "summary": "",
+      "link": "https://www.coindesk.com/coindesk-indices/2026/02/25/coindesk-20-performance-update-polkadot-dot-surges-17-2-as-all-assets-rise"
+    },
+    {
+      "source": "CoinDesk",
+      "category": "crypto",
+      "title": "The chief of the SEC is headlining an event sponsored by a crypto firm at war with it",
+      "summary": "",
+      "link": "https://www.coindesk.com/news-analysis/2026/02/24/the-chief-of-the-sec-is-headlining-an-event-sponsored-by-a-crypto-firm-at-war-with-it"
+    },
+    {
+      "source": "CoinDesk",
+      "category": "crypto",
+      "title": "These bitcoin-linked stocks are doing better than BTC",
+      "summary": "",
+      "link": "https://www.coindesk.com/daybook-us/2026/02/25/these-bitcoin-linked-stocks-are-doing-better-than-btc"
+    },
+    {
+      "source": "CoinDesk",
+      "category": "crypto",
+      "title": "Circle Q4 earnings beat estimates as USDC issuance grows, shares surge pre-market",
+      "summary": "",
+      "link": "https://www.coindesk.com/business/2026/02/25/circle-q4-earnings-beat-estimates-shares-jump-15-in-pre-market"
+    },
+    {
+      "source": "CoinDesk",
+      "category": "crypto",
+      "title": "U.S. Senator opens probe on Binance over alleged $1.7 billion flow to Iranian entities",
+      "summary": "",
+      "link": "https://www.coindesk.com/business/2026/02/25/u-s-senator-opens-probe-on-binance-over-alleged-usd1-7-billion-flow-to-iranian-entities"
+    },
+    {
+      "source": "CoinDesk",
+      "category": "crypto",
+      "title": "Crypto rebounds from oversold levels, altcoin season indicator revisits January high",
+      "summary": "",
+      "link": "https://www.coindesk.com/markets/2026/02/25/crypto-rebounds-from-oversold-levels-altcoin-season-indicator-revisits-january-high"
+    }
+  ]
+}
