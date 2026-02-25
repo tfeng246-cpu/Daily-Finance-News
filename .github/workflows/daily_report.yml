@@ -72,36 +72,47 @@ jobs:
           python generate_report.py
 
       # --------------------------------------------------------
-      # 6. Get report date for use in subsequent steps
+      # 6. Get report date
       # --------------------------------------------------------
       - name: Get report date
         id: date
         run: echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
 
       # --------------------------------------------------------
-      # 7. Deploy HTML report to GitHub Pages FIRST
-      #    (must happen before sending notifications so the link works)
+      # 7. Deploy HTML report to GitHub Pages (gh-pages branch)
+      #    MUST happen BEFORE sending notifications so the link works.
+      #    We manually copy the HTML into a publish folder to avoid
+      #    the unsupported 'include_files' parameter.
       # --------------------------------------------------------
+      - name: Prepare GitHub Pages publish folder
+        run: |
+          mkdir -p ./pages_publish
+          cp investment_research_${{ steps.date.outputs.date }}.html ./pages_publish/
+          # Also copy any previous reports if they exist in gh-pages
+          echo "Prepared pages_publish folder:"
+          ls -la ./pages_publish/
+
       - name: Deploy HTML report to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./
-          include_files: "investment_research_${{ steps.date.outputs.date }}.html"
+          publish_dir: ./pages_publish
           keep_files: true
           commit_message: "📊 Daily report: ${{ steps.date.outputs.date }}"
           user_name: 'github-actions[bot]'
           user_email: 'github-actions[bot]@users.noreply.github.com'
 
       # --------------------------------------------------------
-      # 8. Wait for GitHub Pages to propagate (30 seconds)
+      # 8. Wait for GitHub Pages CDN to propagate (45 seconds)
       # --------------------------------------------------------
       - name: Wait for GitHub Pages to propagate
-        run: sleep 30
+        run: |
+          echo "Waiting 45 seconds for GitHub Pages to propagate..."
+          sleep 45
 
       # --------------------------------------------------------
-      # 9. Send email (SendGrid primary, Gmail fallback)
-      #    and WeChat Work notification (with working HTML link)
+      # 9. Send email + WeChat Work notification
+      #    (HTML link is now live on GitHub Pages)
       # --------------------------------------------------------
       - name: Send notifications
         env:
