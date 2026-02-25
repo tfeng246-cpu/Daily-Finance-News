@@ -3,44 +3,44 @@
     {
       "source": "Bloomberg Markets",
       "category": "global_markets",
+      "title": "Omnicom Is Selling Bonds for the First Time Since 2024",
+      "summary": "Omnicom Group Inc. is selling bonds in Europe and the US for the first time since 2024, the advertising heavyweight’s initial offerings since completing its takeover of rival IPG in November.",
+      "link": "https://www.bloomberg.com/news/articles/2026-02-25/omnicom-makes-rare-foray-in-to-euro-debt-market"
+    },
+    {
+      "source": "Bloomberg Markets",
+      "category": "global_markets",
+      "title": "Oil Steadies as Traders Await Upcoming US-Iran Nuclear Talks",
+      "summary": "Oil fluctuated near $66 as traders weighed the odds of a nuclear deal between the US and Iran ahead of talks on Thursday, with a huge deployment of American forces in the Middle East keeping the market on edge.",
+      "link": "https://www.bloomberg.com/news/articles/2026-02-24/latest-oil-market-news-and-analysis-for-feb-25"
+    },
+    {
+      "source": "Bloomberg Markets",
+      "category": "global_markets",
+      "title": "Colombia Eyes $6.7 Billion in Pension Assets Amid Fiscal Strain",
+      "summary": "Colombia is preparing a regulation to shift billions of dollars in private pension savings to its public retirement system, a move that could help ease a funding shortfall that is adding to the nation’s fiscal strains.",
+      "link": "https://www.bloomberg.com/news/articles/2026-02-25/colombia-eyes-6-7-billion-in-pension-assets-amid-fiscal-strain"
+    },
+    {
+      "source": "Bloomberg Markets",
+      "category": "global_markets",
+      "title": "Nvidia Earnings Slam Into Market With No Patience for AI Hiccups",
+      "summary": "Nvidia Corp.’s earnings report on Wednesday afternoon comes at a critical time for the US stock market with investors increasingly nervous about the outlook for artificial intelligence.",
+      "link": "https://www.bloomberg.com/news/articles/2026-02-25/nvidia-earnings-loom-as-risk-factor-for-ai-obsessed-stock-market"
+    },
+    {
+      "source": "Bloomberg Markets",
+      "category": "global_markets",
+      "title": "S&amp;P 500 Rises as Tech Shares Advance Before Nvidia Earnings",
+      "summary": "US stocks gained on Wednesday as Nvidia Corp., the top-weighted S&P 500 Index stock, climbed ahead of the chipmaker’s earnings report after the market close.",
+      "link": "https://www.bloomberg.com/news/articles/2026-02-25/s-p-500-rises-as-tech-shares-advance-before-nvidia-earnings-mm25slff"
+    },
+    {
+      "source": "Bloomberg Markets",
+      "category": "global_markets",
       "title": "Stocks Climb Before Nvidia’s High-Stakes Earnings: Markets Wrap",
       "summary": "Wall Street traders bracing for Nvidia Corp.’s results drove stocks higher, hoping for evidence that the outlook for artificial intelligence remains intact at a time when anxiety about the technology is running rampant.",
       "link": "https://www.bloomberg.com/news/articles/2026-02-24/stock-market-today-dow-s-p-live-updates-"
-    },
-    {
-      "source": "Bloomberg Markets",
-      "category": "global_markets",
-      "title": "Circle’s Shares Surge After Profit, Revenue Top Estimates",
-      "summary": "Shares of Circle Internet Group Inc. jumped more than 20% after the company said strong demand for its stablecoin bolstered profit and revenue during the fourth-quarter downturn in digital assets.",
-      "link": "https://www.bloomberg.com/news/articles/2026-02-25/circle-s-shares-surge-after-profit-revenue-top-estimates"
-    },
-    {
-      "source": "Bloomberg Markets",
-      "category": "global_markets",
-      "title": "Romania Selling Euro and Dollar Bonds After Budget Reforms",
-      "summary": "Romania is tapping international debt markets for the first time this year to capitalize on improved sentiment after the government pushed through reforms needed to reduce the budget deficit.",
-      "link": "https://www.bloomberg.com/news/articles/2026-02-25/romania-taps-foreign-debt-market-after-approving-budget-reforms"
-    },
-    {
-      "source": "Bloomberg Markets",
-      "category": "global_markets",
-      "title": "Turkey’s Vestel in Talks Over $500 Million of Bank Debt",
-      "summary": "Vestel Elektronik, a Turkish home-appliance and electronics manufacturer that has reported losses every quarter for the past two years, is in talks with banks to restructure more than $500 million of debt.",
-      "link": "https://www.bloomberg.com/news/articles/2026-02-25/turkey-s-vestel-in-talks-to-restructure-500-million-of-debt"
-    },
-    {
-      "source": "Bloomberg Markets",
-      "category": "global_markets",
-      "title": "Gold Rises as Traders Weigh Tariff Risks and Middle East Tension",
-      "summary": "Gold rose and silver surged as traders weighed uncertainty around US import tariffs and friction in the Middle East.",
-      "link": "https://www.bloomberg.com/news/articles/2026-02-24/gold-dips-for-second-day-on-prospects-of-prolonged-rate-hold"
-    },
-    {
-      "source": "Bloomberg Markets",
-      "category": "global_markets",
-      "title": "US Trade Representative Greer on 15% Tariff, USMCA, EU Trade Deal",
-      "summary": "US Trade Representative Jamieson Greer says President Donald Trump will sign a supplemental proclamation to increase the tariff level to 15% “where appropriate,” as the US seeks “continuity” on tariffs. Greer also discusses expectations for the UK an",
-      "link": "https://www.bloomberg.com/news/videos/2026-02-25/us-trade-rep-greer-on-15-tariff-usmca-eu-trade-deal-video"
     },
     {
       "source": "Financial Times",
@@ -150,6 +150,13 @@
     {
       "source": "CNBC Top News",
       "category": "global_markets",
+      "title": "Taser-maker Axon pops 18% as AI boosts demand for its software tools",
+      "summary": "CEO Rick Smith noted the impact of AI and said Axon is at a \"moment unlike anything\" he has seen since starting the company.",
+      "link": "https://www.cnbc.com/2026/02/25/axon-enterprise-axon-q4-2025-earnings.html"
+    },
+    {
+      "source": "CNBC Top News",
+      "category": "global_markets",
       "title": "Nvidia’s new AI system Vera Rubin is 10 times more efficient than its predecessor — here’s a first look",
       "summary": "CNBC got an exclusive first look at Vera Rubin, Nvidia's next AI system that's due to ship in the second half of the year",
       "link": "https://www.cnbc.com/2026/02/25/first-look-at-nvidias-ai-system-vera-rubin-and-how-it-beats-blackwell.html"
@@ -162,11 +169,25 @@
       "link": "https://www.cnbc.com/2026/02/25/mortgage-rates-hit-lowest-level-in-nearly-4-years.html"
     },
     {
-      "source": "CNBC Top News",
+      "source": "MarketWatch",
       "category": "global_markets",
-      "title": "Lowe's earnings beat as sales jump more than 10% despite sluggish housing market",
-      "summary": "Lowe's posted more than 10% sales growth in the fourth quarter at a time when housing turnover and home improvement demand are slow.",
-      "link": "https://www.cnbc.com/2026/02/25/lowes-low-q4-2025-earnings.html"
+      "title": "‘I am fearful’: My ailing relative is being forced into assisted living. What can I do?",
+      "summary": "“My relative also has no idea what they are being charged for these services.”",
+      "link": "https://www.marketwatch.com/story/i-am-fearful-my-ailing-relative-is-being-forced-into-assisted-living-what-can-i-do-7ce8b42a?mod=mw_rss_topstories"
+    },
+    {
+      "source": "MarketWatch",
+      "category": "global_markets",
+      "title": "American tequila sales are collapsing. Diageo is cutting its dividend in half.",
+      "summary": "Diageo on Wednesday said it was cutting its dividend in half as it reduced its sales outlook, citing American consumer reluctance to spend due to affordability concerns.",
+      "link": "https://www.marketwatch.com/story/american-tequila-sales-are-collapsing-diageo-is-cutting-its-dividend-in-half-3fc34adb?mod=mw_rss_topstories"
+    },
+    {
+      "source": "MarketWatch",
+      "category": "global_markets",
+      "title": "After 46 years working, I’m not retiring — instead, I take a vacation every month. Is that a good life in your 70s?",
+      "summary": "“I’ve owned my own company for the last 15 years. It’s worth $8.5 million.”",
+      "link": "https://www.marketwatch.com/story/after-46-years-working-im-not-retiring-instead-i-take-a-vacation-every-month-is-that-a-good-life-in-your-70s-447f7c75?mod=mw_rss_topstories"
     },
     {
       "source": "MarketWatch",
@@ -185,51 +206,37 @@
     {
       "source": "MarketWatch",
       "category": "global_markets",
-      "title": "‘I am fearful’: My ailing relative is being forced into assisted living. What can I do?",
-      "summary": "“My relative also has no idea what they are being charged for these services.”",
-      "link": "https://www.marketwatch.com/story/i-am-fearful-my-ailing-relative-is-being-forced-into-assisted-living-what-can-i-do-7ce8b42a?mod=mw_rss_topstories"
-    },
-    {
-      "source": "MarketWatch",
-      "category": "global_markets",
       "title": "HSBC reports a beat and a raise as it leapfrogs Wells Fargo by market cap",
       "summary": "HSBC’s guidance for 2026 is pushing analysts to raise their stock-price estimates by around 6%",
       "link": "https://www.marketwatch.com/story/hsbc-reports-a-beat-and-a-raise-as-it-leapfrogs-wells-fargo-by-market-cap-0e9f15ee?mod=mw_rss_topstories"
     },
     {
-      "source": "MarketWatch",
+      "source": "Yahoo Finance",
       "category": "global_markets",
-      "title": "‘I spend $7,500 a month’: I’m 47, earn $260K, and have $3 million. Can I retire at 50?",
-      "summary": "“I own a home worth $520,000 and do not have a mortgage on it.”",
-      "link": "https://www.marketwatch.com/story/i-spend-7-500-a-month-im-47-earn-260k-and-have-3-million-can-i-retire-at-50-05afc0b5?mod=mw_rss_topstories"
-    },
-    {
-      "source": "MarketWatch",
-      "category": "global_markets",
-      "title": "Why more CEOs are taking a page from Elon Musk and chatting directly with customers",
-      "summary": "Executives say it’s all about learning how to better run their businesses, but some corporate watchers question if this is just a PR move.",
-      "link": "https://www.marketwatch.com/story/why-more-ceos-are-chatting-directly-with-customers-e9c34f1d?mod=mw_rss_topstories"
+      "title": "Palvella Therapeutics price target raised to $255 from $200 at H.C. Wainwright",
+      "summary": "",
+      "link": "https://finance.yahoo.com/news/palvella-therapeutics-price-target-raised-151040917.html"
     },
     {
       "source": "Yahoo Finance",
       "category": "global_markets",
-      "title": "Prediction: Rivian Stock Is a Buy Before 2027",
+      "title": "World Gym Fireside Chat with President John Caraccio on Friday Feb 27 at 8AM EST",
       "summary": "",
-      "link": "https://finance.yahoo.com/news/prediction-rivian-stock-buy-2027-142000603.html"
+      "link": "https://finance.yahoo.com/news/world-gym-fireside-chat-president-150639201.html"
     },
     {
       "source": "Yahoo Finance",
       "category": "global_markets",
-      "title": "TJX Cos forecasts muted annual sales and profit as consumers pull back spending",
+      "title": "Shoemaker Steven Madden withholds profit forecast on tariff uncertainty",
       "summary": "",
-      "link": "https://finance.yahoo.com/news/tjx-cos-forecasts-muted-annual-141116941.html"
+      "link": "https://finance.yahoo.com/news/shoemaker-steven-madden-withholds-profit-143331423.html"
     },
     {
       "source": "Yahoo Finance",
       "category": "global_markets",
-      "title": "Lessor ATSG quits Airbus A321 cargo conversion joint venture",
+      "title": "Stock market today: Dow, S&P 500, Nasdaq rise with Nvidia earnings looming as gut check for AI trade",
       "summary": "",
-      "link": "https://finance.yahoo.com/news/lessor-atsg-quits-airbus-a321-140918336.html"
+      "link": "https://finance.yahoo.com/news/live/stock-market-today-dow-sp-500-nasdaq-rise-with-nvidia-earnings-looming-as-gut-check-for-ai-trade-143448982.html"
     },
     {
       "source": "Yahoo Finance",
@@ -241,58 +248,51 @@
     {
       "source": "Yahoo Finance",
       "category": "global_markets",
-      "title": "Aristotle Growth Equity Fund: Snowflake (SNOW) Stands Out as a Leading Data Cloud Platform",
+      "title": "Alcon (ALC) Q4 2025 Earnings Call Transcript",
       "summary": "",
-      "link": "https://finance.yahoo.com/news/aristotle-growth-equity-fund-snowflake-140652743.html"
-    },
-    {
-      "source": "Yahoo Finance",
-      "category": "global_markets",
-      "title": "Dole (DOLE) Q4 2025 Earnings Call Transcript",
-      "summary": "",
-      "link": "https://finance.yahoo.com/news/dole-dole-q4-2025-earnings-141850822.html"
+      "link": "https://finance.yahoo.com/news/alcon-alc-q4-2025-earnings-150402135.html"
     },
     {
       "source": "Seeking Alpha",
       "category": "global_markets",
-      "title": "Anthropic product event shows competition risk to software overblown: Wedbush",
+      "title": "Arbe Robotics Q4 2025 Earnings Preview",
       "summary": "",
-      "link": "https://seekingalpha.com/news/4556668-anthropic-product-event-shows-competition-risk-to-software-overblown-wedbush?utm_source=feed_news_all&utm_medium=referral&feed_item_type=news"
+      "link": "https://seekingalpha.com/news/4556766-arbe-robotics-q4-2025-earnings-preview?utm_source=feed_news_all&utm_medium=referral&feed_item_type=news"
     },
     {
       "source": "Seeking Alpha",
       "category": "global_markets",
-      "title": "The stock market higher ahead of Nvidia results",
+      "title": "Opera Q4 2025 Earnings Preview",
       "summary": "",
-      "link": "https://seekingalpha.com/news/4556468-sp500-nasdaq-dow-jones-outlook-stock-market?utm_source=feed_news_all&utm_medium=referral&feed_item_type=news"
+      "link": "https://seekingalpha.com/news/4556764-opera-q4-2025-earnings-preview?utm_source=feed_news_all&utm_medium=referral&feed_item_type=news"
     },
     {
       "source": "Seeking Alpha",
       "category": "global_markets",
-      "title": "Koninklijke Vopak N.V. Non-GAAP EPS of €3.56, revenue of €1.3B",
+      "title": "Oracle rises after upgrade at Oppenheimer",
       "summary": "",
-      "link": "https://seekingalpha.com/news/4556724-koninklijke-vopak-nv-non-gaap-eps-of-356-revenue-of-13b?utm_source=feed_news_all&utm_medium=referral&feed_item_type=news"
+      "link": "https://seekingalpha.com/news/4556727-oracle-rises-after-upgrade-at-oppenheimer?utm_source=feed_news_all&utm_medium=referral&feed_item_type=news"
     },
     {
       "source": "Seeking Alpha",
       "category": "global_markets",
-      "title": "Dell Q4 2026 earnings preview: Strong AI-driven growth expected",
+      "title": "Ligand Pharmaceuticals Q4 2025 Earnings Preview",
       "summary": "",
-      "link": "https://seekingalpha.com/news/4556720-dell-q4-2026-earnings-preview-strong-ai-driven-growth-expected?utm_source=feed_news_all&utm_medium=referral&feed_item_type=news"
+      "link": "https://seekingalpha.com/news/4556762-ligand-pharmaceuticals-q4-2025-earnings-preview?utm_source=feed_news_all&utm_medium=referral&feed_item_type=news"
     },
     {
       "source": "Seeking Alpha",
       "category": "global_markets",
-      "title": "Rocket Lab USA Q4 2025 earnings preview: Strong revenue growth expected",
+      "title": "DAQO New Energy Q4 2025 Earnings Preview",
       "summary": "",
-      "link": "https://seekingalpha.com/news/4556701-rocket-lab-usa-q4-2025-earnings-preview-strong-revenue-growth-expected?utm_source=feed_news_all&utm_medium=referral&feed_item_type=news"
+      "link": "https://seekingalpha.com/news/4556761-daqo-new-energy-q4-2025-earnings-preview?utm_source=feed_news_all&utm_medium=referral&feed_item_type=news"
     },
     {
       "source": "Seeking Alpha",
       "category": "global_markets",
-      "title": "Geron falls as Q4 results miss expectations",
+      "title": "MP Materials Q4 ahead: Street sees $0.02 EPS as focus shifts to execution of U.S.-backed buildout",
       "summary": "",
-      "link": "https://seekingalpha.com/news/4556718-geron-stock-falls-q4-results-miss-forecasts?utm_source=feed_news_all&utm_medium=referral&feed_item_type=news"
+      "link": "https://seekingalpha.com/news/4556731-mp-materials-q4-ahead-street-sees-002-eps-as-focus-shifts-to-execution-of-us-backed-buildout?utm_source=feed_news_all&utm_medium=referral&feed_item_type=news"
     },
     {
       "source": "Business Insider Markets",
@@ -471,6 +471,13 @@
     {
       "source": "OilPrice.com",
       "category": "commodities",
+      "title": "The U.S. Just Took a Giant Step in The Rare Earth Race With China",
+      "summary": "For more than a decade, the United States has treated rare earth independence as a mining problem. But the real vulnerability is further downstream. That’s where rare earths are turned into metals and become a part of the American military machine an",
+      "link": "https://oilprice.com/Interviews/The-US-Just-Took-a-Giant-Step-in-The-Rare-Earth-Race-With-China.html"
+    },
+    {
+      "source": "OilPrice.com",
+      "category": "commodities",
       "title": "UK Energy Bills to Drop to Nearly Two-Year Low",
       "summary": "The average UK energy bill is set to drop by about 7% from April, to the lowest in almost two years, as the government has shifted part of the costs for supporting renewables from the household bills to general taxation.   From?April 1 to June 30, 20",
       "link": "https://oilprice.com/Latest-Energy-News/World-News/UK-Energy-Bills-to-Drop-to-Nearly-Two-Year-Low.html"
@@ -502,16 +509,16 @@
       "title": "Trump Slaps 126% Tariff on Indian Solar Panels in Escalating Trade Fight",
       "summary": "President Trump announced a massive new tariff hit on India, saying imports of solar panels to the United States would be subject to tariffs of 126%. The move was motivated by the discovery that India was subsidizing its solar panel industry at the s",
       "link": "https://oilprice.com/Latest-Energy-News/World-News/Trump-Slaps-126-Tariff-on-Indian-Solar-Panels-in-Escalating-Trade-Fight.html"
-    },
-    {
-      "source": "OilPrice.com",
-      "category": "commodities",
-      "title": "Indian Refiners Pivot From Russian to Venezuelan Crude",
-      "summary": "Reliance Industries has bought its first cargo of Venezuelan crude since 2023 from Chevron, Reuters has reported, citing shipping data, amid growing appetite from Indian refiners for non-Russian oil supply. That appetite was prompted by U.S. pressure",
-      "link": "https://oilprice.com/Latest-Energy-News/World-News/Indian-Refiners-Pivot-From-Russian-to-Venezuelan-Crude.html"
     }
   ],
   "tech": [
+    {
+      "source": "TechCrunch Fintech",
+      "category": "tech",
+      "title": "3 days left: Save up to $680 on your TechCrunch Disrupt 2026 ticket",
+      "summary": "Just 3 days left to save up to $680 on your TechCrunch Disrupt 2026 ticket. Offer ends on Friday, February 27 at 11:59 p.m. PT. Don't miss unparalleled, curated networking and valuable insights from 250+ tech leaders, and discover 300+ breakout innov",
+      "link": "https://techcrunch.com/2026/02/25/3-days-left-save-up-to-680-on-your-techcrunch-disrupt-2026-ticket/"
+    },
     {
       "source": "TechCrunch Fintech",
       "category": "tech",
@@ -546,13 +553,6 @@
       "title": "Final 4 days to save up to $680 on your TechCrunch Disrupt 2026 pass",
       "summary": "Just 4 days left before savings of up to $680 on your TechCrunch Disrupt 2026 pass end on February 27 at 11:59 p.m. PT. Register to save at one of the most anticipated tech events of the year.",
       "link": "https://techcrunch.com/2026/02/24/final-4-days-to-save-up-to-680-on-your-techcrunch-disrupt-2026-pass/"
-    },
-    {
-      "source": "TechCrunch Fintech",
-      "category": "tech",
-      "title": "Stripe, PayPal Ventures bet on India’s Xflow to fix cross-border B2B payments",
-      "summary": "Stripe and PayPal Ventures have participated in Xflow's $16.6 million round that gives it a post-money valuation of $85 million.",
-      "link": "https://techcrunch.com/2026/02/23/stripe-paypal-ventures-bet-on-indias-xflow-to-fix-cross-border-b2b-payments/"
     },
     {
       "source": "MIT Tech Review",
@@ -601,6 +601,20 @@
     {
       "source": "SCMP Business",
       "category": "china",
+      "title": "Hong Kong’s virtual asset sector considered for taxation under policy review",
+      "summary": "A new government committee tasked with reviewing Hong Kong’s tax policies will consider updating them to allow for levies on the virtual asset sector and selected emerging industries, while providing incentives to attract business and investment, the",
+      "link": "https://www.scmp.com/news/hong-kong/hong-kong-economy/article/3344648/hong-kongs-virtual-asset-sector-considered-taxation-under-policy-review?utm_source=rss_feed"
+    },
+    {
+      "source": "SCMP Business",
+      "category": "china",
+      "title": "Hong Kong to set up first national innovation centre outside mainland China",
+      "summary": "Hong Kong will establish the first national manufacturing innovation centre outside mainland China and a high-level steering committee to spearhead AI development, the finance chief has said, as the city seeks to align with the country’s 15th five-ye",
+      "link": "https://www.scmp.com/news/hong-kong/society/article/3344645/hong-kong-set-first-national-innovation-centre-outside-mainland-china?utm_source=rss_feed"
+    },
+    {
+      "source": "SCMP Business",
+      "category": "china",
       "title": "Canada approves all Gulfstream jets, ‘backing down’ to Trump’s tariff threats",
       "summary": "Canada’s aviation regulator certified the remaining Gulfstream private jet models that US President Donald Trump asked it to approve, a move which let the White House claim a win in its trade dispute with Canada.\nThe certifications of Gulfstream’s GV",
       "link": "https://www.scmp.com/news/world/united-states-canada/article/3344643/canada-approves-all-gulfstream-jets-backing-down-trumps-tariff-threats?utm_source=rss_feed"
@@ -625,20 +639,6 @@
       "title": "Hong Kong boosts investment body’s role in property sector, tech investment drive",
       "summary": "Hong Kong’s government investment agency will take on a bigger role in attracting commercial property investment while advancing the establishment of an alliance focused on Chinese-developed RISC-V chips, as the financial secretary pledged additional",
       "link": "https://www.scmp.com/news/hong-kong/hong-kong-economy/article/3344641/hong-kong-boosts-investment-bodys-role-property-sector-tech-investment-drive?utm_source=rss_feed"
-    },
-    {
-      "source": "SCMP Business",
-      "category": "china",
-      "title": "Who is Ali Shamkhani, the face of Iran’s wartime resistance?",
-      "summary": "Ali Shamkhani, who taunted Israel after ⁠being pulled alive from the rubble of his Tehran home ⁠following a strike in June 2025, has survived at the centre of Iranian policymaking during ⁠its most testing military confrontations and diplomatic endeav",
-      "link": "https://www.scmp.com/news/world/middle-east/article/3344639/who-ali-shamkhani-face-irans-wartime-resistance?utm_source=rss_feed"
-    },
-    {
-      "source": "SCMP Business",
-      "category": "china",
-      "title": "Suicide lawsuit against China-born scientist Jane Wu’s US university to proceed",
-      "summary": "A US judge has refused to throw out a lawsuit accusing Northwestern University of mistreating Chinese-American neuroscientist Jane Wu before her suicide, allowing the case to move ahead.\nThe ruling on Tuesday rejected the university’s request for dis",
-      "link": "https://www.scmp.com/news/china/science/article/3344623/suicide-lawsuit-against-china-born-scientist-jane-wus-us-university-proceed?utm_source=rss_feed"
     }
   ],
   "asia": [
@@ -689,6 +689,20 @@
     {
       "source": "CoinDesk",
       "category": "crypto",
+      "title": "XRP jumps 6% as exchange data points to institutional accumulation",
+      "summary": "",
+      "link": "https://www.coindesk.com/markets/2026/02/25/xrp-jumps-6-as-exchange-data-points-to-institutional-accumulation"
+    },
+    {
+      "source": "CoinDesk",
+      "category": "crypto",
+      "title": "Endowments eye crypto allocations amid tougher return outlook for traditional investments",
+      "summary": "",
+      "link": "https://www.coindesk.com/business/2026/02/25/endowments-eye-crypto-allocations-amid-tougher-return-outlook-for-traditional-investments"
+    },
+    {
+      "source": "CoinDesk",
+      "category": "crypto",
       "title": "CoinDesk 20 performance update: Polkadot (DOT) surges 17.2% as all assets rise",
       "summary": "",
       "link": "https://www.coindesk.com/coindesk-indices/2026/02/25/coindesk-20-performance-update-polkadot-dot-surges-17-2-as-all-assets-rise"
@@ -710,23 +724,9 @@
     {
       "source": "CoinDesk",
       "category": "crypto",
-      "title": "Circle Q4 earnings beat estimates as USDC issuance grows, shares surge pre-market",
+      "title": "Circle Q4 earnings beat estimates as USDC issuance grows, shares surge",
       "summary": "",
       "link": "https://www.coindesk.com/business/2026/02/25/circle-q4-earnings-beat-estimates-shares-jump-15-in-pre-market"
-    },
-    {
-      "source": "CoinDesk",
-      "category": "crypto",
-      "title": "U.S. Senator opens probe on Binance over alleged $1.7 billion flow to Iranian entities",
-      "summary": "",
-      "link": "https://www.coindesk.com/business/2026/02/25/u-s-senator-opens-probe-on-binance-over-alleged-usd1-7-billion-flow-to-iranian-entities"
-    },
-    {
-      "source": "CoinDesk",
-      "category": "crypto",
-      "title": "Crypto rebounds from oversold levels, altcoin season indicator revisits January high",
-      "summary": "",
-      "link": "https://www.coindesk.com/markets/2026/02/25/crypto-rebounds-from-oversold-levels-altcoin-season-indicator-revisits-january-high"
     }
   ]
 }
