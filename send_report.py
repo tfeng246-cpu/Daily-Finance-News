@@ -28,7 +28,7 @@ GMAIL_USER            = os.environ.get("GMAIL_USER", "tfeng246@gmail.com")
 GMAIL_APP_PASSWORD    = os.environ.get("GMAIL_APP_PASSWORD", "")
 EMAIL_FROM_NAME       = os.environ.get("EMAIL_FROM_NAME", "每日财金信息")
 EMAIL_FROM_ADDR       = os.environ.get("EMAIL_FROM_ADDR", GMAIL_USER)
-EMAIL_RECIPIENTS_STR  = os.environ.get("EMAIL_RECIPIENTS", "jack.tang@schainpro.com")
+EMAIL_RECIPIENTS_STR  = os.environ.get("EMAIL_RECIPIENTS", "jack.tang@schainpro.com;service@schainpro.com;william.qin@schainpro.com;frankzhou@schainpro.com;bella.chen@schainpro.com;mario.qian@schainpro.com")
 WECHAT_WEBHOOK_URL    = os.environ.get(
     "WECHAT_WEBHOOK_URL",
     "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=c6942e51-0d31-415a-88a9-43cc38dc0fdc"
@@ -226,11 +226,12 @@ def send_wechat_work(
     forex_lines     = "\n".join([fmt_market_row(k, v) for k, v in forex.items()])
 
     # ---- Extract AI content summaries ----
-    market_overview  = extract_section(content_md, "市场概览", 300)
-    macro_summary    = extract_section(content_md, "宏观经济分析", 350)
-    industry_summary = extract_section(content_md, "行业动态", 350)
-    company_summary  = extract_section(content_md, "公司聚焦", 300)
-    strategy_summary = extract_section(content_md, "投资策略建议", 300)
+    market_overview     = extract_section(content_md, "市场概览", 300)
+    macro_summary       = extract_section(content_md, "宏观经济分析", 350)
+    industry_summary    = extract_section(content_md, "行业动态", 350)
+    company_summary     = extract_section(content_md, "公司聚焦", 300)
+    procurement_summary = extract_section(content_md, "采购趋势", 400)
+    strategy_summary    = extract_section(content_md, "投资策略建议", 300)
 
     # ---- Build report link line ----
     if html_public_url:
@@ -246,7 +247,7 @@ def send_wechat_work(
     # Header
     message_parts.append(
         f"# 📈 每日财金信息  {report_date}\n"
-        f"> 数据来源：Bloomberg · FT · WSJ · CNBC · The Economist · Fed · ECB · BIS · OilPrice · TechCrunch · SCMP · Nikkei Asia 等 **20+ 权威渠道**"
+        f"> 数据来源：Bloomberg · FT · WSJ · CNBC · The Economist · Fed · ECB · BIS · OilPrice · TechCrunch · SCMP · Nikkei Asia · Supply Chain Dive · Spend Matters 等 **28+ 权威渠道**"
     )
 
     # Market overview excerpt
@@ -286,10 +287,16 @@ def send_wechat_work(
             f"\n## 七、公司聚焦\n{company_summary}"
         )
 
+    # Procurement trends
+    if procurement_summary:
+        message_parts.append(
+            f"\n## 八、采购趋势\n{procurement_summary}"
+        )
+
     # Strategy
     if strategy_summary:
         message_parts.append(
-            f"\n## 八、投资策略建议\n{strategy_summary}"
+            f"\n## 九、投资策略建议\n{strategy_summary}"
         )
 
     # Footer with link
