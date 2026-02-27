@@ -100,7 +100,7 @@ def generate_report_content(market_data: dict, news_text: str) -> str:
 
     prompt = f"""你是一位顶级专业金融分析师，服务于中国高净值投资者和机构客户。今天是{today}。
 
-请根据以下来自全球20+权威信息渠道的最新新闻资讯和实时市场数据，生成一份高质量的每日财金信息报告。
+请根据以下来自全球20+权威信息渠道的最新新闻资讯和实时市场数据，生成一份高质量的链采联盟-每日财金信息报告。
 
 ## 今日实时市场数据
 
@@ -497,7 +497,7 @@ def generate_html_report(market_data: dict, generated_content: str, report_date:
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>每日财金信息 - {report_date}</title>
+    <title>链采联盟-每日财金信息 - {report_date}</title>
     <style>
         /* ===== Reset & Base ===== */
         * {{ box-sizing: border-box; margin: 0; padding: 0; }}
@@ -695,7 +695,7 @@ def generate_html_report(market_data: dict, generated_content: str, report_date:
 
     <!-- ===== Header ===== -->
     <div class="report-header">
-        <h1 class="report-title">每日财金信息 &nbsp;·&nbsp; {report_date}</h1>
+        <h1 class="report-title">链采联盟-每日财金信息 &nbsp;·&nbsp; {report_date}</h1>
         <hr class="title-rule">
     </div>
 
