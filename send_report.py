@@ -26,7 +26,7 @@ from datetime import datetime
 SENDGRID_API_KEY      = os.environ.get("SENDGRID_API_KEY", "")
 GMAIL_USER            = os.environ.get("GMAIL_USER", "tfeng246@gmail.com")
 GMAIL_APP_PASSWORD    = os.environ.get("GMAIL_APP_PASSWORD", "")
-EMAIL_FROM_NAME       = os.environ.get("EMAIL_FROM_NAME", "每日财金信息")
+EMAIL_FROM_NAME       = os.environ.get("EMAIL_FROM_NAME", "链采联盟-每日财金信息")
 EMAIL_FROM_ADDR       = os.environ.get("EMAIL_FROM_ADDR", GMAIL_USER)
 EMAIL_RECIPIENTS_STR  = os.environ.get("EMAIL_RECIPIENTS", "jack.tang@schainpro.com;service@schainpro.com;william.qin@schainpro.com;frankzhou@schainpro.com;bella.chen@schainpro.com;mario.qian@schainpro.com")
 WECHAT_WEBHOOK_URL    = os.environ.get(
@@ -75,7 +75,7 @@ def send_via_sendgrid(html_path: str, pdf_path: str, report_date: str) -> bool:
         message = Mail(
             from_email=From(EMAIL_FROM_ADDR, EMAIL_FROM_NAME),
             to_emails=[To(r) for r in recipients],
-            subject=f"每日财金信息 - {report_date}",
+            subject=f"链采联盟-每日财金信息 - {report_date}",
             html_content=html_body
         )
         pdf_b64 = base64.b64encode(pdf_data).decode()
@@ -110,7 +110,7 @@ def send_via_gmail_smtp(html_path: str, pdf_path: str, report_date: str) -> bool
     with open(html_path, "r", encoding="utf-8") as f:
         html_body = f.read()
     msg = MIMEMultipart("mixed")
-    msg["Subject"] = f"每日财金信息 - {report_date}"
+    msg["Subject"] = f"链采联盟-每日财金信息 - {report_date}"
     msg["From"] = f"{EMAIL_FROM_NAME} <{GMAIL_USER}>"
     msg["To"] = ", ".join(recipients)
     msg.attach(MIMEText(html_body, "html", "utf-8"))
@@ -246,7 +246,7 @@ def send_wechat_work(
 
     # Header
     message_parts.append(
-        f"# 📈 每日财金信息  {report_date}\n"
+        f"# 📈 链采联盟-每日财金信息  {report_date}\n"
         f"> 数据来源：Bloomberg · FT · WSJ · CNBC · The Economist · Fed · ECB · BIS · OilPrice · TechCrunch · SCMP · Nikkei Asia · Supply Chain Dive · Spend Matters 等 **28+ 权威渠道**"
     )
 
@@ -340,7 +340,7 @@ def _send_wechat_fallback(html_public_url, report_date, indices, commodities):
     commodity_lines = "\n".join([fmt_market_row(k, v) for k, v in list(commodities.items())[:4]])
     link_line = f"📎 [**点击查看完整报告 →**]({html_public_url})" if html_public_url else "📧 完整报告已发送至邮箱"
     msg = (
-        f"# 📈 每日财金信息  {report_date}\n\n"
+        f"# 📈 链采联盟-每日财金信息  {report_date}\n\n"
         f"**主要指数**\n{indices_lines}\n\n"
         f"**大宗商品**\n{commodity_lines}\n\n"
         f"{link_line}\n\n"
