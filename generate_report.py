@@ -108,8 +108,8 @@ def generate_report_content(market_data: dict, news_text: str) -> str:
 大宗商品：{commodities_str}
 外汇市场：{forex_str}
 
-## 来自20+权威渠道的最新新闻资讯
-（来源：Bloomberg、Financial Times、WSJ、CNBC、MarketWatch、The Economist、Federal Reserve、ECB、BIS、OilPrice、TechCrunch、MIT Tech Review、SCMP、Nikkei Asia、CoinDesk、Seeking Alpha、Yahoo Finance等）
+## 来自28+权威渠道的最新新闻资讯
+（来源：Bloomberg、Financial Times、WSJ、CNBC、MarketWatch、The Economist、Federal Reserve、ECB、BIS、OilPrice、TechCrunch、MIT Tech Review、SCMP、Nikkei Asia、CoinDesk、Seeking Alpha、Yahoo Finance、Supply Chain Dive、Procurement Magazine、Spend Matters、Logistics Management等）
 
 {news_text}
 
@@ -117,7 +117,7 @@ def generate_report_content(market_data: dict, news_text: str) -> str:
 
 ## 严格按照以下格式输出报告
 
-请直接输出以下7个章节的内容，使用Markdown格式，不要有任何额外说明或前言。
+请直接输出以下8个章节的内容，使用Markdown格式，不要有任何额外说明或前言。
 
 **格式规范（非常重要）：**
 - 子标题下的内容格式为：**粗体标签**：- 要点1 - 要点2 - 要点3（同一行，用" - "分隔）
@@ -244,7 +244,45 @@ def generate_report_content(market_data: dict, news_text: str) -> str:
 
 ---
 
-## 六、投资策略建议（200字）
+## 六、采购趋势（600字）
+
+（基于今日采购与供应链新闻，分析以下四大采购类别的最新趋势，每个类别约150字）
+
+### 6.1 IT与数字化采购
+
+**市场动态：** - （IT硬件/软件/云服务采购最新趋势）- （AI相关IT采购需求变化）- （主要供应商动态）
+
+**价格走势：** - （IT设备/服务价格变化）- （汇率对IT采购成本的影响）- （采购策略建议）
+
+**风险提示：** - （供应链风险）- （技术迭代风险）- （合规风险）
+
+### 6.2 物流与运输采购
+
+**运价动态：** - （集装箱运价/空运价格最新数据）- （主要航线运价变化）- （港口拥堵情况）
+
+**供应链动态：** - （全球供应链最新压力点）- （物流成本变化趋势）- （主要物流商动态）
+
+**采购建议：** - （锁价时机判断）- （多元化物流策略）- （风险对冲方法）
+
+### 6.3 大宗材料采购
+
+**价格走势：** - （钢铁/铜/铝/化工原料最新价格）- （与上周/上月对比）- （影响价格的核心因素）
+
+**供需格局：** - （主要产区供应情况）- （下游需求变化）- （库存水平）
+
+**采购策略：** - （当前是否适合锁价）- （套期保值建议）- （替代材料选项）
+
+### 6.4 房地产与设施采购
+
+**市场动态：** - （商业地产租金/价格走势）- （主要城市写字楼空置率）- （工业用地/仓储价格）
+
+**政策影响：** - （房地产相关政策最新动态）- （对企业设施采购的影响）- （市场机会与风险）
+
+**采购建议：** - （租赁vs购买决策参考）- （选址优化建议）- （成本控制策略）
+
+---
+
+## 七、投资策略建议（200字）
 
 ### 资产配置建议
 
@@ -260,12 +298,14 @@ def generate_report_content(market_data: dict, news_text: str) -> str:
 
 请注意：
 1. 所有内容必须基于上述提供的真实新闻数据，不得凭空捏造
-2. 公司聚焦和关键人物观点必须来自今日新闻中实际出现的公司和人物
-3. 数据引用必须准确，使用新闻中提到的具体数字
-4. 语言专业、简洁、有洞察力，避免空话套话
-5. 直接输出Markdown内容，不要有任何额外说明"""
+2. 所有新闻必须是今日或昨日的最新信息，严禁使用超过48小时的历史旧闻
+3. 公司聚焦和关键人物观点必须来自今日新闻中实际出现的公司和人物
+4. 数据引用必须准确，使用新闻中提到的具体数字
+5. 采购趋势板块必须结合大宗商品价格数据和供应链新闻，给出具体的价格数据和趋势判断
+6. 语言专业、简洁、有洞察力，避免空话套话
+7. 直接输出Markdown内容，不要有任何额外说明"""
 
-    base_url = os.environ.get("OPENAI_BASE_URL", "https://api.siliconflow.cn/v1" )
+    base_url = os.environ.get("OPENAI_BASE_URL", "https://api.siliconflow.cn/v1")
     model_name = os.environ.get("OPENAI_MODEL", "Qwen/Qwen2.5-72B-Instruct")
     client = openai.OpenAI(base_url=base_url)
     try:
@@ -290,12 +330,22 @@ def generate_report_content(market_data: dict, news_text: str) -> str:
 # Markdown to HTML (precise reference-matching renderer)
 # ============================================================
 def process_inline(text: str) -> str:
+    """Process inline markdown: **bold**, *italic*"""
     text = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', text)
     text = re.sub(r'\*(.+?)\*', r'<em>\1</em>', text)
     return text
 
 
 def markdown_to_html(md_text: str) -> str:
+    """
+    Convert markdown to HTML matching the reference document style exactly.
+    Key rules:
+    - ## headings -> h2 with left blue bar
+    - ### headings -> h3 bold dark navy
+    - Lines starting with · -> bullet list items
+    - --- -> section divider
+    - Regular paragraphs -> <p>
+    """
     lines = md_text.split('\n')
     html_lines = []
     in_bullet = False
@@ -303,6 +353,7 @@ def markdown_to_html(md_text: str) -> str:
     for line in lines:
         stripped = line.strip()
 
+        # H2: ## 一、市场概览
         if re.match(r'^## ', line):
             if in_bullet:
                 html_lines.append('</ul>')
@@ -310,6 +361,7 @@ def markdown_to_html(md_text: str) -> str:
             title = line[3:].strip()
             html_lines.append(f'<h2 class="section-title">{process_inline(title)}</h2>')
 
+        # H3: ### 2.1 ...
         elif re.match(r'^### ', line):
             if in_bullet:
                 html_lines.append('</ul>')
@@ -317,17 +369,20 @@ def markdown_to_html(md_text: str) -> str:
             title = line[4:].strip()
             html_lines.append(f'<h3 class="subsection-title">{process_inline(title)}</h3>')
 
+        # Horizontal rule
         elif stripped == '---':
             if in_bullet:
                 html_lines.append('</ul>')
                 in_bullet = False
             html_lines.append('<hr class="section-divider">')
 
+        # Bullet items starting with · (used in key figures section)
         elif stripped.startswith('·') or stripped.startswith('• ') or re.match(r'^- ', line):
             if not in_bullet:
                 html_lines.append('<ul class="bullet-list">')
                 in_bullet = True
             if stripped.startswith('·'):
+                # Multiple bullets on one line separated by ·
                 parts = [p.strip() for p in stripped.split('·') if p.strip()]
                 for part in parts:
                     html_lines.append(f'<li>{process_inline(part)}</li>')
@@ -338,12 +393,14 @@ def markdown_to_html(md_text: str) -> str:
                 content = line[2:].strip()
                 html_lines.append(f'<li>{process_inline(content)}</li>')
 
+        # Empty line
         elif stripped == '':
             if in_bullet:
                 html_lines.append('</ul>')
                 in_bullet = False
             html_lines.append('')
 
+        # Regular paragraph
         else:
             if in_bullet:
                 html_lines.append('</ul>')
@@ -360,6 +417,8 @@ def markdown_to_html(md_text: str) -> str:
 # Market Data Table HTML (color-coded)
 # ============================================================
 def build_market_table(market_data: dict) -> str:
+    """Build a clean color-coded market data table."""
+
     def row(name, info):
         pct_str = info.get('pct', 'N/A')
         price_str = info.get('price', 'N/A')
@@ -420,6 +479,7 @@ def generate_html_report(market_data: dict, generated_content: str, report_date:
     content_html = markdown_to_html(generated_content)
     market_table_html = build_market_table(market_data)
 
+    # Inline data for appendix (matching reference style)
     indices_inline = " &nbsp;-&nbsp; ".join([
         f"<strong>{k}</strong>：{v['display']}" for k, v in market_data['indices'].items()
     ])
@@ -439,6 +499,7 @@ def generate_html_report(market_data: dict, generated_content: str, report_date:
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>每日财金信息 - {report_date}</title>
     <style>
+        /* ===== Reset & Base ===== */
         * {{ box-sizing: border-box; margin: 0; padding: 0; }}
         body {{
             font-family: 'PingFang SC', 'Microsoft YaHei', 'SimHei',
@@ -454,7 +515,11 @@ def generate_html_report(market_data: dict, generated_content: str, report_date:
             margin: 0 auto;
             padding: 52px 68px 64px;
         }}
-        .report-header {{ margin-bottom: 32px; }}
+
+        /* ===== Report Header ===== */
+        .report-header {{
+            margin-bottom: 32px;
+        }}
         .report-title {{
             font-size: 26px;
             font-weight: 800;
@@ -467,6 +532,8 @@ def generate_html_report(market_data: dict, generated_content: str, report_date:
             border-top: 2.5px solid #1d4ed8;
             margin: 0;
         }}
+
+        /* ===== Section Headings ===== */
         h2.section-title {{
             font-size: 20px;
             font-weight: 800;
@@ -483,14 +550,25 @@ def generate_html_report(market_data: dict, generated_content: str, report_date:
             margin: 26px 0 10px;
             padding: 0;
         }}
+
+        /* ===== Body Text ===== */
         p {{
             margin: 8px 0;
             color: #2d2d2d;
             text-align: justify;
             font-size: 14.5px;
         }}
-        strong {{ color: #0f2a4a; font-weight: 700; }}
-        ul.bullet-list {{ list-style: none; padding: 0; margin: 6px 0; }}
+        strong {{
+            color: #0f2a4a;
+            font-weight: 700;
+        }}
+
+        /* ===== Bullet List ===== */
+        ul.bullet-list {{
+            list-style: none;
+            padding: 0;
+            margin: 6px 0;
+        }}
         ul.bullet-list li {{
             padding: 3px 0 3px 18px;
             position: relative;
@@ -507,15 +585,29 @@ def generate_html_report(market_data: dict, generated_content: str, report_date:
             font-size: 18px;
             line-height: 1.4;
         }}
+
+        /* ===== Section Divider ===== */
         hr.section-divider {{
             border: none;
             border-top: 1px solid #d1d5db;
             margin: 36px 0;
         }}
-        .market-tables {{ margin: 20px 0 8px; }}
-        .market-table-group {{ margin-bottom: 18px; }}
-        .market-table-group.half {{ width: 48%; }}
-        .market-table-row {{ display: flex; gap: 4%; align-items: flex-start; }}
+
+        /* ===== Market Data Tables ===== */
+        .market-tables {{
+            margin: 20px 0 8px;
+        }}
+        .market-table-group {{
+            margin-bottom: 18px;
+        }}
+        .market-table-group.half {{
+            width: 48%;
+        }}
+        .market-table-row {{
+            display: flex;
+            gap: 4%;
+            align-items: flex-start;
+        }}
         .table-label {{
             font-size: 13px;
             font-weight: 700;
@@ -526,8 +618,14 @@ def generate_html_report(market_data: dict, generated_content: str, report_date:
             border-bottom: 1px solid #e5e7eb;
             padding-bottom: 4px;
         }}
-        table.market-table {{ width: 100%; border-collapse: collapse; font-size: 13.5px; }}
-        table.market-table thead tr {{ background: #f0f4f8; }}
+        table.market-table {{
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13.5px;
+        }}
+        table.market-table thead tr {{
+            background: #f0f4f8;
+        }}
         table.market-table th {{
             padding: 7px 10px;
             text-align: left;
@@ -536,18 +634,53 @@ def generate_html_report(market_data: dict, generated_content: str, report_date:
             font-size: 12.5px;
             border-bottom: 1.5px solid #d1d5db;
         }}
-        table.market-table td {{ padding: 6px 10px; border-bottom: 1px solid #f0f0f0; color: #222222; }}
-        table.market-table tr:hover td {{ background: #f9fafb; }}
-        td.col-name {{ font-weight: 600; color: #1a1a2e; }}
-        td.col-price {{ font-variant-numeric: tabular-nums; }}
+        table.market-table td {{
+            padding: 6px 10px;
+            border-bottom: 1px solid #f0f0f0;
+            color: #222222;
+        }}
+        table.market-table tr:hover td {{
+            background: #f9fafb;
+        }}
+        td.col-name {{
+            font-weight: 600;
+            color: #1a1a2e;
+        }}
+        td.col-price {{
+            font-variant-numeric: tabular-nums;
+        }}
         td.up {{ color: #dc2626; font-weight: 600; }}
         td.down {{ color: #16a34a; font-weight: 600; }}
         td.neutral {{ color: #6b7280; }}
-        .data-appendix {{ margin-top: 8px; }}
-        .data-row {{ margin: 10px 0; font-size: 14px; color: #2d2d2d; line-height: 1.9; }}
-        .report-footer {{ margin-top: 40px; padding-top: 18px; border-top: 1px solid #d1d5db; }}
-        .report-footer p {{ margin: 5px 0; font-size: 12.5px; color: #6b7280; }}
-        .report-footer strong {{ color: #374151; font-weight: 600; }}
+
+        /* ===== Data Appendix (inline text style) ===== */
+        .data-appendix {{
+            margin-top: 8px;
+        }}
+        .data-row {{
+            margin: 10px 0;
+            font-size: 14px;
+            color: #2d2d2d;
+            line-height: 1.9;
+        }}
+
+        /* ===== Footer ===== */
+        .report-footer {{
+            margin-top: 40px;
+            padding-top: 18px;
+            border-top: 1px solid #d1d5db;
+        }}
+        .report-footer p {{
+            margin: 5px 0;
+            font-size: 12.5px;
+            color: #6b7280;
+        }}
+        .report-footer strong {{
+            color: #374151;
+            font-weight: 600;
+        }}
+
+        /* ===== Print / PDF ===== */
         @media print {{
             body {{ font-size: 13px; line-height: 1.75; }}
             .page {{ padding: 24px 36px; max-width: 100%; }}
@@ -559,25 +692,41 @@ def generate_html_report(market_data: dict, generated_content: str, report_date:
 </head>
 <body>
 <div class="page">
+
+    <!-- ===== Header ===== -->
     <div class="report-header">
         <h1 class="report-title">每日财金信息 &nbsp;·&nbsp; {report_date}</h1>
         <hr class="title-rule">
     </div>
+
+    <!-- ===== AI Generated Content ===== -->
     {content_html}
+
+    <!-- ===== Market Data Tables (inserted before Data Appendix) ===== -->
     <hr class="section-divider">
-    <h2 class="section-title">七、数据附录</h2>
+    <h2 class="section-title">八、数据附录</h2>
     {market_table_html}
+
     <div class="data-appendix" style="margin-top:20px;">
-        <div class="data-row"><strong>主要指数</strong>（截至{report_date}）：{indices_inline}</div>
-        <div class="data-row"><strong>大宗商品</strong>：{commodities_inline}</div>
-        <div class="data-row"><strong>外汇</strong>：{forex_inline}</div>
+        <div class="data-row">
+            <strong>主要指数</strong>（截至{report_date}）：{indices_inline}
+        </div>
+        <div class="data-row">
+            <strong>大宗商品</strong>：{commodities_inline}
+        </div>
+        <div class="data-row">
+            <strong>外汇</strong>：{forex_inline}
+        </div>
     </div>
+
+    <!-- ===== Footer ===== -->
     <div class="report-footer">
         <hr class="section-divider" style="margin-bottom:14px;">
         <p><strong>报告生成时间：</strong>{generation_time}</p>
-        <p><strong>数据来源：</strong>Bloomberg · Financial Times · WSJ · CNBC · MarketWatch · The Economist · Federal Reserve · ECB · BIS · OilPrice · TechCrunch · MIT Tech Review · SCMP · Nikkei Asia · CoinDesk · Seeking Alpha · Yahoo Finance · Business Insider 等 20+ 权威来源</p>
+        <p><strong>数据来源：</strong>Bloomberg · Financial Times · WSJ · CNBC · MarketWatch · The Economist · Federal Reserve · ECB · BIS · OilPrice · TechCrunch · MIT Tech Review · SCMP · Nikkei Asia · CoinDesk · Seeking Alpha · Yahoo Finance · Business Insider · Supply Chain Dive · Procurement Magazine · Spend Matters · Logistics Management 等 28+ 权威来源</p>
         <p><strong>免责声明：</strong>本报告仅供参考，不构成投资建议。投资有风险，入市需谨慎。</p>
     </div>
+
 </div>
 </body>
 </html>"""
@@ -589,6 +738,7 @@ def generate_html_report(market_data: dict, generated_content: str, report_date:
 # ============================================================
 def generate_pdf_from_html(html_content: str, pdf_path: str):
     from weasyprint import HTML, CSS
+
     font_css = CSS(string="""
         @font-face {
             font-family: 'CJKFont';
@@ -605,6 +755,7 @@ def generate_pdf_from_html(html_content: str, pdf_path: str):
             margin: 18mm 20mm 18mm 20mm;
         }
     """)
+
     HTML(string=html_content, base_url=".").write_pdf(pdf_path, stylesheets=[font_css])
     print(f"PDF saved: {pdf_path}")
 
@@ -622,24 +773,29 @@ def main():
     html_path = f"{base_name}.html"
     pdf_path = f"{base_name}.pdf"
 
+    # 1. Fetch market data
     market_data = fetch_market_data()
     with open("market_data.json", "w", encoding="utf-8") as f:
         json.dump(market_data, f, ensure_ascii=False, indent=2)
 
+    # 2. Aggregate news from 20+ sources
     all_news = aggregate_all_news(max_items_per_source=6)
     with open("news_data.json", "w", encoding="utf-8") as f:
         json.dump(all_news, f, ensure_ascii=False, indent=2)
     news_text = format_news_for_prompt(all_news)
 
+    # 3. Generate AI analysis
     generated_content = generate_report_content(market_data, news_text)
     with open("generated_content.md", "w", encoding="utf-8") as f:
         f.write(generated_content)
 
+    # 4. Render HTML
     html_content = generate_html_report(market_data, generated_content, report_date)
     with open(html_path, "w", encoding="utf-8") as f:
         f.write(html_content)
     print(f"HTML saved: {html_path}")
 
+    # 5. Render PDF
     generate_pdf_from_html(html_content, pdf_path)
 
     print("=" * 60)
