@@ -13,6 +13,133 @@ import re
 from datetime import datetime
 from fetch_news import aggregate_all_news, format_news_for_prompt
 
+
+# ============================================================
+# PMI Data Fetching (via AKShare)
+# ============================================================
+def fetch_pmi_data() -> dict:
+    """Fetch latest PMI data from AKShare (China official + Caixin)."""
+    print("Fetching PMI data from AKShare...")
+    pmi = {}
+    try:
+        import akshare as ak
+
+        # China NBS Manufacturing PMI
+        try:
+            df = ak.macro_china_pmi_yearly()
+            df = df.dropna(subset=['今值'])
+            last = df.iloc[-1]
+            pmi['cn_mfg'] = {
+                'name': '中国制造业PMI（官方）',
+                'value': float(last['今值']),
+                'prev':  float(str(last['前值'])) if str(last['前值']) not in ('nan', 'None', '') else None,
+                'date':  str(last['日期'])[:7]
+            }
+        except Exception as e:
+            print(f"  [PMI] cn_mfg error: {e}")
+
+        # China NBS Non-Manufacturing PMI
+        try:
+            df2 = ak.macro_china_non_man_pmi()
+            df2 = df2.dropna(subset=['今值'])
+            last2 = df2.iloc[-1]
+            pmi['cn_svc'] = {
+                'name': '中国非制造业PMI（官方）',
+                'value': float(last2['今值']),
+                'prev':  float(str(last2['前值'])) if str(last2['前值']) not in ('nan', 'None', '') else None,
+                'date':  str(last2['日期'])[:7]
+            }
+        except Exception as e:
+            print(f"  [PMI] cn_svc error: {e}")
+
+        # Caixin Manufacturing PMI
+        try:
+            df3 = ak.macro_china_cx_pmi_yearly()
+            df3 = df3.dropna(subset=['今值'])
+            last3 = df3.iloc[-1]
+            pmi['cx_mfg'] = {
+                'name': '中国制造业PMI（财新）',
+                'value': float(last3['今值']),
+                'prev':  float(str(last3['前值'])) if str(last3['前值']) not in ('nan', 'None', '') else None,
+                'date':  str(last3['日期'])[:7]
+            }
+        except Exception as e:
+            print(f"  [PMI] cx_mfg error: {e}")
+
+        # Caixin Services PMI
+        try:
+            df4 = ak.macro_china_cx_services_pmi_yearly()
+            df4 = df4.dropna(subset=['今值'])
+            last4 = df4.iloc[-1]
+            pmi['cx_svc'] = {
+                'name': '中国服务业PMI（财新）',
+                'value': float(last4['今值']),
+                'prev':  float(str(last4['前值'])) if str(last4['前值']) not in ('nan', 'None', '') else None,
+                'date':  str(last4['日期'])[:7]
+            }
+        except Exception as e:
+            print(f"  [PMI] cx_svc error: {e}")
+
+    except ImportError:
+        print("  [PMI] akshare not installed, skipping PMI data.")
+    except Exception as e:
+        print(f"  [PMI] General error: {e}")
+
+    print(f"PMI data fetched: {len(pmi)} indicators")
+    return pmi
+
+
+def build_pmi_block_html(pmi_data: dict) -> str:
+    """Build the PMI summary block HTML to display below the report title."""
+    if not pmi_data:
+        return ""
+
+    items_html = ""
+    for key, item in pmi_data.items():
+        val = item['value']
+        prev = item['prev']
+        date_str = item['date']
+        name = item['name']
+
+        # Determine status color and arrow
+        if val >= 50:
+            status_color = "#16a34a"  # green - expansion
+            status_text = "扩张"
+        else:
+            status_color = "#dc2626"  # red - contraction
+            status_text = "收缩"
+
+        # Change vs previous
+        if prev is not None:
+            diff = val - prev
+            if diff > 0:
+                arrow = "▲"
+                diff_color = "#16a34a"
+            elif diff < 0:
+                arrow = "▼"
+                diff_color = "#dc2626"
+            else:
+                arrow = "—"
+                diff_color = "#888"
+            diff_str = f'<span style="color:{diff_color};font-size:12px;">{arrow}{abs(diff):.1f}</span>'
+        else:
+            diff_str = ""
+
+        items_html += f"""
+        <div class="pmi-item">
+            <div class="pmi-name">{name}</div>
+            <div class="pmi-value" style="color:{status_color};">{val:.1f}</div>
+            <div class="pmi-meta">{diff_str} &nbsp;<span class="pmi-status" style="background:{status_color};">{status_text}</span></div>
+            <div class="pmi-date">{date_str}</div>
+        </div>"""
+
+    return f"""
+    <div class="pmi-block">
+        <div class="pmi-block-title">采购经理人指数（PMI）</div>
+        <div class="pmi-grid">{items_html}
+        </div>
+    </div>"""
+
 # ============================================================
 # Market Data Configuration
 # ============================================================
@@ -475,7 +602,9 @@ def build_market_table(market_data: dict) -> str:
 # ============================================================
 # HTML Report Generation
 # ============================================================
-def generate_html_report(market_data: dict, generated_content: str, report_date: str) -> str:
+def generate_html_report(market_data: dict, generated_content: str, report_date: str, pmi_data: dict = None) -> str:
+    if pmi_data is None:
+        pmi_data = {}
     content_html = markdown_to_html(generated_content)
     market_table_html = build_market_table(market_data)
 
@@ -491,6 +620,7 @@ def generate_html_report(market_data: dict, generated_content: str, report_date:
     ])
 
     generation_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    pmi_block_html = build_pmi_block_html(pmi_data)
 
     html = f"""<!DOCTYPE html>
 <html lang="zh-CN">
@@ -514,6 +644,67 @@ def generate_html_report(market_data: dict, generated_content: str, report_date:
             max-width: 900px;
             margin: 0 auto;
             padding: 52px 68px 64px;
+        }}
+
+        /* ===== PMI Block ===== */
+        .pmi-block {{
+            margin: 18px 0 28px;
+            padding: 16px 20px;
+            background: #f8faff;
+            border: 1px solid #dbeafe;
+            border-radius: 6px;
+        }}
+        .pmi-block-title {{
+            font-size: 13px;
+            font-weight: 700;
+            color: #1d4ed8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+            border-bottom: 1px solid #dbeafe;
+            padding-bottom: 8px;
+        }}
+        .pmi-grid {{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }}
+        .pmi-item {{
+            flex: 1;
+            min-width: 160px;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 5px;
+            padding: 10px 14px;
+        }}
+        .pmi-name {{
+            font-size: 12px;
+            color: #555;
+            margin-bottom: 4px;
+        }}
+        .pmi-value {{
+            font-size: 26px;
+            font-weight: 800;
+            line-height: 1.2;
+        }}
+        .pmi-meta {{
+            font-size: 12px;
+            margin-top: 4px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }}
+        .pmi-status {{
+            color: #fff;
+            font-size: 11px;
+            padding: 1px 6px;
+            border-radius: 3px;
+            font-weight: 600;
+        }}
+        .pmi-date {{
+            font-size: 11px;
+            color: #999;
+            margin-top: 4px;
         }}
 
         /* ===== Report Header ===== */
@@ -699,6 +890,9 @@ def generate_html_report(market_data: dict, generated_content: str, report_date:
         <hr class="title-rule">
     </div>
 
+    <!-- ===== PMI Block ===== -->
+    {pmi_block_html}
+
     <!-- ===== AI Generated Content ===== -->
     {content_html}
 
@@ -789,8 +983,13 @@ def main():
     with open("generated_content.md", "w", encoding="utf-8") as f:
         f.write(generated_content)
 
+    # 3.5 Fetch PMI data
+    pmi_data = fetch_pmi_data()
+    with open("pmi_data.json", "w", encoding="utf-8") as f:
+        json.dump(pmi_data, f, ensure_ascii=False, indent=2)
+
     # 4. Render HTML
-    html_content = generate_html_report(market_data, generated_content, report_date)
+    html_content = generate_html_report(market_data, generated_content, report_date, pmi_data)
     with open(html_path, "w", encoding="utf-8") as f:
         f.write(html_content)
     print(f"HTML saved: {html_path}")
