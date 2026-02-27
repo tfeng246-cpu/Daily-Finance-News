@@ -2,14 +2,16 @@
 # -*- coding: utf-8 -*-
 """
 News Aggregation Module
-Fetches headlines and summaries from 20+ authoritative financial news sources via RSS.
+Fetches headlines and summaries from 28+ authoritative financial & procurement news sources via RSS.
+Enforces strict 48-hour freshness filter — only today's and yesterday's news is included.
 """
 
 import feedparser
 import json
 import time
 import socket
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
+from email.utils import parsedate_to_datetime
 from bs4 import BeautifulSoup
 import urllib.request
 
@@ -17,7 +19,7 @@ import urllib.request
 socket.setdefaulttimeout(8)
 
 # ============================================================
-# 24 Authoritative Financial News Sources
+# 28 Authoritative Sources (Finance + Procurement)
 # ============================================================
 RSS_SOURCES = [
     # --- Global Markets & Finance ---
@@ -29,6 +31,7 @@ RSS_SOURCES = [
     {"name": "Yahoo Finance",           "url": "https://finance.yahoo.com/rss/topfinstories",               "category": "global_markets"},
     {"name": "Barron's",                "url": "https://www.barrons.com/xml/rss/3_7201.xml",                "category": "global_markets"},
     {"name": "Seeking Alpha",           "url": "https://seekingalpha.com/market_currents.xml",              "category": "global_markets"},
+    {"name": "Business Insider Markets","url": "https://markets.businessinsider.com/rss/news",              "category": "global_markets"},
     # --- Macro & Research ---
     {"name": "The Economist Finance",   "url": "https://www.economist.com/finance-and-economics/rss.xml",  "category": "macro"},
     {"name": "IMF Blog",                "url": "https://www.imf.org/en/Blogs/rss",                         "category": "macro"},
@@ -50,23 +53,73 @@ RSS_SOURCES = [
     {"name": "Reuters Asia Markets",    "url": "https://feeds.reuters.com/reuters/asiaMarketsNews",        "category": "asia"},
     # --- Digital Assets ---
     {"name": "CoinDesk",                "url": "https://www.coindesk.com/arc/outboundfeeds/rss/",          "category": "crypto"},
-    # --- Business Intelligence ---
-    {"name": "Business Insider Markets","url": "https://markets.businessinsider.com/rss/news",             "category": "global_markets"},
+    # --- Procurement & Supply Chain ---
+    {"name": "Supply Chain Dive",       "url": "https://www.supplychaindive.com/feeds/news/",              "category": "procurement"},
+    {"name": "Procurement Magazine",    "url": "https://procurementmag.com/feed",                          "category": "procurement"},
+    {"name": "Spend Matters",           "url": "https://spendmatters.com/feed/",                           "category": "procurement"},
+    {"name": "Logistics Management",    "url": "https://www.logisticsmgmt.com/rss/all",                    "category": "procurement"},
 ]
 
-def fetch_rss_feed(source: dict, max_items: int = 6 ) -> list:
-    """Fetch news items from a single RSS feed with timeout protection."""
+# ============================================================
+# Freshness Filter: only keep news from the last 48 hours
+# ============================================================
+FRESHNESS_HOURS = 48
+
+def parse_entry_datetime(entry) -> datetime | None:
+    """Try to extract a timezone-aware datetime from an RSS entry."""
+    for field in ("published", "updated", "created"):
+        raw = entry.get(f"{field}_parsed") or entry.get(field)
+        if raw is None:
+            continue
+        # feedparser returns time.struct_time for *_parsed fields
+        if hasattr(raw, "tm_year"):
+            try:
+                import calendar
+                ts = calendar.timegm(raw)
+                return datetime.fromtimestamp(ts, tz=timezone.utc)
+            except Exception:
+                continue
+        # String date (RFC 2822 or ISO 8601)
+        if isinstance(raw, str):
+            try:
+                return parsedate_to_datetime(raw).astimezone(timezone.utc)
+            except Exception:
+                pass
+            try:
+                return datetime.fromisoformat(raw.replace("Z", "+00:00")).astimezone(timezone.utc)
+            except Exception:
+                pass
+    return None
+
+
+def is_fresh(entry, cutoff: datetime) -> bool:
+    """Return True if the entry was published after the cutoff time."""
+    dt = parse_entry_datetime(entry)
+    if dt is None:
+        # If we cannot determine the date, include it (benefit of the doubt)
+        return True
+    return dt >= cutoff
+
+
+def fetch_rss_feed(source: dict, max_items: int = 6, cutoff: datetime = None) -> list:
+    """Fetch news items from a single RSS feed with timeout protection and freshness filter."""
     items = []
     try:
         feed = feedparser.parse(source["url"])
         if not feed.entries:
             return items
-        
-        for entry in feed.entries[:max_items]:
+
+        for entry in feed.entries[:max_items * 3]:  # fetch more, then filter
+            # --- Freshness check ---
+            if cutoff and not is_fresh(entry, cutoff):
+                continue
+
             title = entry.get("title", "").strip()
             summary = entry.get("summary", entry.get("description", "")).strip()
             link = entry.get("link", "")
-            
+            pub_dt = parse_entry_datetime(entry)
+            pub_str = pub_dt.strftime("%Y-%m-%d %H:%M UTC") if pub_dt else "unknown date"
+
             # Clean HTML from summary
             if summary:
                 try:
@@ -74,7 +127,7 @@ def fetch_rss_feed(source: dict, max_items: int = 6 ) -> list:
                     summary = soup.get_text(separator=" ").strip()[:250]
                 except Exception:
                     summary = summary[:250]
-            
+
             if title:
                 items.append({
                     "source": source["name"],
@@ -82,16 +135,23 @@ def fetch_rss_feed(source: dict, max_items: int = 6 ) -> list:
                     "title": title,
                     "summary": summary,
                     "link": link,
+                    "published": pub_str,
                 })
+
+            if len(items) >= max_items:
+                break
+
     except Exception as e:
         print(f"  [WARN] {source['name']}: {type(e).__name__}")
-    
+
     return items
 
+
 def aggregate_all_news(max_items_per_source: int = 6) -> dict:
-    """Aggregate news from all sources, organized by category."""
-    print(f"Fetching news from {len(RSS_SOURCES)} sources...")
-    
+    """Aggregate news from all sources, organized by category. Only last 48 hours."""
+    cutoff = datetime.now(tz=timezone.utc) - timedelta(hours=FRESHNESS_HOURS)
+    print(f"Fetching news from {len(RSS_SOURCES)} sources (cutoff: {cutoff.strftime('%Y-%m-%d %H:%M UTC')})...")
+
     all_news = {
         "global_markets": [],
         "macro": [],
@@ -101,29 +161,31 @@ def aggregate_all_news(max_items_per_source: int = 6) -> dict:
         "china": [],
         "asia": [],
         "crypto": [],
+        "procurement": [],
     }
-    
+
     successful_sources = 0
-    
+
     for i, source in enumerate(RSS_SOURCES):
         print(f"  [{i+1:02d}/{len(RSS_SOURCES)}] {source['name']}...", end=" ", flush=True)
-        items = fetch_rss_feed(source, max_items_per_source)
+        items = fetch_rss_feed(source, max_items_per_source, cutoff=cutoff)
         if items:
             cat = source["category"]
             all_news[cat].extend(items)
             successful_sources += 1
-            print(f"OK ({len(items)} items)")
+            print(f"OK ({len(items)} fresh items)")
         else:
-            print("SKIP")
-    
+            print("SKIP (no fresh items)")
+
     print(f"\nSuccessfully fetched from {successful_sources}/{len(RSS_SOURCES)} sources.")
     total_items = sum(len(v) for v in all_news.values())
-    print(f"Total news items collected: {total_items}")
+    print(f"Total fresh news items (last {FRESHNESS_HOURS}h): {total_items}")
     for cat, items in all_news.items():
         if items:
             print(f"  {cat}: {len(items)} items")
-    
+
     return all_news
+
 
 def format_news_for_prompt(all_news: dict) -> str:
     """Format aggregated news into a structured text for the AI prompt."""
@@ -136,8 +198,9 @@ def format_news_for_prompt(all_news: dict) -> str:
         "china": "中国市场",
         "asia": "亚太市场",
         "crypto": "数字资产",
+        "procurement": "采购与供应链",
     }
-    
+
     sections = []
     for cat, label in category_labels.items():
         items = all_news.get(cat, [])
@@ -145,19 +208,22 @@ def format_news_for_prompt(all_news: dict) -> str:
             continue
         section_lines = [f"\n### {label} (来源: {', '.join(set(i['source'] for i in items[:8]))})"]
         for item in items[:8]:
-            section_lines.append(f"- **{item['title']}**")
+            pub = item.get("published", "")
+            pub_tag = f" [{pub}]" if pub and pub != "unknown date" else ""
+            section_lines.append(f"- **{item['title']}**{pub_tag}")
             if item['summary']:
                 section_lines.append(f"  {item['summary'][:200]}")
         sections.append("\n".join(section_lines))
-    
+
     return "\n".join(sections)
+
 
 if __name__ == "__main__":
     all_news = aggregate_all_news()
     formatted = format_news_for_prompt(all_news)
     print("\n--- Sample of Formatted News ---")
     print(formatted[:3000])
-    
+
     with open("news_data.json", "w", encoding="utf-8") as f:
         json.dump(all_news, f, ensure_ascii=False, indent=2)
     print("\nNews data saved to news_data.json")
