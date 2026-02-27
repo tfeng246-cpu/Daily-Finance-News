@@ -33,6 +33,10 @@ WECHAT_WEBHOOK_URL    = os.environ.get(
     "WECHAT_WEBHOOK_URL",
     "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=c6942e51-0d31-415a-88a9-43cc38dc0fdc"
 )
+WECHAT_WEBHOOK_URL2   = os.environ.get(
+    "WECHAT_WEBHOOK_URL2",
+    "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=4741cbb7-ac6c-47cf-94e0-b77e845636d2"
+)
 GITHUB_REPOSITORY     = os.environ.get("GITHUB_REPOSITORY", "")
 GITHUB_PAGES_DOMAIN   = os.environ.get("GITHUB_PAGES_DOMAIN", "")  # Optional custom domain
 
@@ -316,26 +320,28 @@ def send_wechat_work(
         "markdown": {"content": full_message}
     }
 
-    try:
-        resp = requests.post(WECHAT_WEBHOOK_URL, json=payload, timeout=10)
-        resp.raise_for_status()
-        result = resp.json()
-        if result.get("errcode") == 0:
-            print("[WeChat Work] Message sent successfully.")
-            return True
-        else:
-            print(f"[WeChat Work] API error: {result}")
-            # If message too long, send a shorter fallback
-            if result.get("errcode") == 45009:
-                return _send_wechat_fallback(html_public_url, report_date, indices, commodities)
-            return False
-    except Exception as e:
-        print(f"[WeChat Work] Error: {e}")
-        return False
+    success = False
+    # Send to all configured webhook URLs
+    urls_to_send = [u for u in [WECHAT_WEBHOOK_URL, WECHAT_WEBHOOK_URL2] if u]
+    for idx, wechat_url in enumerate(urls_to_send, 1):
+        try:
+            resp = requests.post(wechat_url, json=payload, timeout=10)
+            resp.raise_for_status()
+            result = resp.json()
+            if result.get("errcode") == 0:
+                print(f"[WeChat Work] Message sent successfully to group {idx}.")
+                success = True
+            else:
+                print(f"[WeChat Work] API error (group {idx}): {result}")
+                if result.get("errcode") == 45009:
+                    _send_wechat_fallback_url(wechat_url, html_public_url, report_date, indices, commodities)
+        except Exception as e:
+            print(f"[WeChat Work] Error (group {idx}): {e}")
+    return success
 
 
-def _send_wechat_fallback(html_public_url, report_date, indices, commodities):
-    """Send a shorter fallback message if the full message is too long."""
+def _send_wechat_fallback_url(wechat_url, html_public_url, report_date, indices, commodities):
+    """Send a shorter fallback message to a specific URL if the full message is too long."""
     indices_lines = "\n".join([fmt_market_row(k, v) for k, v in list(indices.items())[:6]])
     commodity_lines = "\n".join([fmt_market_row(k, v) for k, v in list(commodities.items())[:4]])
     link_line = f"📎 [**点击查看完整报告 →**]({html_public_url})" if html_public_url else "📧 完整报告已发送至邮箱"
@@ -348,7 +354,7 @@ def _send_wechat_fallback(html_public_url, report_date, indices, commodities):
     )
     payload = {"msgtype": "markdown", "markdown": {"content": msg}}
     try:
-        resp = requests.post(WECHAT_WEBHOOK_URL, json=payload, timeout=10)
+        resp = requests.post(wechat_url, json=payload, timeout=10)
         result = resp.json()
         if result.get("errcode") == 0:
             print("[WeChat Work] Fallback message sent.")
