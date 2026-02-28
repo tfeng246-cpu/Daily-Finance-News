@@ -17,8 +17,46 @@ from fetch_news import aggregate_all_news, format_news_for_prompt
 # ============================================================
 # PMI Data Fetching (via AKShare)
 # ============================================================
+def _get_latest_pmi_row(df, value_col='今值', date_col='日期', prev_col='前值'):
+    """Sort by date descending, drop NaN in value_col, return the most recent valid row."""
+    import pandas as pd
+    df = df.copy()
+    # Parse date column to datetime for proper sorting
+    try:
+        df[date_col] = pd.to_datetime(df[date_col], errors='coerce')
+        df = df.dropna(subset=[date_col])
+        df = df.sort_values(date_col, ascending=False)
+    except Exception:
+        pass
+    # Drop rows where value is NaN or empty
+    df = df[df[value_col].notna()]
+    df = df[df[value_col].astype(str).str.strip().str.lower().isin(['nan', 'none', '']) == False]
+    if df.empty:
+        return None
+    last = df.iloc[0]
+    date_val = last[date_col]
+    try:
+        date_str = date_val.strftime('%Y-%m') if hasattr(date_val, 'strftime') else str(date_val)[:7]
+    except Exception:
+        date_str = str(date_val)[:7]
+    prev_val = None
+    try:
+        pv = str(last[prev_col]).strip()
+        if pv not in ('nan', 'None', '', 'NaN'):
+            prev_val = float(pv)
+    except Exception:
+        pass
+    return {
+        'value': float(last[value_col]),
+        'prev':  prev_val,
+        'date':  date_str
+    }
+
+
 def fetch_pmi_data() -> dict:
-    """Fetch latest PMI data from AKShare (China official + Caixin)."""
+    """Fetch latest PMI data from AKShare (China official + Caixin).
+    Always returns the most recent available data by sorting by date descending.
+    """
     print("Fetching PMI data from AKShare...")
     pmi = {}
     try:
@@ -27,56 +65,40 @@ def fetch_pmi_data() -> dict:
         # China NBS Manufacturing PMI
         try:
             df = ak.macro_china_pmi_yearly()
-            df = df.dropna(subset=['今值'])
-            last = df.iloc[-1]
-            pmi['cn_mfg'] = {
-                'name': '中国制造业PMI（官方）',
-                'value': float(last['今值']),
-                'prev':  float(str(last['前值'])) if str(last['前值']) not in ('nan', 'None', '') else None,
-                'date':  str(last['日期'])[:7]
-            }
+            row = _get_latest_pmi_row(df)
+            if row:
+                pmi['cn_mfg'] = {'name': '中国制造业PMI（官方）', **row}
+                print(f"  [PMI] cn_mfg: {row['value']} ({row['date']})")
         except Exception as e:
             print(f"  [PMI] cn_mfg error: {e}")
 
         # China NBS Non-Manufacturing PMI
         try:
             df2 = ak.macro_china_non_man_pmi()
-            df2 = df2.dropna(subset=['今值'])
-            last2 = df2.iloc[-1]
-            pmi['cn_svc'] = {
-                'name': '中国非制造业PMI（官方）',
-                'value': float(last2['今值']),
-                'prev':  float(str(last2['前值'])) if str(last2['前值']) not in ('nan', 'None', '') else None,
-                'date':  str(last2['日期'])[:7]
-            }
+            row2 = _get_latest_pmi_row(df2)
+            if row2:
+                pmi['cn_svc'] = {'name': '中国非制造业PMI（官方）', **row2}
+                print(f"  [PMI] cn_svc: {row2['value']} ({row2['date']})")
         except Exception as e:
             print(f"  [PMI] cn_svc error: {e}")
 
         # Caixin Manufacturing PMI
         try:
             df3 = ak.macro_china_cx_pmi_yearly()
-            df3 = df3.dropna(subset=['今值'])
-            last3 = df3.iloc[-1]
-            pmi['cx_mfg'] = {
-                'name': '中国制造业PMI（财新）',
-                'value': float(last3['今值']),
-                'prev':  float(str(last3['前值'])) if str(last3['前值']) not in ('nan', 'None', '') else None,
-                'date':  str(last3['日期'])[:7]
-            }
+            row3 = _get_latest_pmi_row(df3)
+            if row3:
+                pmi['cx_mfg'] = {'name': '中国制造业PMI（财新）', **row3}
+                print(f"  [PMI] cx_mfg: {row3['value']} ({row3['date']})")
         except Exception as e:
             print(f"  [PMI] cx_mfg error: {e}")
 
         # Caixin Services PMI
         try:
             df4 = ak.macro_china_cx_services_pmi_yearly()
-            df4 = df4.dropna(subset=['今值'])
-            last4 = df4.iloc[-1]
-            pmi['cx_svc'] = {
-                'name': '中国服务业PMI（财新）',
-                'value': float(last4['今值']),
-                'prev':  float(str(last4['前值'])) if str(last4['前值']) not in ('nan', 'None', '') else None,
-                'date':  str(last4['日期'])[:7]
-            }
+            row4 = _get_latest_pmi_row(df4)
+            if row4:
+                pmi['cx_svc'] = {'name': '中国服务业PMI（财新）', **row4}
+                print(f"  [PMI] cx_svc: {row4['value']} ({row4['date']})")
         except Exception as e:
             print(f"  [PMI] cx_svc error: {e}")
 
