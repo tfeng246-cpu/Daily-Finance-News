@@ -15,97 +15,103 @@ from fetch_news import aggregate_all_news, format_news_for_prompt
 
 
 # ============================================================
-# PMI Data Fetching (via AKShare)
+# PMI Data Fetching (via Trading Economics real-time scraping)
 # ============================================================
-def _get_latest_pmi_row(df, value_col='今值', date_col='日期', prev_col='前值'):
-    """Sort by date descending, drop NaN in value_col, return the most recent valid row."""
-    import pandas as pd
-    df = df.copy()
-    # Parse date column to datetime for proper sorting
-    try:
-        df[date_col] = pd.to_datetime(df[date_col], errors='coerce')
-        df = df.dropna(subset=[date_col])
-        df = df.sort_values(date_col, ascending=False)
-    except Exception:
-        pass
-    # Drop rows where value is NaN or empty
-    df = df[df[value_col].notna()]
-    df = df[df[value_col].astype(str).str.strip().str.lower().isin(['nan', 'none', '']) == False]
-    if df.empty:
-        return None
-    last = df.iloc[0]
-    date_val = last[date_col]
-    try:
-        date_str = date_val.strftime('%Y-%m') if hasattr(date_val, 'strftime') else str(date_val)[:7]
-    except Exception:
-        date_str = str(date_val)[:7]
-    prev_val = None
-    try:
-        pv = str(last[prev_col]).strip()
-        if pv not in ('nan', 'None', '', 'NaN'):
-            prev_val = float(pv)
-    except Exception:
-        pass
-    return {
-        'value': float(last[value_col]),
-        'prev':  prev_val,
-        'date':  date_str
+def _parse_te_pmi_description(desc: str) -> dict:
+    """
+    Parse Trading Economics meta description to extract PMI value, previous value, and date.
+    Example: 'Manufacturing PMI in China increased to 50.30 points in January from 50.10 points in December of 2025.'
+    """
+    import re
+    result = {}
+    # Extract current value
+    m = re.search(r'(?:increased|decreased|rose|fell|edged|climbed|dropped|unchanged)\s+to\s+([\d.]+)\s+points?\s+in\s+(\w+)', desc, re.IGNORECASE)
+    if not m:
+        m = re.search(r'(?:stands?|remained?|was)\s+at\s+([\d.]+)\s+points?\s+in\s+(\w+)', desc, re.IGNORECASE)
+    if not m:
+        m = re.search(r'([\d.]+)\s+points?\s+in\s+(\w+)', desc, re.IGNORECASE)
+    if m:
+        result['value'] = float(m.group(1))
+        month_str = m.group(2)
+        month_map = {'January':'01','February':'02','March':'03','April':'04','May':'05','June':'06',
+                     'July':'07','August':'08','September':'09','October':'10','November':'11','December':'12'}
+        month_num = month_map.get(month_str, '01')
+        # The description pattern is: "increased to X in MONTH from Y in PREV_MONTH of YEAR"
+        # The year mentioned ("of 2025") refers to the PREVIOUS month, not the current month.
+        # We need to infer the current month's year correctly.
+        from datetime import datetime
+        now = datetime.now()
+        yr_match = re.search(r'of\s+(\d{4})', desc)
+        prev_year = int(yr_match.group(1)) if yr_match else now.year
+        # If current month number < previous month number, current month is in the next year
+        prev_month_match = re.search(r'from\s+[\d.]+\s+points?\s+in\s+(\w+)\s+of', desc, re.IGNORECASE)
+        if prev_month_match:
+            prev_month_str = prev_month_match.group(1)
+            prev_month_num = int(month_map.get(prev_month_str, '01'))
+            curr_month_num = int(month_num)
+            if curr_month_num < prev_month_num:
+                year = str(prev_year + 1)  # current month rolled over to next year
+            else:
+                year = str(prev_year)
+        else:
+            year = str(prev_year)
+        result['date'] = f"{year}-{month_num}"
+    # Extract previous value
+    p = re.search(r'from\s+([\d.]+)\s+points?', desc, re.IGNORECASE)
+    if p:
+        result['prev'] = float(p.group(1))
+    return result
+
+
+def _scrape_te_pmi(name: str, url: str) -> dict:
+    """Scrape a single PMI indicator from Trading Economics."""
+    import requests
+    from bs4 import BeautifulSoup
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+        'Accept-Language': 'en-US,en;q=0.5',
     }
+    resp = requests.get(url, headers=headers, timeout=15)
+    resp.raise_for_status()
+    soup = BeautifulSoup(resp.text, 'html.parser')
+    meta = soup.find('meta', {'name': 'description'})
+    if not meta:
+        return None
+    desc = meta.get('content', '')
+    parsed = _parse_te_pmi_description(desc)
+    if 'value' not in parsed:
+        return None
+    return {'name': name, **parsed}
 
 
 def fetch_pmi_data() -> dict:
-    """Fetch latest PMI data from AKShare (China official + Caixin).
-    Always returns the most recent available data by sorting by date descending.
+    """Fetch latest PMI data from Trading Economics (real-time web scraping).
+    Data is always current - reflects the most recently published official PMI figures.
+    Sources: NBS China, Caixin/S&P Global, ISM (US), S&P Global (Euro Area)
     """
-    print("Fetching PMI data from AKShare...")
+    print("Fetching PMI data from Trading Economics (real-time)...")
     pmi = {}
-    try:
-        import akshare as ak
 
-        # China NBS Manufacturing PMI
+    pmi_sources = [
+        ('cn_mfg',  '中国制造业PMI（官方·国家统计局）',  'https://tradingeconomics.com/china/manufacturing-pmi'),
+        ('cn_svc',  '中国非制造业PMI（官方·国家统计局）', 'https://tradingeconomics.com/china/non-manufacturing-pmi'),
+        ('cx_mfg',  '中国制造业PMI（财新·S&P Global）',  'https://tradingeconomics.com/china/caixin-manufacturing-pmi'),
+        ('cx_svc',  '中国服务业PMI（财新·S&P Global）',  'https://tradingeconomics.com/china/caixin-services-pmi'),
+        ('us_mfg',  '美国制造业PMI（ISM）',               'https://tradingeconomics.com/united-states/manufacturing-pmi'),
+        ('eu_mfg',  '欧元区制造业PMI（S&P Global）',      'https://tradingeconomics.com/euro-area/manufacturing-pmi'),
+    ]
+
+    for key, name, url in pmi_sources:
         try:
-            df = ak.macro_china_pmi_yearly()
-            row = _get_latest_pmi_row(df)
+            row = _scrape_te_pmi(name, url)
             if row:
-                pmi['cn_mfg'] = {'name': '中国制造业PMI（官方）', **row}
-                print(f"  [PMI] cn_mfg: {row['value']} ({row['date']})")
+                pmi[key] = row
+                print(f"  [PMI] {key}: {row['value']} ({row.get('date','?')})")
+            else:
+                print(f"  [PMI] {key}: no data parsed")
         except Exception as e:
-            print(f"  [PMI] cn_mfg error: {e}")
-
-        # China NBS Non-Manufacturing PMI
-        try:
-            df2 = ak.macro_china_non_man_pmi()
-            row2 = _get_latest_pmi_row(df2)
-            if row2:
-                pmi['cn_svc'] = {'name': '中国非制造业PMI（官方）', **row2}
-                print(f"  [PMI] cn_svc: {row2['value']} ({row2['date']})")
-        except Exception as e:
-            print(f"  [PMI] cn_svc error: {e}")
-
-        # Caixin Manufacturing PMI
-        try:
-            df3 = ak.macro_china_cx_pmi_yearly()
-            row3 = _get_latest_pmi_row(df3)
-            if row3:
-                pmi['cx_mfg'] = {'name': '中国制造业PMI（财新）', **row3}
-                print(f"  [PMI] cx_mfg: {row3['value']} ({row3['date']})")
-        except Exception as e:
-            print(f"  [PMI] cx_mfg error: {e}")
-
-        # Caixin Services PMI
-        try:
-            df4 = ak.macro_china_cx_services_pmi_yearly()
-            row4 = _get_latest_pmi_row(df4)
-            if row4:
-                pmi['cx_svc'] = {'name': '中国服务业PMI（财新）', **row4}
-                print(f"  [PMI] cx_svc: {row4['value']} ({row4['date']})")
-        except Exception as e:
-            print(f"  [PMI] cx_svc error: {e}")
-
-    except ImportError:
-        print("  [PMI] akshare not installed, skipping PMI data.")
-    except Exception as e:
-        print(f"  [PMI] General error: {e}")
+            print(f"  [PMI] {key} error: {e}")
 
     print(f"PMI data fetched: {len(pmi)} indicators")
     return pmi
