@@ -1,3 +1,5 @@
+name: Daily Finance Report (v2 Visual Upgrade)
+
 on:
   schedule:
     # Runs at 00:00 UTC every day = 08:00 Beijing Time (UTC+8)
@@ -60,16 +62,23 @@ jobs:
           pip install -r requirements.txt
 
       # --------------------------------------------------------
-      # 5. Generate daily report (HTML + PDF + market_data.json + generated_content.md)
+      # 5. Generate daily report (v1 original + v2 visual)
+      #    Outputs:
+      #      - investment_research_YYYY-MM-DD.html  (v1)
+      #      - investment_research_YYYY-MM-DD.pdf   (v1)
+      #      - report_visual_YYYY-MM-DD.html        (v2)
+      #      - report_visual_YYYY-MM-DD.pdf         (v2)
+      #      - market_data.json
+      #      - generated_content.md
       # --------------------------------------------------------
-      - name: Generate daily report
+      - name: Generate daily report (v1 + v2)
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_BASE_URL: ${{ secrets.OPENAI_BASE_URL }}
           OPENAI_MODEL: ${{ secrets.OPENAI_MODEL }}
           GITHUB_REPOSITORY: ${{ github.repository }}
         run: |
-          python generate_report.py
+          python generate_report_v2.py
 
       # --------------------------------------------------------
       # 6. Get report date
@@ -79,26 +88,25 @@ jobs:
         run: echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
 
       # --------------------------------------------------------
-      # 7. Deploy HTML report to GitHub Pages (gh-pages branch)
-      #    MUST happen BEFORE sending notifications so the link works.
-      #    We manually copy the HTML into a publish folder to avoid
-      #    the unsupported 'include_files' parameter.
+      # 7. Deploy BOTH HTML reports to GitHub Pages
+      #    - v1: investment_research_YYYY-MM-DD.html
+      #    - v2: report_visual_YYYY-MM-DD.html
       # --------------------------------------------------------
       - name: Prepare GitHub Pages publish folder
         run: |
           mkdir -p ./pages_publish
           cp investment_research_${{ steps.date.outputs.date }}.html ./pages_publish/
-          # Also copy any previous reports if they exist in gh-pages
+          cp report_visual_${{ steps.date.outputs.date }}.html ./pages_publish/
           echo "Prepared pages_publish folder:"
           ls -la ./pages_publish/
 
-      - name: Deploy HTML report to GitHub Pages
+      - name: Deploy HTML reports to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./pages_publish
           keep_files: true
-          commit_message: "📊 Daily report: ${{ steps.date.outputs.date }}"
+          commit_message: "📊 Daily report (v1+v2): ${{ steps.date.outputs.date }}"
           user_name: 'github-actions[bot]'
           user_email: 'github-actions[bot]@users.noreply.github.com'
 
@@ -111,18 +119,17 @@ jobs:
           sleep 45
 
       # --------------------------------------------------------
-      # 9. Send email + WeChat Work notification
-      #    (HTML link is now live on GitHub Pages)
+      # 9. Send email (dual PDF) + WeChat Work notification
       # --------------------------------------------------------
-      - name: Send notifications
+      - name: Send notifications (email + WeChat)
         env:
           SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
           GMAIL_USER: ${{ secrets.GMAIL_USER }}
           GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
-          EMAIL_FROM_NAME: "每日财金信息"
+          EMAIL_FROM_NAME: "链采联盟-每日财金信息"
           EMAIL_FROM_ADDR: ${{ secrets.GMAIL_USER }}
           EMAIL_RECIPIENTS: ${{ secrets.EMAIL_RECIPIENTS }}
           WECHAT_WEBHOOK_URL: ${{ secrets.WECHAT_WEBHOOK_URL }}
           GITHUB_REPOSITORY: ${{ github.repository }}
         run: |
-          python send_report.py
+          python send_report_v2.py
