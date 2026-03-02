@@ -78,7 +78,7 @@ jobs:
           OPENAI_MODEL: ${{ secrets.OPENAI_MODEL }}
           GITHUB_REPOSITORY: ${{ github.repository }}
         run: |
-          python generate_report_v2.py
+          python generate_report.py
 
       # --------------------------------------------------------
       # 6. Get report date
@@ -132,4 +132,4 @@ jobs:
           WECHAT_WEBHOOK_URL: ${{ secrets.WECHAT_WEBHOOK_URL }}
           GITHUB_REPOSITORY: ${{ github.repository }}
         run: |
-          python send_report_v2.py
+          python send_report.py
