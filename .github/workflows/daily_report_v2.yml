@@ -1,0 +1,135 @@
+name: Daily Finance Report (v2 Visual Upgrade)
+
+on:
+  schedule:
+    # Runs at 00:00 UTC every day = 08:00 Beijing Time (UTC+8)
+    - cron: '0 0 * * *'
+  workflow_dispatch:  # Allows manual triggering from GitHub Actions UI
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  generate-and-send:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      # --------------------------------------------------------
+      # 1. Checkout repository
+      # --------------------------------------------------------
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      # --------------------------------------------------------
+      # 2. Set up Python
+      # --------------------------------------------------------
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      # --------------------------------------------------------
+      # 3. Install system dependencies (Chinese fonts + WeasyPrint)
+      # --------------------------------------------------------
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq \
+            fonts-wqy-zenhei \
+            fonts-wqy-microhei \
+            fonts-noto-cjk \
+            libpango-1.0-0 \
+            libpangocairo-1.0-0 \
+            libcairo2 \
+            libgdk-pixbuf2.0-0 \
+            libffi-dev \
+            shared-mime-info \
+            libxml2-dev \
+            libxslt1-dev
+
+      # --------------------------------------------------------
+      # 4. Install Python dependencies
+      # --------------------------------------------------------
+      - name: Install Python dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+
+      # --------------------------------------------------------
+      # 5. Generate daily report (v1 original + v2 visual)
+      #    Outputs:
+      #      - investment_research_YYYY-MM-DD.html  (v1)
+      #      - investment_research_YYYY-MM-DD.pdf   (v1)
+      #      - report_visual_YYYY-MM-DD.html        (v2)
+      #      - report_visual_YYYY-MM-DD.pdf         (v2)
+      #      - market_data.json
+      #      - generated_content.md
+      # --------------------------------------------------------
+      - name: Generate daily report (v1 + v2)
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_BASE_URL: ${{ secrets.OPENAI_BASE_URL }}
+          OPENAI_MODEL: ${{ secrets.OPENAI_MODEL }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: |
+          python generate_report_v2.py
+
+      # --------------------------------------------------------
+      # 6. Get report date
+      # --------------------------------------------------------
+      - name: Get report date
+        id: date
+        run: echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+
+      # --------------------------------------------------------
+      # 7. Deploy BOTH HTML reports to GitHub Pages
+      #    - v1: investment_research_YYYY-MM-DD.html
+      #    - v2: report_visual_YYYY-MM-DD.html
+      # --------------------------------------------------------
+      - name: Prepare GitHub Pages publish folder
+        run: |
+          mkdir -p ./pages_publish
+          cp investment_research_${{ steps.date.outputs.date }}.html ./pages_publish/
+          cp report_visual_${{ steps.date.outputs.date }}.html ./pages_publish/
+          echo "Prepared pages_publish folder:"
+          ls -la ./pages_publish/
+
+      - name: Deploy HTML reports to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./pages_publish
+          keep_files: true
+          commit_message: "📊 Daily report (v1+v2): ${{ steps.date.outputs.date }}"
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+
+      # --------------------------------------------------------
+      # 8. Wait for GitHub Pages CDN to propagate (45 seconds)
+      # --------------------------------------------------------
+      - name: Wait for GitHub Pages to propagate
+        run: |
+          echo "Waiting 45 seconds for GitHub Pages to propagate..."
+          sleep 45
+
+      # --------------------------------------------------------
+      # 9. Send email (dual PDF) + WeChat Work notification
+      # --------------------------------------------------------
+      - name: Send notifications (email + WeChat)
+        env:
+          SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          EMAIL_FROM_NAME: "链采联盟-每日财金信息"
+          EMAIL_FROM_ADDR: ${{ secrets.GMAIL_USER }}
+          EMAIL_RECIPIENTS: ${{ secrets.EMAIL_RECIPIENTS }}
+          WECHAT_WEBHOOK_URL: ${{ secrets.WECHAT_WEBHOOK_URL }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: |
+          python send_report_v2.py
