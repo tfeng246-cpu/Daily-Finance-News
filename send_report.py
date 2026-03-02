@@ -28,7 +28,7 @@ GMAIL_USER            = os.environ.get("GMAIL_USER", "tfeng246@gmail.com")
 GMAIL_APP_PASSWORD    = os.environ.get("GMAIL_APP_PASSWORD", "")
 EMAIL_FROM_NAME       = os.environ.get("EMAIL_FROM_NAME", "链采联盟-每日财金信息")
 EMAIL_FROM_ADDR       = os.environ.get("EMAIL_FROM_ADDR", GMAIL_USER)
-EMAIL_RECIPIENTS_STR  = os.environ.get("EMAIL_RECIPIENTS", "jack.tang@schainpro.com;service@schainpro.com;william.qin@schainpro.com;frankzhou@schainpro.com;bella.chen@schainpro.com;mario.qian@schainpro.com")
+EMAIL_RECIPIENTS_STR  = os.environ.get("EMAIL_RECIPIENTS", "jack.tang@schainpro.com;service@schainpro.com;william.qin@schainpro.com;frankzhou@schainpro.com;support@schainpro.com;bella.chen@schainpro.com;mario.qian@schainpro.com")
 WECHAT_WEBHOOK_URL    = os.environ.get(
     "WECHAT_WEBHOOK_URL",
     "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=c6942e51-0d31-415a-88a9-43cc38dc0fdc"
