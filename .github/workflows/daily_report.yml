@@ -2,7 +2,7 @@ name: Daily Finance Report (v2 Visual Upgrade)
 
 on:
   schedule:
-    # Runs at 00:00 UTC every day = 08:00 Beijing Time (UTC+8)
+    # Runs at 00:00 UTC every day = 03:00 Beijing Time (UTC+8)
     - cron: '0 0 * * *'
   workflow_dispatch:  # Allows manual triggering from GitHub Actions UI
 
