@@ -31,7 +31,7 @@ from datetime import datetime
 SENDGRID_API_KEY      = os.environ.get("SENDGRID_API_KEY", "")
 GMAIL_USER            = os.environ.get("GMAIL_USER", "tfeng246@gmail.com")
 GMAIL_APP_PASSWORD    = os.environ.get("GMAIL_APP_PASSWORD", "")
-EMAIL_FROM_NAME       = os.environ.get("EMAIL_FROM_NAME", "链采联盟-每日财金信息")
+EMAIL_FROM_NAME       = os.environ.get("EMAIL_FROM_NAME", "链采联盟-每日财经信息")
 EMAIL_FROM_ADDR       = os.environ.get("EMAIL_FROM_ADDR", GMAIL_USER)
 EMAIL_RECIPIENTS_STR  = os.environ.get(
     "EMAIL_RECIPIENTS",
@@ -106,10 +106,10 @@ def build_email_html(report_date: str, html_public_url: str, v2_pdf_name: str) -
           <td style="padding:32px 32px 28px;">
             <div style="display:inline-block;background:#c0392b;color:#fff;font-size:10px;font-weight:900;
                         letter-spacing:3px;padding:4px 12px;border-radius:2px;margin-bottom:14px;">
-              链采联盟 · 每日财金推送
+              链采联盟 · 每日财经推送
             </div>
             <h1 style="font-size:28px;font-weight:900;color:#fff;margin:0 0 6px;line-height:1.2;">
-              每日财金信息
+              每日财经信息
             </h1>
             <p style="font-size:14px;color:#d4a017;margin:0 0 16px;font-weight:700;">
               金融市场 · 宏观经济 · 采购趋势 &nbsp;|&nbsp; {date_cn}
@@ -130,7 +130,7 @@ def build_email_html(report_date: str, html_public_url: str, v2_pdf_name: str) -
     <td style="padding:28px 32px 8px;">
       <p style="font-size:14px;color:#333;line-height:1.8;margin:0 0 16px;">
         您好，<br/>
-        <strong>链采联盟每日财金信息</strong>已生成，请查阅本期简报。
+        <strong>链采联盟每日财经信息</strong>已生成，请查阅本期简报。
         本邮件附有两个版本的 PDF 报告：
       </p>
       <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:20px;">
@@ -225,7 +225,7 @@ def build_email_html(report_date: str, html_public_url: str, v2_pdf_name: str) -
       <table width="100%" cellpadding="0" cellspacing="0">
         <tr>
           <td>
-            <span style="font-size:12px;font-weight:700;color:#d4a017;">链采联盟 · 每日财金信息</span><br/>
+            <span style="font-size:12px;font-weight:700;color:#d4a017;">链采联盟 · 每日财经信息</span><br/>
             <span style="font-size:10px;color:rgba(255,255,255,0.3);">CHAIN PROCUREMENT ALLIANCE · DAILY FINANCE BRIEFING</span>
           </td>
           <td align="right">
@@ -270,7 +270,7 @@ def send_via_sendgrid(
         message = Mail(
             from_email=From(EMAIL_FROM_ADDR, EMAIL_FROM_NAME),
             to_emails=[To(r) for r in recipients],
-            subject=f"【链采联盟】每日财金信息 - {report_date}",
+            subject=f"【链采联盟】每日财经信息 - {report_date}",
             html_content=email_html
         )
 
@@ -323,7 +323,7 @@ def send_via_gmail_smtp(
     email_html = build_email_html(report_date, html_public_url, v2_pdf_name)
 
     msg = MIMEMultipart("mixed")
-    msg["Subject"] = f"【链采联盟】每日财金信息 - {report_date}"
+    msg["Subject"] = f"【链采联盟】每日财经信息 - {report_date}"
     msg["From"] = f"{EMAIL_FROM_NAME} <{GMAIL_USER}>"
     msg["To"] = ", ".join(recipients)
     msg.attach(MIMEText(email_html, "html", "utf-8"))
@@ -464,7 +464,7 @@ def send_wechat_work(
 
     message_parts = []
     message_parts.append(
-        f"# 📈 链采联盟-每日财金信息  {report_date}\n"
+        f"# 📈 链采联盟-每日财经信息  {report_date}\n"
         f"> 数据来源：Bloomberg · FT · WSJ · CNBC · The Economist · Fed · ECB · BIS · OilPrice · "
         f"TechCrunch · SCMP · Nikkei Asia · Supply Chain Dive · Spend Matters 等 **28+ 权威渠道**"
     )
@@ -521,7 +521,7 @@ def _send_wechat_fallback_url(wechat_url, html_public_url, report_date, indices,
         if html_public_url else "📧 完整报告已发送至邮箱"
     )
     msg = (
-        f"# 📈 链采联盟-每日财金信息  {report_date}\n\n"
+        f"# 📈 链采联盟-每日财经信息  {report_date}\n\n"
         f"**主要指数**\n{indices_lines}\n\n"
         f"**大宗商品**\n{commodity_lines}\n\n"
         f"{link_line}\n\n"
