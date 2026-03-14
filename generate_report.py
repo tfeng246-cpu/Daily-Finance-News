@@ -655,7 +655,7 @@ def generate_html_report(market_data: dict, generated_content: str, report_date:
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>链采联盟-每日财金信息 - {report_date}</title>
+    <title>链采联盟-每日财经信息 - {report_date}</title>
     <style>
         /* ===== Reset & Base ===== */
         * {{ box-sizing: border-box; margin: 0; padding: 0; }}
@@ -914,7 +914,7 @@ def generate_html_report(market_data: dict, generated_content: str, report_date:
 
     <!-- ===== Header ===== -->
     <div class="report-header">
-        <h1 class="report-title">链采联盟-每日财金信息 &nbsp;·&nbsp; {report_date}</h1>
+        <h1 class="report-title">链采联盟-每日财经信息 &nbsp;·&nbsp; {report_date}</h1>
         <hr class="title-rule">
     </div>
 
@@ -1268,12 +1268,12 @@ body {{
   <div class="cover-main">
     <div>
       <div class="push-label">
-        <span class="push-tag">链采联盟 · 每日财金推送</span>
+        <span class="push-tag">链采联盟 · 每日财经推送</span>
         <span class="push-chain">{date_cn}</span>
       </div>
       <div class="cover-headline">
         <div class="eyebrow">DAILY FINANCIAL &amp; PROCUREMENT INTELLIGENCE</div>
-        <h1>每日财金信息</h1>
+        <h1>每日财经信息</h1>
         <h2>金融市场 · 宏观经济 · 采购趋势</h2>
         <div class="cover-desc">
           本期简报基于 Bloomberg · FT · WSJ · CNBC · The Economist · Fed · ECB 等 28+ 权威渠道最新数据，
@@ -1293,7 +1293,7 @@ body {{
   </div>
   <div class="cover-footer">
     <div class="cf-left">
-      <div class="cf-brand">链采联盟 · 每日财金信息</div>
+      <div class="cf-brand">链采联盟 · 每日财经信息</div>
       <div class="cf-sub">CHAIN PROCUREMENT ALLIANCE · DAILY FINANCE BRIEFING</div>
     </div>
     <div style="text-align:right;">
@@ -1306,7 +1306,7 @@ body {{
 <!-- PAGE 1: 市场概览 + 宏观经济 -->
 <div class="cpage">
   <div class="ph">
-    <span class="ph-brand">链采联盟 · 每日财金推送</span>
+    <span class="ph-brand">链采联盟 · 每日财经推送</span>
     <span class="ph-sub">DAILY FINANCE BRIEFING</span>
     <span class="ph-date">{report_date}</span>
   </div>
@@ -1323,13 +1323,13 @@ body {{
     </div>
     {sec2_html}
   </div>
-  <div class="pfoot"><span class="pf-brand">链采联盟 · 每日财金信息</span><span class="pf-disc">仅供参考，不构成投资建议</span></div>
+  <div class="pfoot"><span class="pf-brand">链采联盟 · 每日财经信息</span><span class="pf-disc">仅供参考，不构成投资建议</span></div>
 </div>
 
 <!-- PAGE 2: 行业动态 + 采购趋势 -->
 <div class="cpage">
   <div class="ph">
-    <span class="ph-brand">链采联盟 · 每日财金推送</span>
+    <span class="ph-brand">链采联盟 · 每日财经推送</span>
     <span class="ph-sub">DAILY FINANCE BRIEFING</span>
     <span class="ph-date">{report_date}</span>
   </div>
@@ -1345,13 +1345,13 @@ body {{
     </div>
     {sec4_html}
   </div>
-  <div class="pfoot"><span class="pf-brand">链采联盟 · 每日财金信息</span><span class="pf-disc">仅供参考，不构成投资建议</span></div>
+  <div class="pfoot"><span class="pf-brand">链采联盟 · 每日财经信息</span><span class="pf-disc">仅供参考，不构成投资建议</span></div>
 </div>
 
 <!-- PAGE 3: 投资策略 + 数据附录 -->
 <div class="cpage">
   <div class="ph">
-    <span class="ph-brand">链采联盟 · 每日财金推送</span>
+    <span class="ph-brand">链采联盟 · 每日财经推送</span>
     <span class="ph-sub">DAILY FINANCE BRIEFING</span>
     <span class="ph-date">{report_date}</span>
   </div>
@@ -1371,7 +1371,7 @@ body {{
       报告生成时间：{generation_time} &nbsp;|&nbsp; 本报告仅供参考，不构成投资建议。投资有风险，入市需谨慎。
     </div>
   </div>
-  <div class="pfoot"><span class="pf-brand">链采联盟 · 每日财金信息</span><span class="pf-disc">仅供参考，不构成投资建议</span></div>
+  <div class="pfoot"><span class="pf-brand">链采联盟 · 每日财经信息</span><span class="pf-disc">仅供参考，不构成投资建议</span></div>
 </div>
 
 </body>
