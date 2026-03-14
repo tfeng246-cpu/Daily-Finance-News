@@ -126,7 +126,7 @@ jobs:
           SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
           GMAIL_USER: ${{ secrets.GMAIL_USER }}
           GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
-          EMAIL_FROM_NAME: "链采联盟-每日财金信息"
+          EMAIL_FROM_NAME: "链采联盟-每日财经信息"
           EMAIL_FROM_ADDR: ${{ secrets.GMAIL_USER }}
           EMAIL_RECIPIENTS: ${{ secrets.EMAIL_RECIPIENTS }}
           WECHAT_WEBHOOK_URL: ${{ secrets.WECHAT_WEBHOOK_URL }}
