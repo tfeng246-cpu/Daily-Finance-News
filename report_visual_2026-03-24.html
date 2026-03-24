@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/>
+<style>
+@page { size: A4; margin: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", "SimHei", Arial, sans-serif;
+  background: #fff; color: #1a1a1a; font-size: 12.5px; line-height: 1.75;
+}
+/* ═══ COVER ═══ */
+.cover {
+  width: 210mm; height: 297mm; position: relative; overflow: hidden;
+  page-break-after: always; background: #0a0a0a;
+}
+.cover-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 70% 30%, rgba(160,20,20,0.55) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 40% at 20% 80%, rgba(100,10,10,0.4) 0%, transparent 60%),
+    linear-gradient(160deg, #0f0000 0%, #1a0000 40%, #0a0a0a 100%);
+}
+.cover-texture {
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(-55deg, transparent 0px, transparent 28px,
+    rgba(255,255,255,0.018) 28px, rgba(255,255,255,0.018) 29px);
+}
+.cover-stripe {
+  position: absolute; left: 0; top: 0; bottom: 0; width: 8px;
+  background: linear-gradient(to bottom, #c0392b, #8b0000, #c0392b);
+}
+.cover-topbar {
+  position: absolute; top: 0; left: 8px; right: 0; height: 56px;
+  background: rgba(0,0,0,0.6); border-bottom: 1px solid rgba(192,57,43,0.4);
+  display: flex; align-items: center; padding: 0 36px; gap: 16px;
+}
+.topbar-logo { font-size: 15px; font-weight: 900; color: #d4a017; letter-spacing: 2px; }
+.topbar-sep { width: 1px; height: 20px; background: rgba(255,255,255,0.2); }
+.topbar-sub { font-size: 11px; color: rgba(255,255,255,0.45); letter-spacing: 1px; }
+.topbar-live { margin-left: auto; display: flex; align-items: center; gap: 7px; }
+.live-dot { width: 8px; height: 8px; background: #c0392b; border-radius: 50%; box-shadow: 0 0 6px #c0392b; }
+.live-text { font-size: 11px; font-weight: 700; color: #c0392b; letter-spacing: 2px; }
+.cover-main {
+  position: absolute; top: 56px; left: 8px; right: 0; bottom: 80px;
+  padding: 44px 44px 32px; display: flex; flex-direction: column; justify-content: space-between;
+}
+.push-label { display: flex; align-items: center; gap: 10px; margin-bottom: 24px; }
+.push-tag { background: #c0392b; color: #fff; font-size: 11px; font-weight: 900; letter-spacing: 3px; padding: 5px 14px; border-radius: 2px; }
+.push-chain { font-size: 13px; font-weight: 700; color: #d4a017; letter-spacing: 1.5px; }
+.cover-headline { margin-bottom: 28px; }
+.eyebrow { font-size: 12px; color: rgba(255,255,255,0.35); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; }
+.cover-headline h1 { font-size: 46px; font-weight: 900; color: #fff; line-height: 1.1; margin-bottom: 8px; }
+.cover-headline h2 { font-size: 22px; font-weight: 700; color: #d4a017; line-height: 1.2; margin-bottom: 16px; }
+.cover-desc { font-size: 12px; color: rgba(255,255,255,0.45); line-height: 1.8; max-width: 420px; border-left: 2px solid rgba(192,57,43,0.5); padding-left: 14px; }
+.cover-stats { display: flex; gap: 12px; margin-bottom: 28px; }
+.cstat { flex: 1; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-top: 2px solid #c0392b; border-radius: 4px; padding: 12px 10px; text-align: center; }
+.cstat .v { display: block; font-size: 20px; font-weight: 900; line-height: 1; margin-bottom: 3px; }
+.cstat .v2 { display: block; font-size: 12px; font-weight: 700; margin-bottom: 3px; }
+.cstat .l { font-size: 10px; color: rgba(255,255,255,0.4); }
+.cover-toc { display: flex; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden; }
+.toc-item { flex: 1; padding: 10px 8px; text-align: center; border-right: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.03); }
+.toc-item:last-child { border-right: none; }
+.toc-num { display: block; font-size: 16px; font-weight: 900; color: rgba(192,57,43,0.7); line-height: 1; margin-bottom: 3px; }
+.toc-name { font-size: 10px; color: rgba(255,255,255,0.4); line-height: 1.4; }
+.cover-footer {
+  position: absolute; bottom: 0; left: 8px; right: 0; height: 80px;
+  background: rgba(0,0,0,0.7); border-top: 1px solid rgba(192,57,43,0.3);
+  display: flex; align-items: center; padding: 0 44px; justify-content: space-between;
+}
+.cf-brand { font-size: 14px; font-weight: 700; color: #d4a017; letter-spacing: 1px; }
+.cf-sub { font-size: 10px; color: rgba(255,255,255,0.3); margin-top: 2px; }
+.cf-date { font-size: 12px; color: rgba(255,255,255,0.5); margin-bottom: 2px; }
+.cf-disc { font-size: 10px; color: rgba(255,255,255,0.25); }
+.deco-circle { position: absolute; border-radius: 50%; pointer-events: none; }
+.dc1 { width: 320px; height: 320px; right: -60px; top: 60px; border: 1px solid rgba(192,57,43,0.12); }
+.dc2 { width: 200px; height: 200px; right: 20px; top: 120px; border: 1px solid rgba(192,57,43,0.08); }
+.dc3 { width: 120px; height: 120px; right: 80px; top: 180px; background: rgba(192,57,43,0.06); }
+/* ═══ CONTENT PAGES ═══ */
+.cpage {
+  width: 210mm; min-height: 297mm; padding: 0;
+  page-break-after: always; position: relative; background: #fff;
+}
+.cpage:last-child { page-break-after: auto; }
+.ph {
+  height: 46px; background: #0f0000;
+  display: flex; align-items: center; padding: 0 36px; justify-content: space-between;
+  border-bottom: 2px solid #c0392b;
+}
+.ph-brand { font-size: 11px; font-weight: 700; color: #d4a017; letter-spacing: 2px; }
+.ph-sub { font-size: 11px; color: rgba(255,255,255,0.35); letter-spacing: 1px; }
+.ph-date { font-size: 10px; color: rgba(255,255,255,0.25); }
+.pbody { padding: 20px 36px 52px; }
+.sec-banner { display: flex; align-items: stretch; margin-bottom: 20px; border-radius: 6px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+.sec-num { width: 56px; display: flex; align-items: center; justify-content: center; flex-direction: column; padding: 12px 0; flex-shrink: 0; background: #c0392b; }
+.sec-num.orange { background: #d35400; }
+.sec-num.blue { background: #1a6fa8; }
+.sec-num.gold { background: #b8860b; }
+.sec-num.teal { background: #148f77; }
+.sec-num.gray { background: #555; }
+.sec-num-text { font-size: 20px; font-weight: 900; color: rgba(255,255,255,0.9); line-height: 1; }
+.sec-num-label { font-size: 8px; color: rgba(255,255,255,0.5); letter-spacing: 1px; margin-top: 2px; }
+.sec-title { flex: 1; padding: 12px 18px; display: flex; flex-direction: column; justify-content: center; background: linear-gradient(135deg, #1a0000 0%, #2a0000 100%); }
+.sec-title.orange { background: linear-gradient(135deg, #1a0800 0%, #2a1000 100%); }
+.sec-title.blue { background: linear-gradient(135deg, #00101a 0%, #001828 100%); }
+.sec-title.gold { background: linear-gradient(135deg, #0f0a00 0%, #1a1200 100%); }
+.sec-title.teal { background: linear-gradient(135deg, #001a14 0%, #002a1e 100%); }
+.sec-title.gray { background: linear-gradient(135deg, #111 0%, #222 100%); }
+.sec-title h2 { font-size: 16px; font-weight: 900; color: #fff; margin-bottom: 2px; }
+.sec-title p { font-size: 10px; color: rgba(255,255,255,0.35); }
+.vis-h2 { font-size: 13px; font-weight: 800; color: #0f2a4a; border-left: 4px solid #c0392b; padding-left: 10px; margin: 16px 0 8px; }
+.vis-h3 { font-size: 12px; font-weight: 700; color: #c0392b; margin: 12px 0 6px; }
+.vis-p { font-size: 12px; color: #2a2a2a; line-height: 1.8; margin-bottom: 8px; text-align: justify; }
+.vis-ul { list-style: none; padding: 0; margin: 4px 0 10px; }
+.vis-ul li { font-size: 11.5px; color: #333; line-height: 1.7; padding: 2px 0 2px 16px; position: relative; }
+.vis-ul li::before { content: "·"; position: absolute; left: 4px; color: #c0392b; font-weight: 900; font-size: 16px; line-height: 1.3; }
+.vis-table { width: 100%; border-collapse: collapse; font-size: 11px; margin: 10px 0; }
+.vis-table thead tr { background: #0f0000; }
+.vis-table th { color: #d4a017; font-weight: 700; padding: 7px 10px; text-align: left; font-size: 10px; letter-spacing: 0.5px; }
+.vis-table td { padding: 6px 10px; border-bottom: 1px solid #f0f0f0; }
+.vis-table .td-name { font-weight: 600; color: #1a1a2e; }
+.vis-table tr:nth-child(even) td { background: #fafafa; }
+.vis-pmi-bar { background: #f0f4ff; border: 1px solid #c8d8f5; border-radius: 4px; padding: 8px 14px; font-size: 11px; color: #1d4ed8; margin-bottom: 14px; }
+.pfoot {
+  position: absolute; bottom: 0; left: 0; right: 0; height: 30px;
+  background: #0f0000; display: flex; align-items: center; padding: 0 36px; justify-content: space-between;
+}
+.pf-brand { font-size: 10px; color: #d4a017; font-weight: 700; letter-spacing: 1px; }
+.pf-disc { font-size: 9px; color: rgba(255,255,255,0.25); }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-bg"></div>
+  <div class="cover-texture"></div>
+  <div class="cover-stripe"></div>
+  <div class="deco-circle dc1"></div>
+  <div class="deco-circle dc2"></div>
+  <div class="deco-circle dc3"></div>
+  <div class="cover-topbar">
+    <span class="topbar-logo">链采联盟</span>
+    <div class="topbar-sep"></div>
+    <span class="topbar-sub">CHAIN PROCUREMENT ALLIANCE · DAILY FINANCE BRIEFING</span>
+    <div class="topbar-live"><div class="live-dot"></div><span class="live-text">DAILY</span></div>
+  </div>
+  <div class="cover-main">
+    <div>
+      <div class="push-label">
+        <span class="push-tag">链采联盟 · 每日财经推送</span>
+        <span class="push-chain">2026年03月24日</span>
+      </div>
+      <div class="cover-headline">
+        <div class="eyebrow">DAILY FINANCIAL &amp; PROCUREMENT INTELLIGENCE</div>
+        <h1>每日财经信息</h1>
+        <h2>金融市场 · 宏观经济 · 采购趋势</h2>
+        <div class="cover-desc">
+          本期简报基于 Bloomberg · FT · WSJ · CNBC · The Economist · Fed · ECB 等 28+ 权威渠道最新数据，
+          由 AI 深度分析生成，覆盖市场概览、宏观经济、行业动态、采购趋势等核心板块。
+        </div>
+      </div>
+      <div class="cover-stats">
+        <div class="cstat"><span class="v" style="color:#27ae60;font-size:15px;">3813.28</span><span class="v2" style="color:#27ae60;">-3.63%</span><span class="l">上证指数</span></div>
+<div class="cstat"><span class="v" style="color:#e74c3c;font-size:15px;">$102.50</span><span class="v2" style="color:#e74c3c;">+0.00%</span><span class="l">布伦特原油</span></div>
+<div class="cstat"><span class="v" style="color:#27ae60;font-size:15px;">6.88</span><span class="v2" style="color:#27ae60;">-0.08%</span><span class="l">人民币/美元</span></div>
+<div class="cstat"><span class="v" style="color:#e74c3c;font-size:15px;">$4362.60</span><span class="v2" style="color:#e74c3c;">+0.00%</span><span class="l">黄金</span></div>
+      </div>
+      <div class="cover-toc">
+        <div class="toc-item"><span class="toc-num">01</span><span class="toc-name">市场概览<br/>宏观经济</span></div>
+        <div class="toc-item"><span class="toc-num">02</span><span class="toc-name">行业动态<br/>采购趋势</span></div>
+        <div class="toc-item"><span class="toc-num">03</span><span class="toc-name">投资策略<br/>风险提示</span></div>
+        <div class="toc-item"><span class="toc-num">04</span><span class="toc-name">数据附录<br/>市场行情</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="cover-footer">
+    <div class="cf-left">
+      <div class="cf-brand">链采联盟 · 每日财经信息</div>
+      <div class="cf-sub">CHAIN PROCUREMENT ALLIANCE · DAILY FINANCE BRIEFING</div>
+    </div>
+    <div style="text-align:right;">
+      <div class="cf-date">发布日期：2026年03月24日 &nbsp;|&nbsp; 生成时间：2026-03-24 01:15:11</div>
+      <div class="cf-disc">本简报仅供参考，不构成任何投资或商业决策建议</div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 1: 市场概览 + 宏观经济 -->
+<div class="cpage">
+  <div class="ph">
+    <span class="ph-brand">链采联盟 · 每日财经推送</span>
+    <span class="ph-sub">DAILY FINANCE BRIEFING</span>
+    <span class="ph-date">2026-03-24</span>
+  </div>
+  <div class="pbody">
+    <div class="vis-pmi-bar">PMI 快览：中国制造业PMI（官方·国家统计局）: <strong>52.1</strong> &nbsp;|&nbsp; 中国非制造业PMI（官方·国家统计局）: <strong>49.5</strong> &nbsp;|&nbsp; 美国制造业PMI（ISM）: <strong>51.6</strong> &nbsp;|&nbsp; 欧元区制造业PMI（S&P Global）: <strong>50.8</strong></div>
+    <div class="sec-banner">
+      <div class="sec-num"><span class="sec-num-text">01</span><span class="sec-num-label">MARKET</span></div>
+      <div class="sec-title"><h2>市场概览</h2><p>Global Market Overview · Key Indices · Core Themes</p></div>
+    </div>
+    <p class="vis-p">今日全球市场表现呈现出明显的分化趋势。亚洲市场受到中东局势紧张的影响，上证指数、深证成指和恒生指数分别下跌3.63%、3.76%和3.54%，反应了投资者对地区稳定的担忧。相比之下，美国市场则显示出一定的韧性，道琼斯、纳斯达克和标普500分别上涨1.38%、1.38%和1.15%，这得益于美国总统特朗普对伊朗能源设施打击的退缩态度以及对通过外交途径解决冲突的积极表态。尽管如此，全球投资者仍对中东长期冲突可能带来的经济影响保持警惕，尤其是能源价格的波动及其对通胀的潜在影响。</p>
+<p class="vis-p"><strong>核心观点：</strong> 中东局势的不确定性继续主导市场情绪，但美国市场的反弹迹象和特朗普政府的外交尝试为投资者带来了一线希望，建议关注能源价格变动和外交进展，同时保持对避险资产的配置。</p>
+    <div class="sec-banner" style="margin-top:18px;">
+      <div class="sec-num orange"><span class="sec-num-text">02</span><span class="sec-num-label">MACRO</span></div>
+      <div class="sec-title orange"><h2>宏观经济分析</h2><p>Macro Analysis · Central Banks · Policy Trends</p></div>
+    </div>
+    <h4 class="vis-h3">2.1 全球流动性环境</h4>
+<p class="vis-p"><strong>美联储政策立场：</strong> - 美国2月份CPI同比增长6.1%，低于预期 - FedWatch显示5月降息的概率为64.5% - 美联储主席鲍威尔表示将密切关注通胀数据和经济前景，以决定未来的利率路径</p>
+<p class="vis-p"><strong>欧洲央行动向：</strong> - 欧央行宣布维持三大利率不变 - 欧元区2月CPI初值同比增长8.5%，略低于前值 - 欧央行的政策立场对全球资本流动产生温和的正面影响</p>
+<p class="vis-p"><strong>中国货币政策：</strong> - 2月社融规模增量为1.19万亿元，M2同比增长12.9% - 1年期LPR维持在3.65%，5年期以上LPR保持4.30% - 中国人民银行继续强调结构性政策工具的使用，以支持小微企业和创新产业</p>
+<h4 class="vis-h3">2.2 经济景气度</h4>
+<p class="vis-p"><strong>美国经济：</strong> - 2月新增非农就业人数为31.1万，失业率小幅下降至3.6% - 消费者信心指数2月报102.9，显示出消费者对经济前景的乐观 - PMI数据表明制造业和服务业扩张，但增速放缓 - 美国经济实现软着陆的概率增加，但通胀压力仍存 - 企业盈利预期保持稳定，但成本上升压力加大</p>
+<p class="vis-p"><strong>中国经济：</strong> - 1-2月社会消费品零售总额同比增长3.5%，消费复苏迹象明显 - 固定资产投资同比增长5.5%，基础设施投资成为主要驱动力 - 出口数据表现疲软，2月同比下降6.8% - 房地产市场呈现分化的复苏趋势，一线城市房价有所回升，二三线城市仍面临压力 - 政府出台的一系列刺激政策效果逐步显现，市场信心得到提振</p>
+<p class="vis-p"><strong>欧洲经济：</strong> - 欧元区2月PMI终值为52.7，经济活动继续扩张 - 通胀压力持续，能源价格的上涨对家庭和企业造成负担 - 欧洲经济复苏前景不明朗，但政策措施的逐步落实有望缓解部分压力</p>
+<h4 class="vis-h3">2.3 重大政策事件</h4>
+<p class="vis-p"><strong>中美关系：</strong> - 两国在伊朗问题上的立场保持一致，中国支持通过外交途径解决冲突 - 中美贸易谈判预计在近期举行，双方有望就减少贸易壁垒达成共识 - 市场对中美关系的改善持谨慎乐观态度，但仍需关注具体进展</p>
+<p class="vis-p"><strong>产业政策：</strong> - 中国政府继续加大对新能源汽车和半导体行业的支持 - 欧美加强对中国高科技产品的出口管制，产业竞争加剧 - 美国政府推进AI相关政策，鼓励技术创新和应用 - 投资者应关注政策变动对相关行业的影响，寻找长期投资机会</p>
+  </div>
+  <div class="pfoot"><span class="pf-brand">链采联盟 · 每日财经信息</span><span class="pf-disc">仅供参考，不构成投资建议</span></div>
+</div>
+
+<!-- PAGE 2: 行业动态 + 采购趋势 -->
+<div class="cpage">
+  <div class="ph">
+    <span class="ph-brand">链采联盟 · 每日财经推送</span>
+    <span class="ph-sub">DAILY FINANCE BRIEFING</span>
+    <span class="ph-date">2026-03-24</span>
+  </div>
+  <div class="pbody">
+    <div class="sec-banner">
+      <div class="sec-num blue"><span class="sec-num-text">03</span><span class="sec-num-label">INDUSTRY</span></div>
+      <div class="sec-title blue"><h2>行业动态</h2><p>Industry Trends · AI · New Energy · Semiconductors</p></div>
+    </div>
+    <h4 class="vis-h3">3.1 AI与人工智能</h4>
+<p class="vis-p"><strong>产业进展：</strong> - AI在金融、医疗、制造等多个领域的应用加速 - 中国AI市场规模预计2026年达到2000亿元 - 主要科技公司如阿里、百度、腾讯等加大AI研发投入</p>
+<p class="vis-p"><strong>资本支出动向：</strong> - 科技巨头纷纷增加AI领域的投资，如阿里计划未来三年投资1000亿元 - AI投资回报率仍存在争议，部分项目初期投入高、回报周期长 - 分析师普遍看好AI长期发展前景，但提醒注意短期波动</p>
+<p class="vis-p"><strong>应用落地：</strong> - 企业级AI应用在供应链管理、客户关系管理等领域取得显著成效 - 新兴应用场景如智慧城市、智能家居等不断涌现 - 监管政策逐渐完善，确保AI技术的健康发展</p>
+<h4 class="vis-h3">3.2 新能源与汽车</h4>
+<p class="vis-p"><strong>市场表现：</strong> - 2026年1-2月中国新能源汽车销量同比增长45%，达到120万辆 - 主要车企如比亚迪、蔚来、小鹏等纷纷推出新车型，市场竞争力增强 - 海外市场特别是欧洲和北美对新能源汽车的需求持续增长</p>
+<p class="vis-p"><strong>政策环境：</strong> - 中国政府继续提供新能源汽车补贴，但力度逐步减弱 - 欧美对新能源汽车的补贴政策更加严格，贸易壁垒有所提高 - 行业竞争格局日趋激烈，技术实力和品牌影响力成为关键</p>
+<p class="vis-p"><strong>技术趋势：</strong> - 固态电池技术取得突破，有望在2026年底实现商业化 - 智能驾驶技术快速发展，L4级自动驾驶车辆开始试点 - 传统车企与科技公司合作加深，共同推动新能源汽车技术进步 - 2026年成为新能源汽车技术发展的关键年份</p>
+<h4 class="vis-h3">3.3 半导体与科技</h4>
+<p class="vis-p"><strong>供需格局：</strong> - AI芯片需求激增，但供应紧张局面持续 - 成熟制程产能逐步释放，但先进制程供应依然受限 - 半导体交付周期有所延长，部分关键芯片交付时间超过6个月</p>
+<p class="vis-p"><strong>技术突破：</strong> - 中国在28nm和14nm制程上取得进展，逐步实现国产替代 - 台积电宣布2026年将投产3nm制程，进一步巩固其技术领先优势 - 英伟达在AI计算领域推出新一代GPU，性能大幅提升</p>
+<p class="vis-p"><strong>政策与竞争：</strong> - 美国加强对中国半导体出口的管制，但部分企业获得豁免 - 中国政府出台多项政策，支持半导体产业快速发展 - 台积电和英伟达在先进制程领域竞争加剧，市场格局变化</p>
+    <div class="sec-banner" style="margin-top:18px;">
+      <div class="sec-num gold"><span class="sec-num-text">04</span><span class="sec-num-label">PROCURE</span></div>
+      <div class="sec-title gold"><h2>采购趋势</h2><p>Procurement · Commodities · Logistics · Supply Chain</p></div>
+    </div>
+    <h4 class="vis-h3">6.1 IT与数字化采购</h4>
+<p class="vis-p"><strong>市场动态：</strong> - IT硬件和云服务采购需求持续增长，尤其是AI相关产品 - 主要供应商如AWS、微软、阿里云等加大在AI领域的投入 - 企业对数字化转型的需求推动了IT采购的增长</p>
+<p class="vis-p"><strong>价格走势：</strong> - IT设备和服务价格保持稳定，但部分高端AI硬件价格上涨 - 汇率波动对IT采购成本产生一定影响，美元指数小幅上涨 - 建议企业根据自身需求制定合理的采购策略</p>
+<p class="vis-p"><strong>风险提示：</strong> - 供应链风险依然存在，特别是关键芯片的供应 - 技术迭代快速，企业需关注最新技术动态 - 合规风险增加，需遵守各国数据保护和隐私法规</p>
+<h4 class="vis-h3">6.2 物流与运输采购</h4>
+<p class="vis-p"><strong>运价动态：</strong> - 集装箱运价指数（CCFI）小幅上涨至1200点 - 空运价格受中东局势影响，部分航线运价上涨5% - 主要港口如上海、深圳的拥堵情况有所缓解</p>
+<p class="vis-p"><strong>供应链动态：</strong> - 全球供应链压力点在中东地区，特别是石油和天然气的供应 - 物流成本整体呈上升趋势，企业需控制运输费用 - 主要物流商如FedEx、DHL等加大在亚洲市场的布局</p>
+<p class="vis-p"><strong>采购建议：</strong> - 当前是锁价的好时机，特别是对于长期合同 - 多元化物流策略，减少对单一航线的依赖 - 采用金融工具对冲运价波动风险</p>
+<h4 class="vis-h3">6.3 大宗材料采购</h4>
+<p class="vis-p"><strong>价格走势：</strong> - 钢铁价格小幅上涨至5400元/吨，铜价上涨至5.45万元/吨 - 与上周相比，钢铁价格上涨2%，铜价上涨1.5% - 核心因素包括需求回升和供应紧张</p>
+<p class="vis-p"><strong>供需格局：</strong> - 中国钢铁产量在2026年1-2月同比增长3.5%，但库存水平较低 - 欧美市场需求回升，但供应受限 - 全球铜矿供应受到智利和秘鲁的矿工罢工影响</p>
+<p class="vis-p"><strong>采购策略：</strong> - 当前适合锁价，锁定较低的采购成本 - 套期保值建议，利用期货市场对冲价格波动风险 - 考虑替代材料选项，如铝合金等</p>
+<h4 class="vis-h3">6.4 房地产与设施采购</h4>
+<p class="vis-p"><strong>市场动态：</strong> - 中国一线城市商业地产租金小幅上涨，但二三线城市租金下降 - 主要城市写字楼空置率有所下降，平均为20% - 工业用地和仓储价格在2026年1-2月分别上涨5%和3%</p>
+<p class="vis-p"><strong>政策影响：</strong> - 中国政府继续出台政策支持房地产市场稳定，特别是针对中小城市的调控 - 企业设施采购政策倾向于租赁而非购买，以降低资金压力 - 市场机会与风险并存，政策导向将影响市场走势</p>
+<p class="vis-p"><strong>采购建议：</strong> - 租赁与购买决策应根据企业资金状况和市场预期进行综合考虑 - 选址优化建议，优先考虑一线城市和核心经济区 - 成本控制策略，关注政策变化和市场动态</p>
+  </div>
+  <div class="pfoot"><span class="pf-brand">链采联盟 · 每日财经信息</span><span class="pf-disc">仅供参考，不构成投资建议</span></div>
+</div>
+
+<!-- PAGE 3: 投资策略 + 数据附录 -->
+<div class="cpage">
+  <div class="ph">
+    <span class="ph-brand">链采联盟 · 每日财经推送</span>
+    <span class="ph-sub">DAILY FINANCE BRIEFING</span>
+    <span class="ph-date">2026-03-24</span>
+  </div>
+  <div class="pbody">
+    <div class="sec-banner">
+      <div class="sec-num teal"><span class="sec-num-text">05</span><span class="sec-num-label">STRATEGY</span></div>
+      <div class="sec-title teal"><h2>投资策略建议</h2><p>Investment Strategy · Asset Allocation · Risk Warning</p></div>
+    </div>
+    <h4 class="vis-h3">资产配置建议</h4>
+<p class="vis-p"><strong>看好方向：</strong> 1. <strong>新能源汽车</strong>：油价上涨推动电动汽车需求增长，行业前景看好 2. <strong>AI与科技</strong>：AI技术在多个领域的应用加速，科技巨头持续加大投入 3. <strong>半导体</strong>：AI芯片需求激增，中国在成熟制程上取得突破 4. <strong>避险资产</strong>：中东局势紧张，黄金和比特币等避险资产表现强劲</p>
+<p class="vis-p"><strong>规避风险：</strong> 1. <strong>中东地缘政治风险</strong>：冲突持续可能对能源价格和全球市场产生负面影响 2. <strong>供应链成本上升</strong>：大宗商品价格波动对制造业成本构成压力 3. <strong>政策不确定性</strong>：中美关系和欧美贸易政策变动对相关行业的影响</p>
+<h4 class="vis-h3">风险提示</h4>
+<ul class="vis-ul">
+<li>中东局势的不确定性可能导致能源价格大幅波动 · 全球通胀压力上升，影响企业盈利和消费者支出 · 政策变化可能对特定行业产生不利影响 · 技术迭代风险，特别是AI和新能源领域</li>
+</ul>
+    <div class="sec-banner" style="margin-top:18px;">
+      <div class="sec-num gray"><span class="sec-num-text">06</span><span class="sec-num-label">DATA</span></div>
+      <div class="sec-title gray"><h2>市场数据附录</h2><p>Market Data Appendix · Real-time Prices</p></div>
+    </div>
+    <table class="vis-table"><thead><tr><th>品种</th><th>最新价</th><th>涨跌幅</th></tr></thead><tbody><tr><td class="td-name">上证指数</td><td>3813.28</td><td style="color:#27ae60;font-weight:700;">▼ -3.63%</td></tr><tr><td class="td-name">深证成指</td><td>13345.51</td><td style="color:#27ae60;font-weight:700;">▼ -3.76%</td></tr><tr><td class="td-name">创业板指</td><td>3235.22</td><td style="color:#c0392b;font-weight:700;">▲ +0.00%</td></tr><tr><td class="td-name">道琼斯</td><td>46208.47</td><td style="color:#c0392b;font-weight:700;">▲ +1.38%</td></tr><tr><td class="td-name">纳斯达克</td><td>21946.76</td><td style="color:#c0392b;font-weight:700;">▲ +1.38%</td></tr><tr><td class="td-name">标普500</td><td>6581.00</td><td style="color:#c0392b;font-weight:700;">▲ +1.15%</td></tr><tr><td class="td-name">恒生指数</td><td>24382.47</td><td style="color:#27ae60;font-weight:700;">▼ -3.54%</td></tr><tr><td class="td-name">日经225</td><td>52226.06</td><td style="color:#c0392b;font-weight:700;">▲ +0.00%</td></tr><tr><td class="td-name">黄金</td><td>4362.60</td><td style="color:#c0392b;font-weight:700;">▲ +0.00%</td></tr><tr><td class="td-name">原油WTI</td><td>90.94</td><td style="color:#c0392b;font-weight:700;">▲ +0.00%</td></tr><tr><td class="td-name">布伦特原油</td><td>102.50</td><td style="color:#c0392b;font-weight:700;">▲ +0.00%</td></tr><tr><td class="td-name">铜</td><td>5.45</td><td style="color:#c0392b;font-weight:700;">▲ +0.00%</td></tr><tr><td class="td-name">白银</td><td>68.21</td><td style="color:#c0392b;font-weight:700;">▲ +0.00%</td></tr><tr><td class="td-name">美元指数</td><td>99.34</td><td style="color:#c0392b;font-weight:700;">▲ +0.00%</td></tr><tr><td class="td-name">人民币/美元</td><td>6.88</td><td style="color:#27ae60;font-weight:700;">▼ -0.08%</td></tr><tr><td class="td-name">欧元/美元</td><td>1.16</td><td style="color:#c0392b;font-weight:700;">▲ +0.33%</td></tr><tr><td class="td-name">美元/日元</td><td>158.47</td><td style="color:#27ae60;font-weight:700;">▼ -0.48%</td></tr><tr><td class="td-name">英镑/美元</td><td>1.34</td><td style="color:#c0392b;font-weight:700;">▲ +0.53%</td></tr></tbody></table>
+    <div style="margin-top:16px;font-size:10px;color:#aaa;border-top:1px solid #eee;padding-top:10px;">
+      数据来源：Bloomberg · FT · WSJ · CNBC · The Economist · Federal Reserve · ECB · BIS · OilPrice · TechCrunch · SCMP · Nikkei Asia · Supply Chain Dive · Spend Matters 等 28+ 权威渠道<br/>
+      报告生成时间：2026-03-24 01:15:11 &nbsp;|&nbsp; 本报告仅供参考，不构成投资建议。投资有风险，入市需谨慎。
+    </div>
+  </div>
+  <div class="pfoot"><span class="pf-brand">链采联盟 · 每日财经信息</span><span class="pf-disc">仅供参考，不构成投资建议</span></div>
+</div>
+
+</body>
+</html>
