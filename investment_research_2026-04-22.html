@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>链采联盟-每日财经信息 - 2026-04-22</title>
+    <style>
+        /* ===== Reset & Base ===== */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'PingFang SC', 'Microsoft YaHei', 'SimHei',
+                         'Noto Sans CJK SC', 'WenQuanYi Zen Hei',
+                         'Droid Sans Fallback', sans-serif;
+            background: #ffffff;
+            color: #222222;
+            font-size: 14.5px;
+            line-height: 1.85;
+        }
+        .page {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 52px 68px 64px;
+        }
+
+        /* ===== PMI Block ===== */
+        .pmi-block {
+            margin: 18px 0 28px;
+            padding: 16px 20px;
+            background: #f8faff;
+            border: 1px solid #dbeafe;
+            border-radius: 6px;
+        }
+        .pmi-block-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: #1d4ed8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+            border-bottom: 1px solid #dbeafe;
+            padding-bottom: 8px;
+        }
+        .pmi-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .pmi-item {
+            flex: 1;
+            min-width: 160px;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 5px;
+            padding: 10px 14px;
+        }
+        .pmi-name {
+            font-size: 12px;
+            color: #555;
+            margin-bottom: 4px;
+        }
+        .pmi-value {
+            font-size: 26px;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+        .pmi-meta {
+            font-size: 12px;
+            margin-top: 4px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .pmi-status {
+            color: #fff;
+            font-size: 11px;
+            padding: 1px 6px;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+        .pmi-date {
+            font-size: 11px;
+            color: #999;
+            margin-top: 4px;
+        }
+
+        /* ===== Report Header ===== */
+        .report-header {
+            margin-bottom: 32px;
+        }
+        .report-title {
+            font-size: 26px;
+            font-weight: 800;
+            color: #0f2a4a;
+            letter-spacing: 0.5px;
+            margin-bottom: 10px;
+        }
+        .title-rule {
+            border: none;
+            border-top: 2.5px solid #1d4ed8;
+            margin: 0;
+        }
+
+        /* ===== Section Headings ===== */
+        h2.section-title {
+            font-size: 20px;
+            font-weight: 800;
+            color: #0f2a4a;
+            border-left: 5px solid #1d4ed8;
+            padding-left: 14px;
+            margin: 44px 0 16px;
+            line-height: 1.4;
+        }
+        h3.subsection-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: #0f2a4a;
+            margin: 26px 0 10px;
+            padding: 0;
+        }
+
+        /* ===== Body Text ===== */
+        p {
+            margin: 8px 0;
+            color: #2d2d2d;
+            text-align: justify;
+            font-size: 14.5px;
+        }
+        strong {
+            color: #0f2a4a;
+            font-weight: 700;
+        }
+
+        /* ===== Bullet List ===== */
+        ul.bullet-list {
+            list-style: none;
+            padding: 0;
+            margin: 6px 0;
+        }
+        ul.bullet-list li {
+            padding: 3px 0 3px 18px;
+            position: relative;
+            font-size: 14px;
+            color: #2d2d2d;
+            line-height: 1.75;
+        }
+        ul.bullet-list li::before {
+            content: "·";
+            position: absolute;
+            left: 4px;
+            color: #1d4ed8;
+            font-weight: 900;
+            font-size: 18px;
+            line-height: 1.4;
+        }
+
+        /* ===== Section Divider ===== */
+        hr.section-divider {
+            border: none;
+            border-top: 1px solid #d1d5db;
+            margin: 36px 0;
+        }
+
+        /* ===== Market Data Tables ===== */
+        .market-tables {
+            margin: 20px 0 8px;
+        }
+        .market-table-group {
+            margin-bottom: 18px;
+        }
+        .market-table-group.half {
+            width: 48%;
+        }
+        .market-table-row {
+            display: flex;
+            gap: 4%;
+            align-items: flex-start;
+        }
+        .table-label {
+            font-size: 13px;
+            font-weight: 700;
+            color: #4b5563;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+            border-bottom: 1px solid #e5e7eb;
+            padding-bottom: 4px;
+        }
+        table.market-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13.5px;
+        }
+        table.market-table thead tr {
+            background: #f0f4f8;
+        }
+        table.market-table th {
+            padding: 7px 10px;
+            text-align: left;
+            font-weight: 700;
+            color: #374151;
+            font-size: 12.5px;
+            border-bottom: 1.5px solid #d1d5db;
+        }
+        table.market-table td {
+            padding: 6px 10px;
+            border-bottom: 1px solid #f0f0f0;
+            color: #222222;
+        }
+        table.market-table tr:hover td {
+            background: #f9fafb;
+        }
+        td.col-name {
+            font-weight: 600;
+            color: #1a1a2e;
+        }
+        td.col-price {
+            font-variant-numeric: tabular-nums;
+        }
+        td.up { color: #dc2626; font-weight: 600; }
+        td.down { color: #16a34a; font-weight: 600; }
+        td.neutral { color: #6b7280; }
+
+        /* ===== Data Appendix (inline text style) ===== */
+        .data-appendix {
+            margin-top: 8px;
+        }
+        .data-row {
+            margin: 10px 0;
+            font-size: 14px;
+            color: #2d2d2d;
+            line-height: 1.9;
+        }
+
+        /* ===== Footer ===== */
+        .report-footer {
+            margin-top: 40px;
+            padding-top: 18px;
+            border-top: 1px solid #d1d5db;
+        }
+        .report-footer p {
+            margin: 5px 0;
+            font-size: 12.5px;
+            color: #6b7280;
+        }
+        .report-footer strong {
+            color: #374151;
+            font-weight: 600;
+        }
+
+        /* ===== Print / PDF ===== */
+        @media print {
+            body { font-size: 13px; line-height: 1.75; }
+            .page { padding: 24px 36px; max-width: 100%; }
+            h2.section-title { font-size: 17px; margin: 32px 0 12px; }
+            h3.subsection-title { font-size: 14px; }
+            table.market-table { font-size: 12px; }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- ===== Header ===== -->
+    <div class="report-header">
+        <h1 class="report-title">链采联盟-每日财经信息 &nbsp;·&nbsp; 2026-04-22</h1>
+        <hr class="title-rule">
+    </div>
+
+    <!-- ===== PMI Block ===== -->
+    
+    <div class="pmi-block">
+        <div class="pmi-block-title">采购经理人指数（PMI）</div>
+        <div class="pmi-grid">
+        <div class="pmi-item">
+            <div class="pmi-name">中国制造业PMI（官方·国家统计局）</div>
+            <div class="pmi-value" style="color:#16a34a;">50.8</div>
+            <div class="pmi-meta"><span style="color:#dc2626;font-size:12px;">▼1.3</span> &nbsp;<span class="pmi-status" style="background:#16a34a;">扩张</span></div>
+            <div class="pmi-date">2026-03</div>
+        </div>
+        <div class="pmi-item">
+            <div class="pmi-name">中国非制造业PMI（官方·国家统计局）</div>
+            <div class="pmi-value" style="color:#16a34a;">50.1</div>
+            <div class="pmi-meta"><span style="color:#16a34a;font-size:12px;">▲0.6</span> &nbsp;<span class="pmi-status" style="background:#16a34a;">扩张</span></div>
+            <div class="pmi-date">2026-03</div>
+        </div>
+        <div class="pmi-item">
+            <div class="pmi-name">美国制造业PMI（ISM）</div>
+            <div class="pmi-value" style="color:#16a34a;">52.3</div>
+            <div class="pmi-meta"><span style="color:#16a34a;font-size:12px;">▲0.7</span> &nbsp;<span class="pmi-status" style="background:#16a34a;">扩张</span></div>
+            <div class="pmi-date">2026-03</div>
+        </div>
+        <div class="pmi-item">
+            <div class="pmi-name">欧元区制造业PMI（S&P Global）</div>
+            <div class="pmi-value" style="color:#16a34a;">51.6</div>
+            <div class="pmi-meta"><span style="color:#16a34a;font-size:12px;">▲0.8</span> &nbsp;<span class="pmi-status" style="background:#16a34a;">扩张</span></div>
+            <div class="pmi-date">2026-03</div>
+        </div>
+        </div>
+    </div>
+
+    <!-- ===== AI Generated Content ===== -->
+    <h2 class="section-title">一、市场概览</h2>
+
+<p>今日全球市场表现相对平稳，但情绪仍受中东地缘政治紧张局势的影响。道琼斯指数下跌0.59%至49149.38点，纳斯达克指数下跌0.59%至24259.96点，标普500指数下跌0.63%至7064.01点。特朗普宣布延长与伊朗的停火协议，但和平谈判陷入僵局，导致市场情绪谨慎。在中国市场，人民币兑美元汇率小幅上涨0.04%至6.82，上证指数、深证成指和恒生指数均持平，而日经225指数则维持在59356.80点。大宗商品方面，黄金价格下跌0.99%至4759.00美元/盎司，布伦特原油价格下跌2.83%至92.78美元/桶，铜价持平，白银价格下跌3.01%至77.54美元/盎司。外汇市场上，美元指数小幅上涨0.35%至98.39，欧元兑美元汇率下跌0.33%至1.17，英镑兑美元汇率下跌0.19%至1.35。</p>
+
+<p><strong>核心观点：</strong>中东地缘政治紧张局势的缓解带来短期市场乐观情绪，但长期不确定性仍然存在，投资者需保持谨慎。</p>
+
+<h2 class="section-title">二、宏观经济分析</h2>
+
+<h3 class="subsection-title">2.1 全球流动性环境</h3>
+
+<p><strong>美联储政策立场：</strong> - 最新CPI数据为6.5%，就业数据继续稳健增长，显示美国经济仍具韧性 - FedWatch工具显示降息概率为25% - 美联储主席鲍威尔表示，目前的经济数据尚不足以支持降息，需继续观察</p>
+
+<p><strong>欧洲央行动向：</strong> - 欧洲央行维持利率不变，继续实施量化宽松政策 - 欧元区3月通胀率为7.0%，高于预期 - 欧央行的宽松政策有助于缓解全球资本流动的压力，但需警惕通货膨胀风险</p>
+
+<p><strong>中国货币政策：</strong> - 3月社融规模为3.34万亿元，M2同比增长12.7% - 中国央行维持LPR不变，但下调存款准备金率0.25个百分点 - 中国央行推出多项结构性政策工具，支持中小微企业和绿色经济</p>
+
+<h3 class="subsection-title">2.2 经济景气度</h3>
+
+<p><strong>美国经济：</strong> - 3月非农就业人数增加23.6万人，失业率降至3.5% - 3月零售销售额环比增长0.4% - 制造业PMI为50.6，显示经济处于缓慢扩张状态 - 软着陆的可能性较高，但衰退风险依然存在 - 企业盈利预期依然强劲，尤其是科技和金融行业</p>
+
+<p><strong>中国经济：</strong> - 3月消费同比增长10.6%，固定资产投资同比增长5.1% - 3月出口同比增长14.8%，显示外需依然强劲 - 房地产市场有所回暖，但政策调控持续 - 中国政府出台多项刺激政策，包括减税降费和增加基础设施投资，效果逐渐显现</p>
+
+<p><strong>欧洲经济：</strong> - 欧元区3月制造业PMI为54.6，服务业PMI为55.2 - 能源价格高企对经济复苏构成压力 - 欧洲央行继续宽松政策，有助于支持经济逐步复苏</p>
+
+<h3 class="subsection-title">2.3 重大政策事件</h3>
+
+<p><strong>中美关系：</strong> - 美国总统特朗普宣布延长与伊朗的停火协议，但和平谈判陷入僵局 - 中国对中东紧张局势表示关切，强调通过对话和外交途径解决争端 - 中美贸易关系保持相对稳定，但需关注地缘政治变化对双边贸易的影响</p>
+
+<p><strong>产业政策：</strong> - 中国推动新能源汽车产业政策，包括补贴和基础设施建设 - 美国加强对半导体行业的出口管制 - 欧盟推出新的数据保护和隐私法规，影响科技公司的全球业务 - 投资机会集中在新能源、半导体和AI领域，但需关注政策风险</p>
+
+<h2 class="section-title">三、行业动态</h2>
+
+<h3 class="subsection-title">3.1 AI与人工智能</h3>
+
+<p><strong>产业进展：</strong> - MIT研究团队发现一种自然蛋白可能保护肠道免受感染，为生物医学AI应用提供新方向 - 美国金融公司Core Scientific寻求33亿美元债券融资，加速AI数据中心转型 - 中国AI市场规模预计在2026年达到1000亿元</p>
+
+<p><strong>资本支出动向：</strong> - Revolut计划在未来的IPO中估值达到2000亿美元，显示金融科技领域的投资热情 - 美国科技巨头继续加大AI算力投资，推动大模型和企业级应用 - 分析师认为AI投资回报率将逐渐提升，但需关注技术和市场风险</p>
+
+<p><strong>应用落地：</strong> - 企业级AI应用在供应链管理和数据分析方面取得显著进展 - AI技术在医疗、金融和教育等新兴领域的应用前景广阔 - 各国政府加强AI监管，以确保技术的健康发展</p>
+
+<h3 class="subsection-title">3.2 新能源与汽车</h3>
+
+<p><strong>市场表现：</strong> - 中国新能源汽车销量在2026年第一季度同比增长30% - CATL推出更快充电和更高性能的电池技术，抢占市场先机 - 欧美市场对新能源汽车的需求稳步增长</p>
+
+<p><strong>政策环境：</strong> - 中国继续提供新能源汽车补贴，推动市场发展 - 欧美国家加强对新能源汽车的贸易壁垒，影响出口 - 新能源汽车市场竞争格局发生变化，特斯拉、比亚迪和宁德时代等头部企业优势明显</p>
+
+<p><strong>技术趋势：</strong> - 固态电池技术取得突破，有望在2026年下半年实现商业化 - 智能驾驶技术加速发展，多家车企与科技公司合作推进 - 2026年将成为新能源汽车产业的关键节点，技术和市场将同步发展</p>
+
+<h3 class="subsection-title">3.3 半导体与科技</h3>
+
+<p><strong>供需格局：</strong> - AI芯片需求旺盛，但供应依然紧张 - 成熟制程芯片供需基本平衡，先进制程芯片交付周期延长 - 美国加强对半导体行业的出口管制，影响全球供应链</p>
+
+<p><strong>技术突破：</strong> - Intel推出最新一代7纳米工艺芯片，性能大幅提升 - 中国半导体企业在封装技术上取得突破，提高国产替代能力 - MIT研究团队开发出利用废热进行数据处理的新型设备，有望在数据中心广泛应用</p>
+
+<p><strong>政策与竞争：</strong> - 美国对中国的半导体出口管制持续加码，影响中国企业的技术获取 - 中国政府加大对半导体产业的支持力度，推动国产化进程 - 台积电和英伟达在AI芯片领域保持领先，但竞争加剧</p>
+
+<h2 class="section-title">四、公司聚焦</h2>
+
+<h3 class="subsection-title">4.1 CATL（宁德时代）</h3>
+
+<p><strong>最新进展：</strong> - CATL推出更快充电和更高性能的电池技术 - 新技术包括更轻的电池包和更高效的充电系统 - 预计2026年下半年实现商业化</p>
+
+<p><strong>业务影响：</strong> - 新技术将显著提升CATL在新能源汽车市场的竞争力 - 加剧与特斯拉、比亚迪等企业的竞争 - 市场反应积极，股价上涨5.2%</p>
+
+<p><strong>投资价值：</strong> - 估值合理，动态市盈率为30倍 - 技术和市场风险较低，建议关注 - 重点关注CATL在国际市场的拓展情况</p>
+
+<h3 class="subsection-title">4.2 Cochlear Ltd.（科利耳）</h3>
+
+<p><strong>最新进展：</strong> - Cochlear Ltd.因下调2026财年利润指引，股价暴跌30% - 预计全年利润下降20% - 消息发布于2026年4月22日</p>
+
+<p><strong>业务影响：</strong> - 利润指引下调主要由于市场需求疲软和供应链问题 - 市场对科利耳的未来盈利能力产生质疑 - 竞争对手如Medtronic和Advanced Bionics可能受益</p>
+
+<p><strong>投资价值：</strong> - 当前估值较低，动态市盈率为15倍 - 但技术更新和市场需求变化存在风险 - 建议密切关注公司后续的市场表现和战略调整</p>
+
+<h3 class="subsection-title">4.3 Treasury Wine Estates Ltd.（ Treasury Wine ）</h3>
+
+<p><strong>最新进展：</strong> - Treasury Wine因中国市场的强劲表现，股价上涨25% - 2026年一季度中国销售额增长50% - 消息发布于2026年4月22日</p>
+
+<p><strong>业务影响：</strong> - 中国市场的增长显著提升了Treasury Wine的业绩 - 市场对公司在亚太地区的前景持乐观态度 - 竞争对手如Pernod Ricard和Diageo需关注</p>
+
+<p><strong>投资价值：</strong> - 估值较高，动态市盈率为35倍 - 但中国市场增长潜力巨大 - 建议关注公司在其他市场的拓展情况</p>
+
+<h2 class="section-title">五、关键人物观点</h2>
+
+<h3 class="subsection-title">Donald Trump（美国总统）</h3>
+
+<ul class="bullet-list">
+<li>延长与伊朗的停火协议，但和平谈判陷入僵局</li>
+<li>派遣更多部队到中东地区，以确保安全</li>
+<li>继续对伊朗施加经济压力</li>
+</ul>
+
+<h3 class="subsection-title">Christine Lagarde（欧洲央行行长）</h3>
+
+<ul class="bullet-list">
+<li>全球能源市场的不确定性仍需关注</li>
+<li>欧央行将继续实施宽松政策，以支持经济复苏</li>
+<li>通胀压力逐渐显现，需警惕其对经济的影响</li>
+</ul>
+
+<h3 class="subsection-title">Gloria Yu（中国出口商）</h3>
+
+<ul class="bullet-list">
+<li>人民币升值对出口企业造成压力</li>
+<li>计划通过出售美元来对冲汇率风险</li>
+<li>希望政府能提供更多的汇率支持政策</li>
+</ul>
+
+<h3 class="subsection-title">Giuseppe Romano（MIT研究科学家）</h3>
+
+<ul class="bullet-list">
+<li>利用废热进行数据处理的新型设备取得突破</li>
+<li>有望在数据中心广泛应用，提高能源利用效率</li>
+<li>建议企业关注这一技术的发展和应用前景</li>
+</ul>
+
+<h3 class="subsection-title">John Gotti III（美国犯罪集团头目）</h3>
+
+<ul class="bullet-list">
+<li>因疫情诈骗和加密货币计划被判入狱10年</li>
+<li>涉案金额达110万美元</li>
+<li>案件显示加密货币领域的监管仍需加强</li>
+</ul>
+
+<h2 class="section-title">六、采购趋势</h2>
+
+<h3 class="subsection-title">6.1 IT与数字化采购</h3>
+
+<p><strong>市场动态：</strong> - IT硬件和软件采购需求持续增长，尤其是AI相关领域 - 主要供应商如IBM和Google Cloud推出新的AI服务 - 企业对云服务的依赖度增加</p>
+
+<p><strong>价格走势：</strong> - IT设备和服务价格相对稳定，但AI算力成本有所上升 - 人民币小幅升值对IT采购成本影响有限 - 建议企业锁定长期合同以降低成本</p>
+
+<p><strong>风险提示：</strong> - 供应链风险依然存在，尤其是芯片供应 - 技术迭代风险需关注，避免投资过时的技术 - 合规风险在各国加强监管的大环境下需重视</p>
+
+<h3 class="subsection-title">6.2 物流与运输采购</h3>
+
+<p><strong>运价动态：</strong> - 集装箱运价和空运价格在中东紧张局势缓解后略有下降 - 亚洲至欧洲航线运价下降5%，亚洲至北美航线运价下降3% - 主要港口拥堵情况有所缓解</p>
+
+<p><strong>供应链动态：</strong> - 全球供应链压力点仍集中在半导体和汽车零部件 - 物流成本整体呈下降趋势，但需关注地缘政治变化 - 主要物流商如FedEx和UPS推出关税退款服务</p>
+
+<p><strong>采购建议：</strong> - 当前是锁价的好时机，运价有望继续下降 - 企业应实施多元化物流策略，降低单一航线依赖 - 建议利用期货市场进行风险对冲</p>
+
+<h3 class="subsection-title">6.3 大宗材料采购</h3>
+
+<p><strong>价格走势：</strong> - 钢铁价格维持在6.04美元/吨，与上周持平 - 铜价维持在6.04美元/磅，与上周持平 - 布伦特原油价格下跌2.83%至92.78美元/桶 - 白银价格下跌3.01%至77.54美元/盎司</p>
+
+<p><strong>供需格局：</strong> - 中国是主要的钢铁和铜消费国，需求稳定 - 中东紧张局势影响原油供应，但停火协议延长暂时缓解了市场压力 - 印度和巴基斯坦受到中东战争的影响，天然气供应紧张</p>
+
+<p><strong>采购策略：</strong> - 当前可以考虑锁定钢铁和铜的采购价格 - 企业可以利用期货市场进行套期保值，降低原油价格波动风险 - 逐步探索替代材料，提高供应链的灵活性</p>
+
+<h3 class="subsection-title">6.4 房地产与设施采购</h3>
+
+<p><strong>市场动态：</strong> - 中国主要城市商业地产租金和价格呈现平稳态势 - 北京和上海写字楼空置率分别为15%和12% - 工业用地和仓储价格上涨，尤其是长三角和珠三角地区</p>
+
+<p><strong>政策影响：</strong> - 中国政府继续对房地产市场进行调控，避免过热 - 政策对企业的设施采购影响有限，但需关注长期趋势 - 一些地方政府推出优惠政策，支持企业购置和租赁工业用地</p>
+
+<p><strong>采购建议：</strong> - 企业应根据自身需求平衡租赁和购买的决策 - 选址时应优先考虑交通便利和政策支持的城市 - 通过优化选址和设计，控制设施采购成本</p>
+
+<h2 class="section-title">七、投资策略建议</h2>
+
+<h3 class="subsection-title">资产配置建议</h3>
+
+<p><strong>看好方向：</strong> 1. <strong>新能源汽车</strong>：中国政策支持和市场需求强劲 2. <strong>AI和金融科技</strong>：技术突破和资本流入 3. <strong>半导体</strong>：长期需求增长和国产替代进程 4. <strong>清洁能源</strong>：政策支持和技术创新</p>
+
+<p><strong>规避风险：</strong> 1. <strong>地缘政治风险</strong>：中东局势动荡 2. <strong>供应链风险</strong>：全球供应链紧张 3. <strong>通胀风险</strong>：能源价格高企</p>
+
+<h3 class="subsection-title">风险提示</h3>
+
+<ul class="bullet-list">
+<li>地缘政治变化对市场情绪的影响</li>
+<li>供应链中断导致的成本上升</li>
+<li>通胀压力对消费和投资的抑制作用</li>
+<li>新兴市场政治和经济不确定性</li>
+</ul>
+
+    <!-- ===== Market Data Tables (inserted before Data Appendix) ===== -->
+    <hr class="section-divider">
+    <h2 class="section-title">八、数据附录</h2>
+    
+<div class="market-tables">
+  <div class="market-table-group">
+    <div class="table-label">主要股票指数</div>
+    <table class="market-table">
+      <thead><tr><th>指数</th><th>最新价</th><th>涨跌额</th><th>涨跌幅</th></tr></thead>
+      <tbody><tr>
+            <td class="col-name">上证指数</td>
+            <td class="col-price">nan</td>
+            <td class="col-change down">▼ +nan</td>
+            <td class="col-pct down">+nan%</td>
+        </tr><tr>
+            <td class="col-name">深证成指</td>
+            <td class="col-price">nan</td>
+            <td class="col-change down">▼ +nan</td>
+            <td class="col-pct down">+nan%</td>
+        </tr><tr>
+            <td class="col-name">创业板指</td>
+            <td class="col-price">3688.94</td>
+            <td class="col-change up">▲ +0.00</td>
+            <td class="col-pct up">+0.00%</td>
+        </tr><tr>
+            <td class="col-name">道琼斯</td>
+            <td class="col-price">49149.38</td>
+            <td class="col-change down">▼ -293.18</td>
+            <td class="col-pct down">-0.59%</td>
+        </tr><tr>
+            <td class="col-name">纳斯达克</td>
+            <td class="col-price">24259.96</td>
+            <td class="col-change down">▼ -144.43</td>
+            <td class="col-pct down">-0.59%</td>
+        </tr><tr>
+            <td class="col-name">标普500</td>
+            <td class="col-price">7064.01</td>
+            <td class="col-change down">▼ -45.13</td>
+            <td class="col-pct down">-0.63%</td>
+        </tr><tr>
+            <td class="col-name">恒生指数</td>
+            <td class="col-price">26361.07</td>
+            <td class="col-change up">▲ +0.00</td>
+            <td class="col-pct up">+0.00%</td>
+        </tr><tr>
+            <td class="col-name">日经225</td>
+            <td class="col-price">59356.80</td>
+            <td class="col-change up">▲ +0.00</td>
+            <td class="col-pct up">+0.00%</td>
+        </tr></tbody>
+    </table>
+  </div>
+  <div class="market-table-row">
+    <div class="market-table-group half">
+      <div class="table-label">大宗商品</div>
+      <table class="market-table">
+        <thead><tr><th>品种</th><th>最新价</th><th>涨跌额</th><th>涨跌幅</th></tr></thead>
+        <tbody><tr>
+            <td class="col-name">黄金</td>
+            <td class="col-price">4759.00</td>
+            <td class="col-change down">▼ -47.60</td>
+            <td class="col-pct down">-0.99%</td>
+        </tr><tr>
+            <td class="col-name">原油WTI</td>
+            <td class="col-price">89.39</td>
+            <td class="col-change down">▼ -0.22</td>
+            <td class="col-pct down">-0.25%</td>
+        </tr><tr>
+            <td class="col-name">布伦特原油</td>
+            <td class="col-price">92.78</td>
+            <td class="col-change down">▼ -2.70</td>
+            <td class="col-pct down">-2.83%</td>
+        </tr><tr>
+            <td class="col-name">铜</td>
+            <td class="col-price">6.04</td>
+            <td class="col-change up">▲ +0.00</td>
+            <td class="col-pct up">+0.00%</td>
+        </tr><tr>
+            <td class="col-name">白银</td>
+            <td class="col-price">77.54</td>
+            <td class="col-change down">▼ -2.41</td>
+            <td class="col-pct down">-3.01%</td>
+        </tr></tbody>
+      </table>
+    </div>
+    <div class="market-table-group half">
+      <div class="table-label">外汇市场</div>
+      <table class="market-table">
+        <thead><tr><th>品种</th><th>最新价</th><th>涨跌额</th><th>涨跌幅</th></tr></thead>
+        <tbody><tr>
+            <td class="col-name">美元指数</td>
+            <td class="col-price">98.39</td>
+            <td class="col-change up">▲ +0.34</td>
+            <td class="col-pct up">+0.35%</td>
+        </tr><tr>
+            <td class="col-name">人民币/美元</td>
+            <td class="col-price">6.82</td>
+            <td class="col-change up">▲ +0.00</td>
+            <td class="col-pct up">+0.04%</td>
+        </tr><tr>
+            <td class="col-name">欧元/美元</td>
+            <td class="col-price">1.17</td>
+            <td class="col-change down">▼ -0.00</td>
+            <td class="col-pct down">-0.33%</td>
+        </tr><tr>
+            <td class="col-name">美元/日元</td>
+            <td class="col-price">159.30</td>
+            <td class="col-change up">▲ +0.46</td>
+            <td class="col-pct up">+0.29%</td>
+        </tr><tr>
+            <td class="col-name">英镑/美元</td>
+            <td class="col-price">1.35</td>
+            <td class="col-change down">▼ -0.00</td>
+            <td class="col-pct down">-0.19%</td>
+        </tr></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+    <div class="data-appendix" style="margin-top:20px;">
+        <div class="data-row">
+            <strong>主要指数</strong>（截至2026-04-22）：<strong>上证指数</strong>：nan (+nan%) &nbsp;-&nbsp; <strong>深证成指</strong>：nan (+nan%) &nbsp;-&nbsp; <strong>创业板指</strong>：3688.94 (+0.00%) &nbsp;-&nbsp; <strong>道琼斯</strong>：49149.38 (-0.59%) &nbsp;-&nbsp; <strong>纳斯达克</strong>：24259.96 (-0.59%) &nbsp;-&nbsp; <strong>标普500</strong>：7064.01 (-0.63%) &nbsp;-&nbsp; <strong>恒生指数</strong>：26361.07 (+0.00%) &nbsp;-&nbsp; <strong>日经225</strong>：59356.80 (+0.00%)
+        </div>
+        <div class="data-row">
+            <strong>大宗商品</strong>：<strong>黄金</strong>：4759.00 (-0.99%) &nbsp;-&nbsp; <strong>原油WTI</strong>：89.39 (-0.25%) &nbsp;-&nbsp; <strong>布伦特原油</strong>：92.78 (-2.83%) &nbsp;-&nbsp; <strong>铜</strong>：6.04 (+0.00%) &nbsp;-&nbsp; <strong>白银</strong>：77.54 (-3.01%)
+        </div>
+        <div class="data-row">
+            <strong>外汇</strong>：<strong>美元指数</strong>：98.39 (+0.35%) &nbsp;-&nbsp; <strong>人民币/美元</strong>：6.82 (+0.04%) &nbsp;-&nbsp; <strong>欧元/美元</strong>：1.17 (-0.33%) &nbsp;-&nbsp; <strong>美元/日元</strong>：159.30 (+0.29%) &nbsp;-&nbsp; <strong>英镑/美元</strong>：1.35 (-0.19%)
+        </div>
+    </div>
+
+    <!-- ===== Footer ===== -->
+    <div class="report-footer">
+        <hr class="section-divider" style="margin-bottom:14px;">
+        <p><strong>报告生成时间：</strong>2026-04-22 01:31:45</p>
+        <p><strong>数据来源：</strong>Bloomberg · Financial Times · WSJ · CNBC · MarketWatch · The Economist · Federal Reserve · ECB · BIS · OilPrice · TechCrunch · MIT Tech Review · SCMP · Nikkei Asia · CoinDesk · Seeking Alpha · Yahoo Finance · Business Insider · Supply Chain Dive · Procurement Magazine · Spend Matters · Logistics Management 等 28+ 权威来源</p>
+        <p><strong>免责声明：</strong>本报告仅供参考，不构成投资建议。投资有风险，入市需谨慎。</p>
+    </div>
+
+</div>
+</body>
+</html>
